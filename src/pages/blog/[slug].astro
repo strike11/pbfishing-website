@@ -1,0 +1,36 @@
+---
+import { render } from "astro:content";
+import Article from "@/layouts/Article.astro";
+import PostCard from "@/components/PostCard.astro";
+import { allPosts, relatedPosts, heroFor, CATEGORY_LABEL, type Post } from "@/lib/content";
+import { stateBySlug, statePagePath } from "@/data/states";
+
+export async function getStaticPaths() {
+  return (await allPosts()).map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props as { post: Post };
+const { Content, headings } = await render(post);
+const related = await relatedPosts(post, 3);
+const d = post.data;
+const cat = CATEGORY_LABEL[d.category];
+const items = headings.filter((h) => h.depth === 2 && /^\d+[.)]?\s/.test(h.text));
+const extraLd = d.kind === "listicle" && items.length > 2
+  ? [{ "@type": "ItemList", name: d.title, numberOfItems: items.length, itemListElement: items.map((h, i) => ({ "@type": "ListItem", position: i + 1, name: h.text.replace(/^\d+[.)]?\s*/, ""), url: `https://pbfishing.app/blog/${post.id}#${h.slug}` })) }]
+  : [];
+const states = d.states.map(stateBySlug).filter(Boolean);
+---
+<Article entry={post} collection="blog" path={`/blog/${post.id}`} crumbs={[{ name: "Blog", href: "/blog" }, { name: cat, href: `/blog/category/${d.category}` }, { name: d.title, href: `/blog/${post.id}` }]} kicker={cat} campaign="blog" extraLd={extraLd} withApp={d.category === "apps"} headings={headings}>
+  <Content />
+  {states.length > 0 && (
+    <nav class="official" aria-label="State guides" slot="intro">
+      <h2>State guides</h2>
+      <ul>{states.map((s) => <li><a href={statePagePath(s!.slug, "hub")}>{s!.name} fishing guide</a> · <a href={statePagePath(s!.slug, "fishing-license")}>license</a> · <a href={statePagePath(s!.slug, "best-lakes")}>best lakes</a></li>)}</ul>
+    </nav>
+  )}
+  <section class="wrap section" slot="after" aria-labelledby="more-h">
+    <div class="row-between"><h2 id="more-h">Keep reading</h2><a href={`/blog/category/${d.category}`}>More {cat.toLowerCase()} →</a></div>
+    <div class="grid grid-3">
+      {related.map((p) => <PostCard href={`/blog/${p.id}`} title={p.data.title} text={p.data.description} meta={CATEGORY_LABEL[p.data.category]} image={heroFor("blog", p.id)} alt={p.data.heroAlt} />)}
+    </div>
+  </section>
+</Article>

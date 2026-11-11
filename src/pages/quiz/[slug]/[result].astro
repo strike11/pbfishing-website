@@ -1,0 +1,55 @@
+---
+import Base from "@/layouts/Base.astro";
+import Icon from "@/components/Icon.astro";
+import QuizIcon from "@/components/QuizIcon.astro";
+import AppCta from "@/components/AppCta.astro";
+import { QUIZZES, type Quiz, type QuizResult } from "@/data/quizzes";
+import { inline } from "@/lib/content";
+import "@/styles/quiz.css";
+
+export function getStaticPaths() {
+  return QUIZZES.flatMap((quiz) => quiz.results.map((result) => ({ params: { slug: quiz.slug, result: result.slug }, props: { quiz, result } })));
+}
+const { quiz, result } = Astro.props as { quiz: Quiz; result: QuizResult };
+const others = QUIZZES.filter((q) => q.slug !== quiz.slug);
+const id = `${quiz.slug}-${result.slug}`;
+---
+<Base title={`${result.title}: ${quiz.title}`} description={`${result.tagline} Take the free PB Fishing quiz: ${quiz.title}`.slice(0, 165)} path={`/quiz/${quiz.slug}/${result.slug}`} ogImage={`/og/quiz/${id}.jpg`} ogImageAlt={`${quiz.title} result: ${result.title}`} noindex campaign="quiz" content={id}>
+  <div class="quiz-shell" style="padding-bottom:2rem">
+    <ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/quiz">Quizzes</a></li><li><a href={`/quiz/${quiz.slug}`}>{quiz.title}</a></li></ol>
+    <div class="r-card">
+      <span class="kicker" style="color:var(--gold-bright)">Your result</span>
+      <QuizIcon name={result.icon} tint={result.tint} size="lg" />
+      <h1>{result.title}</h1>
+      <p>{result.tagline}</p>
+      {quiz.kind === "trivia" && <p class="r-score" data-score hidden></p>}
+      <div class="r-actions">
+        <button class="btn btn-gold btn-sm" type="button" data-share><Icon name="share-2" size={16} /> Share result</button>
+        <a class="btn btn-ghost-dark btn-sm" href={`/quiz/${quiz.slug}`}><Icon name="rotate-ccw" size={16} /> Retake</a>
+      </div>
+    </div>
+    <div class="prose" style="margin-top:2rem">
+      {result.body.map((p) => <p set:html={inline(p)} />)}
+      <h2>What to do next</h2>
+      <ul>{result.tips.map((t) => <li set:html={inline(t)} />)}</ul>
+      <AppCta campaign="quiz" content={id} placement="quiz-result" title={result.app.title} text={result.app.text} />
+      <h2>Guides for you</h2>
+      <ul>{result.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      <h2>Try another quiz</h2>
+      <div class="hub-links">{others.map((q) => <a class="chip" href={`/quiz/${q.slug}`}>{q.title}</a>)}</div>
+    </div>
+  </div>
+  <script>
+    const p = new URLSearchParams(location.search);
+    const el = document.querySelector<HTMLElement>("[data-score]");
+    if (el && p.get("s") && p.get("n")) { el.textContent = `You scored ${p.get("s")} out of ${p.get("n")}`; el.hidden = false; }
+    document.querySelector("[data-share]")?.addEventListener("click", async (e) => {
+      const btn = e.currentTarget as HTMLButtonElement;
+      const data = { title: document.title, text: document.querySelector(".r-card p")?.textContent ?? "", url: location.origin + location.pathname };
+      try {
+        if (navigator.share) await navigator.share(data);
+        else { await navigator.clipboard.writeText(data.url); btn.textContent = "Link copied"; }
+      } catch {}
+    });
+  </script>
+</Base>

@@ -1,0 +1,40 @@
+---
+import Icon from "./Icon.astro";
+import { appLink } from "@/lib/site";
+interface Props { campaign: string; content: string; theme?: "light" | "dark" }
+const { campaign, content } = Astro.props;
+const here = Astro.url.pathname;
+const nav = [
+  { href: "/blog", label: "Blog" },
+  { href: "/fishing", label: "Fishing by state" },
+  { href: "/species", label: "Species" },
+  { href: "/quiz", label: "Quizzes" },
+  { href: "/tools/fish-weight-calculator", label: "Weight calculator" },
+];
+const cur = (h: string) => (here === h || here.startsWith(h + "/") || here.startsWith(h + ".") ? "page" : undefined);
+const link = appLink(campaign, content, "header");
+---
+<header class="site-head" data-head>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="PB Fishing home">
+      <img src="/brand/pb-logo.svg" alt="" width="40" height="40" />
+      <span>PB Fishing</span>
+    </a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" data-menu><Icon name="menu" size={22} /></button>
+    <nav class="site-nav" aria-label="Main">
+      {nav.map((n) => <a href={n.href} aria-current={cur(n.href)}>{n.label}</a>)}
+      <a class="btn btn-gold" href={link} data-cta="header">Get the app</a>
+    </nav>
+    <a class="btn btn-navy btn-sm btn-head" href={link} data-cta="header">Get the app</a>
+  </div>
+</header>
+<script is:inline>
+  (() => {
+    const h = document.querySelector("[data-head]"), b = h && h.querySelector("[data-menu]");
+    if (!b) return;
+    b.addEventListener("click", () => {
+      const open = h.toggleAttribute("data-open");
+      b.setAttribute("aria-expanded", String(open));
+    });
+  })();
+</script>

@@ -1,0 +1,142 @@
+---
+import { Picture } from "astro:assets";
+import Base from "./Base.astro";
+import Icon from "@/components/Icon.astro";
+import AppCta from "@/components/AppCta.astro";
+import { SITE, abs, fmtDate, isoDate, APP_LD, appLink } from "@/lib/site";
+import { heroFor, ogFor, inline, plain, readingMinutes, wordCount } from "@/lib/content";
+
+interface Crumb { name: string; href: string }
+interface Props {
+  entry: any;
+  collection: "blog" | "species" | "states";
+  path: string;
+  crumbs: Crumb[];
+  kicker: string;
+  campaign: string;
+  /** Extra JSON-LD nodes (ItemList, HowTo...). */
+  extraLd?: Record<string, unknown>[];
+  section?: string;
+  withApp?: boolean;
+  headings?: { depth: number; slug: string; text: string }[];
+  /** HTML caption under the hero image (e.g. an illustration credit). */
+  heroCaption?: string;
+}
+const { entry, collection, path, crumbs, kicker, campaign, extraLd = [], section, withApp = false, headings = [], heroCaption } = Astro.props;
+const d = entry.data;
+const id: string = entry.id.replace(/\//g, "-").replace(/-hub$/, "");
+const url = abs(path);
+const hero = heroFor(collection, id);
+const og = ogFor(collection, id);
+const published = isoDate(d.published);
+const updated = d.updated ? isoDate(d.updated) : null;
+const toc = headings.filter((x) => x.depth === 2);
+const words = wordCount(entry.body);
+const ld: Record<string, unknown>[] = [
+  {
+    "@type": collection === "blog" ? "BlogPosting" : "Article",
+    "@id": `${url}#article`,
+    headline: d.title,
+    description: d.description,
+    image: [abs(og), abs(hero.src)],
+    datePublished: published,
+    dateModified: updated ?? published,
+    mainEntityOfPage: url,
+    keywords: d.keyword,
+    articleSection: section ?? kicker,
+    inLanguage: "en-US",
+    wordCount: words,
+    author: { "@type": "Organization", "@id": `${SITE}/#org`, name: "PB Fishing editorial team", url: `${SITE}/about` },
+    publisher: { "@id": `${SITE}/#org` },
+    isPartOf: { "@id": `${SITE}/#website` },
+    ...(d.sources?.length ? { citation: d.sources.map((s: any) => ({ "@type": "CreativeWork", name: s.title, url: s.url, ...(s.publisher ? { publisher: s.publisher } : {}) })) } : {}),
+    ...(withApp ? { mentions: { "@id": `${SITE}/#app` } } : {}),
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [{ name: "Home", href: "/" }, ...crumbs].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: abs(c.href) })),
+  },
+  ...(d.faq?.length
+    ? [{ "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: d.faq.map((f: any) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: plain(f.a) } })) }]
+    : []),
+  ...(withApp ? [APP_LD] : []),
+  ...extraLd,
+];
+const seoTitle = d.seoTitle ?? d.title;
+---
+<Base title={seoTitle} description={d.description} path={path} ogImage={og} ogImageAlt={d.heroAlt} ogType="article" jsonLd={ld} campaign={campaign} content={id} published={published} modified={updated ?? published}>
+  <article>
+    <header class="article-head wrap">
+      <ol class="crumbs" aria-label="Breadcrumb">
+        <li><a href="/">Home</a></li>
+        {crumbs.slice(0, -1).map((c) => <li><a href={c.href}>{c.name}</a></li>)}
+      </ol>
+      <slot name="above" />
+      <span class="kicker">{kicker}</span>
+      <h1>{d.title}</h1>
+      <p class="lead" set:html={inline(d.lede)} />
+      <p class="meta">
+        <span>By the <a href="/about">PB Fishing editorial team</a></span><span class="dot">·</span>
+        {updated ? <span>Updated <time datetime={updated}>{fmtDate(updated)}</time></span> : <time datetime={published}>{fmtDate(published)}</time>}
+        <span class="dot">·</span><span>{readingMinutes(entry.body)} min read</span>
+      </p>
+      <figure class="hero-fig">
+        <Picture src={hero} formats={["avif", "webp"]} widths={[480, 800, 1200, 1600]} sizes="(max-width: 1180px) calc(100vw - 2.5rem), 1140px" alt={d.heroAlt} loading="eager" fetchpriority="high" />
+        {heroCaption && <figcaption set:html={heroCaption} />}
+      </figure>
+    </header>
+
+    <div class="wrap article-layout">
+      <div class="prose">
+        {d.takeaways?.length > 0 && (
+          <aside class="takeaways" aria-label="Key takeaways">
+            <span class="kicker">The short version</span>
+            <ul>{d.takeaways.map((t: string) => <li set:html={inline(t)} />)}</ul>
+          </aside>
+        )}
+        <slot name="intro" />
+        <slot />
+        {d.faq?.length > 0 && (
+          <section class="faq" id="faq" aria-labelledby="faq-h">
+            <h2 id="faq-h">Questions anglers ask</h2>
+            {d.faq.map((f: any) => (
+              <details>
+                <summary>{f.q}</summary>
+                <p set:html={inline(f.a)} />
+              </details>
+            ))}
+          </section>
+        )}
+        <AppCta campaign={campaign} content={id} placement="end" />
+        {d.sources?.length > 0 && (
+          <section class="sources" aria-labelledby="src-h">
+            <h2 id="src-h">Sources</h2>
+            <ul>{d.sources.map((s: any) => <li><a href={s.url} rel="noopener">{s.title}</a>{s.publisher && <span>, {s.publisher}</span>}</li>)}</ul>
+            <p>Regulations, fees and records change. Treat this page as a starting point and confirm with the official source before you fish. Spotted an error? Email <a href="mailto:support@pbfishing.app">support@pbfishing.app</a>.</p>
+          </section>
+        )}
+        <div class="author-box">
+          <img src="/brand/pb-logo.svg" alt="" width="48" height="48" loading="lazy" />
+          <p>Written and fact-checked by the PB Fishing editorial team, the people who build the PB Fishing catch log. <a href="/about">How we research and update guides</a>.</p>
+        </div>
+      </div>
+      <aside class="toc" aria-label="On this page">
+        {toc.length > 2 && (
+          <>
+            <span class="kicker">On this page</span>
+            <ol>
+              {toc.map((t) => <li><a href={`#${t.slug}`}>{t.text}</a></li>)}
+              {d.faq?.length > 0 && <li><a href="#faq">Questions anglers ask</a></li>}
+            </ol>
+          </>
+        )}
+        <div class="app-mini">
+          <strong>PB Fishing for iPhone</strong>
+          <p>Photo-backed catch log, personal bests and state leaderboards. Free to start.</p>
+          <a class="btn btn-navy btn-sm" href={appLink(campaign, id, "toc")} data-cta="toc"><Icon name="download" size={16} /> Get the app</a>
+        </div>
+      </aside>
+    </div>
+    <slot name="after" />
+  </article>
+</Base>

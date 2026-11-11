@@ -1,0 +1,23 @@
+---
+import { appLink } from "@/lib/site";
+interface Props { campaign: string; content: string }
+const { campaign, content } = Astro.props;
+---
+<div class="sticky-cta" data-sticky role="complementary" aria-label="Get the PB Fishing app">
+  <img src="/brand/pb-logo-96.png" alt="" width="40" height="40" loading="lazy" />
+  <div><strong>PB Fishing</strong><small>Free catch log · iPhone</small></div>
+  <a class="btn btn-gold" href={appLink(campaign, content, "sticky")} data-cta="sticky">Get it free</a>
+  <button class="x" type="button" aria-label="Dismiss" data-x>×</button>
+</div>
+<script is:inline>
+  (() => {
+    const s = document.querySelector("[data-sticky]");
+    if (!s) return;
+    let off = false;
+    try { off = sessionStorage.getItem("pb-sticky-off") === "1"; } catch (e) {}
+    if (off) { s.remove(); return; }
+    const onScroll = () => { if (window.scrollY > 700) { s.setAttribute("data-show", ""); window.removeEventListener("scroll", onScroll); } };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    s.querySelector("[data-x]").addEventListener("click", () => { s.remove(); try { sessionStorage.setItem("pb-sticky-off", "1"); } catch (e) {} });
+  })();
+</script>

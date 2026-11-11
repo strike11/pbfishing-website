@@ -1,0 +1,42 @@
+---
+import Base from "@/layouts/Base.astro";
+import AppCta from "@/components/AppCta.astro";
+import { STATES, statePagePath } from "@/data/states";
+const live = STATES.filter((s) => s.live);
+const ld = [
+  { "@type": "CollectionPage", "@id": "https://pbfishing.app/fishing", name: "Fishing by state", url: "https://pbfishing.app/fishing",
+    mainEntity: { "@type": "ItemList", itemListElement: live.map((s, i) => ({ "@type": "ListItem", position: i + 1, name: `${s.name} fishing guide`, url: `https://pbfishing.app/fishing/${s.slug}` })) } },
+  { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://pbfishing.app/" }, { "@type": "ListItem", position: 2, name: "Fishing by state", item: "https://pbfishing.app/fishing" }] },
+];
+---
+<Base title="Fishing by State: Lakes, Licenses, Seasons & Records" description="State-by-state fishing guides: the best lakes and rivers, what bites each season, fishing license rules, state record fish and beginner spots, with links to every official agency." path="/fishing" jsonLd={ld} campaign="state" content="index">
+  <section class="page-hero wrap">
+    <ol class="crumbs"><li><a href="/">Home</a></li></ol>
+    <h1>Fishing guides for every state</h1>
+    <p class="lead">Where to go, what is biting, which license you need and what the state record is. Each guide is researched against the state's own wildlife agency and links straight to it, because regulations change every season.</p>
+  </section>
+  <section class="wrap">
+    <h2>Full state guides</h2>
+    <div class="grid grid-3">
+      {live.map((s) => (
+        <div class="card" style="padding:1.25rem 1.35rem">
+          <h3 style="margin-bottom:.4rem"><a href={`/fishing/${s.slug}`}>{s.name} fishing</a></h3>
+          <p class="muted" style="font-size:.92rem;margin-bottom:.8rem">Lakes, bass, seasons, license, records and beginner spots.</p>
+          <div class="hub-links" style="margin:0">
+            <a class="chip" href={statePagePath(s.slug, "best-lakes")}>Best lakes</a>
+            <a class="chip" href={statePagePath(s.slug, "fishing-license")}>License</a>
+            <a class="chip" href={statePagePath(s.slug, "state-record-fish")}>Records</a>
+          </div>
+        </div>
+      ))}
+    </div>
+    <h2 style="margin-top:3.5rem">Official fishing agencies, all 50 states</h2>
+    <p class="muted">Full guides for more states are on the way. Until then, every state's licenses and regulations come from its wildlife agency:</p>
+    <div class="state-grid">
+      {STATES.map((s) => s.live
+        ? <a class="state-link" href={`/fishing/${s.slug}`}>{s.name}<small>Full guide</small></a>
+        : <a class="state-link soon" href={s.agencyUrl} rel="noopener">{s.name}<small>{s.abbr} agency ↗</small></a>)}
+    </div>
+    <AppCta campaign="state" content="index" title="Every state has a live leaderboard" text="PB Fishing ranks photo-backed catches by species in all 50 states. Pick your state, log a fish, and see where it lands. Catch logging is free." />
+  </section>
+</Base>

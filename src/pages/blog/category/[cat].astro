@@ -1,0 +1,31 @@
+---
+import Base from "@/layouts/Base.astro";
+import PostCard from "@/components/PostCard.astro";
+import AppCta from "@/components/AppCta.astro";
+import { allPosts, heroFor, CATEGORY_LABEL, CATEGORY_BLURB } from "@/lib/content";
+
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  return Object.keys(CATEGORY_LABEL).filter((c) => posts.some((p) => p.data.category === c)).map((cat) => ({ params: { cat } }));
+}
+const { cat } = Astro.params as { cat: keyof typeof CATEGORY_LABEL };
+const posts = (await allPosts()).filter((p) => p.data.category === cat);
+const name = CATEGORY_LABEL[cat];
+const url = `https://pbfishing.app/blog/category/${cat}`;
+const ld = [
+  { "@type": "CollectionPage", "@id": url, name, url, description: CATEGORY_BLURB[cat], isPartOf: { "@id": "https://pbfishing.app/#website" },
+    mainEntity: { "@type": "ItemList", itemListElement: posts.map((p, i) => ({ "@type": "ListItem", position: i + 1, url: `https://pbfishing.app/blog/${p.id}`, name: p.data.title })) } },
+  { "@type": "BreadcrumbList", itemListElement: [["Home", "/"], ["Blog", "/blog"], [name, `/blog/category/${cat}`]].map(([n, h], i) => ({ "@type": "ListItem", position: i + 1, name: n, item: `https://pbfishing.app${h === "/" ? "/" : h}` })) },
+];
+---
+<Base title={`${name}: Fishing Blog`} description={`${CATEGORY_BLURB[cat]} From the PB Fishing blog.`.slice(0, 165)} path={`/blog/category/${cat}`} jsonLd={ld} campaign="blog" content={`cat-${cat}`}>
+  <section class="page-hero wrap">
+    <ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/blog">Blog</a></li></ol>
+    <h1>{name}</h1>
+    <p class="lead">{CATEGORY_BLURB[cat]}</p>
+  </section>
+  <section class="wrap">
+    <div class="grid grid-3">{posts.map((p, i) => <PostCard href={`/blog/${p.id}`} title={p.data.title} text={p.data.description} meta={`${p.data.kind}`} image={heroFor("blog", p.id)} alt={p.data.heroAlt} eager={i < 3} />)}</div>
+    <AppCta campaign="blog" content={`cat-${cat}`} />
+  </section>
+</Base>

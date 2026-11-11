@@ -1,0 +1,8 @@
+---
+import Base from "@/layouts/Base.astro";
+import html from "@/legacy/eula.html?raw";
+---
+<Base title="Terms of Use (EULA)" description="PB Fishing Terms of Use (EULA): your license to use the app, subscriptions billed by Apple or Google, content ownership and acceptable use. UZSPOWER LLC." path="/eula" campaign="legal" content="eula" sticky={false}>
+  <style is:global>#pb-terms .wrap, #pb-privacy .wrap { width: auto; }</style>
+  <Fragment set:html={html} />
+</Base>

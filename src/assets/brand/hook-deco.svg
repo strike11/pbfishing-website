@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 210" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="hg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EEC639"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Static fishing line above the hook eye -->
+  <line x1="50" y1="0" x2="50" y2="14" stroke="#4A7C8F" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Entire hook swings from eye at (50,14) -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate"
+      values="-9,50,14; 9,50,14; -9,50,14" dur="3.2s" keyTimes="0;0.5;1"
+      calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+      repeatCount="indefinite"/>
+
+    <!-- Eye ring -->
+    <circle cx="50" cy="14" r="7" fill="none" stroke="url(#hg)" stroke-width="3.5"/>
+
+    <!-- Hook shaft + J-bend as a single thick stroked path -->
+    <path fill="none" stroke="url(#hg)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"
+      d="M50,21
+         L50,120
+         C50,144 76,148 78,168
+         C80,188 64,198 52,194"/>
+
+    <!-- Barb (short angled spike near the point) -->
+    <line x1="52" y1="194" x2="64" y2="177"
+      stroke="url(#hg)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>

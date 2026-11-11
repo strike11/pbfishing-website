@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <style>
+      /* Wave paths are 2880px wide (2× viewport).
+         translateX animation shifts by -1440px for a seamless loop. */
+      .wg1 { animation: ws1 22s linear infinite; }
+      .wg2 { animation: ws2 16s linear infinite; }
+      .wg3 { animation: ws3 11s linear infinite reverse; }
+      @keyframes ws1 { from { transform: translateX(0); }    to { transform: translateX(-1440px); } }
+      @keyframes ws2 { from { transform: translateX(0); }    to { transform: translateX(-1440px); } }
+      @keyframes ws3 { from { transform: translateX(-1440px); } to { transform: translateX(0); }    }
+    </style>
+  </defs>
+
+  <!-- Wave 1 — deep navy, 8 periods of 360px each -->
+  <g class="wg1">
+    <path fill="rgba(27,58,75,0.22)"
+      d="M0,218
+         C90,196 270,240 360,218 C450,196 630,240 720,218
+         C810,196 990,240 1080,218 C1170,196 1350,240 1440,218
+         C1530,196 1710,240 1800,218 C1890,196 2070,240 2160,218
+         C2250,196 2430,240 2520,218 C2610,196 2790,240 2880,218
+         L2880,300 L0,300 Z"/>
+  </g>
+
+  <!-- Wave 2 — steel blue, 12 periods of 240px each -->
+  <g class="wg2">
+    <path fill="rgba(74,124,143,0.18)"
+      d="M0,242
+         C60,226 180,258 240,242 C300,226 420,258 480,242
+         C540,226 660,258 720,242 C780,226 900,258 960,242
+         C1020,226 1140,258 1200,242 C1260,226 1380,258 1440,242
+         C1500,226 1620,258 1680,242 C1740,226 1860,258 1920,242
+         C1980,226 2100,258 2160,242 C2220,226 2340,258 2400,242
+         C2460,226 2580,258 2640,242 C2700,226 2820,258 2880,242
+         L2880,300 L0,300 Z"/>
+  </g>
+
+  <!-- Wave 3 — warm gold tint, 16 periods of 180px each, reverse dir -->
+  <g class="wg3">
+    <path fill="rgba(212,160,23,0.09)"
+      d="M0,260
+         C45,250 135,270 180,260 C225,250 315,270 360,260
+         C405,250 495,270 540,260 C585,250 675,270 720,260
+         C765,250 855,270 900,260 C945,250 1035,270 1080,260
+         C1125,250 1215,270 1260,260 C1305,250 1395,270 1440,260
+         C1485,250 1575,270 1620,260 C1665,250 1755,270 1800,260
+         C1845,250 1935,270 1980,260 C2025,250 2115,270 2160,260
+         C2205,250 2295,270 2340,260 C2385,250 2475,270 2520,260
+         C2565,250 2655,270 2700,260 C2745,250 2835,270 2880,260
+         L2880,300 L0,300 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+---
+import StoreBadge from "./StoreBadge.astro";
+import { STATES } from "@/data/states";
+interface Props { campaign: string; content: string }
+const { campaign, content } = Astro.props;
+const live = STATES.filter((s) => s.live).slice(0, 6);
+---
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><img src="/brand/pb-logo-white-160.png" alt="" width="40" height="40" loading="lazy" /><span>PB Fishing</span></a>
+        <p>Measure. Rank. Improve. The iOS fishing companion for anglers who want an honest record of every catch.</p>
+        <StoreBadge campaign={campaign} content={content} placement="footer" />
+      </div>
+      <nav aria-label="Learn">
+        <h2>Learn</h2>
+        <ul>
+          <li><a href="/blog">Fishing blog</a></li>
+          <li><a href="/blog/category/how-to">How-to guides</a></li>
+          <li><a href="/blog/category/apps">Fishing apps</a></li>
+          <li><a href="/species">Species guides</a></li>
+          <li><a href="/quiz">Fishing quizzes</a></li>
+          <li><a href="/tools/fish-weight-calculator">Fish weight calculator</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="States">
+        <h2>Fishing by state</h2>
+        <ul>
+          {live.map((s) => <li><a href={`/fishing/${s.slug}`}>{s.name}</a></li>)}
+          <li><a href="/fishing">All states →</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="App">
+        <h2>The app</h2>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/blog/pb-fishing-vs-fishbrain">PB Fishing vs Fishbrain</a></li>
+          <li><a href="/obalus-partner">Obalus partner</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/about">About &amp; editorial policy</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/eula">EULA</a></li>
+          <li><a href="mailto:support@pbfishing.app">support@pbfishing.app</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© {new Date().getFullYear()} UZSPOWER LLC. All rights reserved.</span>
+      <span>Regulations change. Always check your state agency before you fish.</span>
+      <span>Web development by <a href="https://strike11.github.io/Diyor-Babadjanov-Portfolio-WebSite/" rel="noopener">Diyor Babadjanov</a> · United States · English</span>
+    </div>
+  </div>
+</footer>

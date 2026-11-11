@@ -1,0 +1,8 @@
+---
+import Base from "@/layouts/Base.astro";
+import html from "@/legacy/privacy.html?raw";
+---
+<Base title="Privacy Policy" description="How PB Fishing handles your data: no ads, no selling personal information, optional location and camera access, and account deletion in the app. UZSPOWER LLC." path="/privacy-policy" campaign="legal" content="privacy" sticky={false}>
+  <style is:global>#pb-terms .wrap, #pb-privacy .wrap { width: auto; }</style>
+  <Fragment set:html={html} />
+</Base>

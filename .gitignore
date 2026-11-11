@@ -1,5 +1,8 @@
 .DS_Store
 .vercel
 node_modules
+dist
+.astro
 .env*
 .tilda-original-*.html
+.claude/

@@ -1,0 +1,200 @@
+<style>
+  #pb-terms, #pb-terms * { box-sizing: border-box; }
+  #pb-terms {
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: #f5f0e8;
+    color: #2c2c2c;
+    line-height: 1.75;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  #pb-terms a { color: #1b3a4b; text-decoration: underline; text-underline-offset: 3px; }
+  #pb-terms a:hover { color: #d4a017; }
+  #pb-terms .hero {
+    background: linear-gradient(135deg, #1b3a4b 0%, #0d2030 60%, #162d3e 100%);
+    padding: 4.5rem 1.5rem 3.75rem;
+    text-align: center;
+  }
+  #pb-terms .hero-label {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d4a017;
+    margin-bottom: 1rem;
+    padding: 0.3rem 0.875rem;
+    border: 1px solid rgba(212, 160, 23, 0.35);
+    border-radius: 999px;
+  }
+  #pb-terms h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: #f5f0e8;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin: 0 0 0.875rem;
+  }
+  #pb-terms .hero-meta {
+    font-size: 0.875rem;
+    color: rgba(245, 240, 232, 0.55);
+    font-weight: 500;
+    margin: 0;
+  }
+  #pb-terms .hero-divider {
+    width: 48px;
+    height: 3px;
+    background: #d4a017;
+    border-radius: 2px;
+    margin: 1.25rem auto 0;
+  }
+  #pb-terms .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  #pb-terms .summary, #pb-terms .contact { border-radius: 18px; }
+  #pb-terms .summary {
+    background: #fff;
+    border: 1px solid rgba(27, 58, 75, 0.1);
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 16px rgba(27, 58, 75, 0.06);
+  }
+  #pb-terms .kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d4a017;
+    margin-bottom: 1rem;
+  }
+  #pb-terms .summary ul { list-style: none; margin: 0; padding: 0; }
+  #pb-terms .summary li {
+    display: flex;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+    color: #1b3a4b;
+    font-weight: 500;
+    margin-bottom: 0.625rem;
+  }
+  #pb-terms .summary li::before {
+    content: "✓";
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background: rgba(212, 160, 23, 0.12);
+    color: #d4a017;
+    border-radius: 50%;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  #pb-terms .store {
+    background: #fff;
+    border: 1px solid rgba(27, 58, 75, 0.1);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  #pb-terms .store p { margin: 0; }
+  #pb-terms .store-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1b3a4b;
+    margin-bottom: 0.5rem;
+  }
+  #pb-terms .warn {
+    background: rgba(192, 57, 43, 0.06);
+    border-left: 3px solid #c0392b;
+    border-radius: 0 10px 10px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0 0;
+    font-size: 0.9375rem;
+    color: #7a241b;
+    font-weight: 500;
+  }
+  #pb-terms .section { margin-bottom: 2.75rem; }
+  #pb-terms .stores { margin-bottom: 2.75rem; }
+  #pb-terms .num {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #d4a017;
+    margin-bottom: 0.5rem;
+  }
+  #pb-terms h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1b3a4b;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    line-height: 1.3;
+  }
+  #pb-terms h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1b3a4b;
+    margin: 1.375rem 0 0.5rem;
+  }
+  #pb-terms p, #pb-terms li {
+    font-size: 0.9375rem;
+    color: #3d4f58;
+    line-height: 1.8;
+  }
+  #pb-terms p { margin: 0 0 0.875rem; }
+  #pb-terms ul { padding-left: 1.25rem; margin: 0 0 0.875rem; }
+  #pb-terms li { margin-bottom: 0.3rem; }
+  #pb-terms .caps { font-size: 0.875rem; letter-spacing: 0.01em; }
+  #pb-terms hr {
+    border: none;
+    border-top: 1px solid rgba(27, 58, 75, 0.1);
+    margin: 2.75rem 0;
+  }
+  #pb-terms .table-wrap {
+    overflow-x: auto;
+    margin: 1.25rem 0;
+    border-radius: 12px;
+    border: 1px solid rgba(27, 58, 75, 0.1);
+  }
+  #pb-terms table { width: 100%; border-collapse: collapse; font-size: 0.875rem; background: #fff; }
+  #pb-terms thead tr { background: #1b3a4b; }
+  #pb-terms th {
+    padding: 0.75rem 1rem;
+    color: #f5f0e8;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  #pb-terms td {
+    padding: 0.75rem 1rem;
+    color: #2c2c2c;
+    vertical-align: top;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(27, 58, 75, 0.07);
+  }
+  #pb-terms tbody tr:nth-child(even) { background: #faf8f4; }
+  #pb-terms .contact {
+    background: #1b3a4b;
+    padding: 2rem;
+    margin-top: 1.25rem;
+    text-align: center;
+  }
+  #pb-terms .contact p { color: rgba(245, 240, 232, 0.75); margin-bottom: 0.5rem; }
+  #pb-terms .contact a { color: #d4a017; font-weight: 600; font-size: 1rem; }
+  #pb-terms .contact h3 { color: #f5f0e8; margin: 0 0 0.75rem; }
+  @media (max-width: 600px) {
+    #pb-terms .hero { padding: 3rem 1.25rem 2.5rem; }
+    #pb-terms .wrap { padding: 2.5rem 1.25rem 4rem; }
+    #pb-terms .summary { padding: 1.5rem 1.25rem; }
+    #pb-terms th, #pb-terms td { padding: 0.625rem 0.75rem; }
+  }
+</style> <div id="pb-terms"> <header class="hero"> <div class="hero-label">Legal</div> <h1>Terms of Use (EULA)</h1> <p class="hero-meta">Effective date: November 5, 2026 · UZSPOWER LLC</p> <div class="hero-divider"></div> </header> <div class="wrap"> <div class="summary"> <div class="kicker">Key terms at a glance</div> <ul> <li>This is a license to use the App — you do not own the software.</li> <li>Your catch logs, photos, and personal content remain yours.</li> <li>Monthly and annual subscriptions on iPhone are billed by Apple. On Android they are billed by Google. Both auto-renew until you cancel in that store.</li> <li>The 7-day introductory trial, when eligible, applies to the annual plan only.</li> <li>Leaderboards, Bite Scores, forecasts, measurements, and AI results are estimates for recreation and planning.</li> <li>We can suspend accounts that violate these terms.</li> <li>On iPhone this agreement incorporates Apple's standard EULA. On Android it follows the Google Play Terms of Service.</li> </ul> </div> <div class="stores"> <div class="store"> <div class="store-label">Apple App Store Notice</div> <p>This End User License Agreement ("Agreement") is entered into between you and <strong>UZSPOWER LLC</strong>, not Apple Inc. Apple is not a party to this Agreement and is not responsible for the App or its content. However, Apple and its subsidiaries are third-party beneficiaries of this Agreement and, upon your acceptance, Apple will have the right to enforce this Agreement against you. This Agreement incorporates by reference the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Apple Standard EULA</a> where the App was downloaded from the App Store.</p> </div> <div class="store"> <div class="store-label">Google Play Notice</div> <p>If you downloaded PB FISHING from Google Play, this Agreement is between you and <strong>UZSPOWER LLC</strong>, not Google. Google is not responsible for the App or its content. Your use of the Android app also follows the <a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener noreferrer">Google Play Terms of Service</a>. Payments, refunds, and subscription cancellation for the Android app are handled by Google Play.</p> </div> </div> <div class="section"> <div class="num">Section 01</div> <h2>Agreement to Terms</h2> <p>By downloading, installing, or using PB FISHING (the "App"), you agree to be bound by this End User License Agreement ("Agreement"). If you do not agree to these terms, do not download or use the App.</p> <p>This Agreement is between you ("User," "you") and <strong>UZSPOWER LLC</strong> ("Company," "we," "our," or "us"), a limited liability company organized under the laws of the United States. The App is distributed on iPhone through the Apple App Store and on Android through Google Play.</p> <p>You must be at least 13 years of age to use the App. By accepting this Agreement, you represent that you meet this minimum age requirement.</p> </div> <hr> <div class="section"> <div class="num">Section 02</div> <h2>License Grant</h2> <p>Subject to your compliance with this Agreement, UZSPOWER LLC grants you a limited, non-exclusive, non-transferable, revocable license to download, install, and use the App on Apple-branded devices you own or control and on Android devices you own or control, solely for your personal, non-commercial purposes, as permitted by the App Store Terms of Service or the Google Play Terms of Service, depending on where you downloaded the App.</p> <p>This license does not include the right to sublicense, sell, resell, transfer, assign, or otherwise commercially exploit the App or its content.</p> </div> <hr> <div class="section"> <div class="num">Section 03</div> <h2>License Restrictions</h2> <p>You agree that you will not, directly or indirectly:</p> <ul> <li>Copy, modify, translate, adapt, or create derivative works based on the App;</li> <li>Reverse engineer, disassemble, decompile, or attempt to derive the source code of the App, except as permitted by applicable law;</li> <li>Remove, alter, or obscure any proprietary notices (including copyright notices) on the App;</li> <li>Use the App for any unlawful purpose or in violation of any applicable laws or regulations;</li> <li>Use the App to transmit viruses, malware, or other harmful code;</li> <li>Attempt to gain unauthorized access to any portion of the App, its servers, or any related systems;</li> <li>Scrape, data-mine, or otherwise systematically extract data from the App;</li> <li>Use the App in any manner that could damage, disable, overburden, or impair our infrastructure.</li> </ul> </div> <hr> <div class="section"> <div class="num">Section 04</div> <h2>User Accounts</h2> <p>To access most features of the App, you must create an account. You agree to provide accurate, current, and complete information and to keep your account information up to date.</p> <p>You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately at <a href="mailto:support@pbfishing.app">support@pbfishing.app</a> if you suspect unauthorized use of your account.</p> <p>We may restrict, suspend, or terminate your account or Community access if we reasonably believe you have violated this Agreement, threatened users or the Service, committed fraud, or repeatedly submitted prohibited content. Where practical and legally appropriate, we may provide notice or an opportunity to appeal through support.</p> </div> <hr> <div class="section"> <div class="num">Section 05</div> <h2>User Content</h2> <h3>5.1 Ownership</h3> <p>You retain ownership of the content you create and submit through the App, including catch logs, photos, and any other material ("User Content"). We do not claim ownership of your User Content.</p> <h3>5.2 License to Us</h3> <p>By submitting User Content through the App, you grant UZSPOWER LLC a worldwide, non-exclusive, royalty-free license, with the right to sublicense only to service providers operating the Service, to host, store, reproduce, format, resize, moderate, display, and distribute your User Content as needed to provide, secure, and improve the Service. Community content may be displayed to other users. This license ends when the content is deleted, except for limited backup, legal, safety, or enforcement copies.</p> <h3>5.3 Content Standards</h3> <p>You agree that your User Content will not:</p> <ul> <li>Be false, misleading, or fraudulent (including falsified catch weights or dimensions);</li> <li>Infringe any third-party intellectual property rights;</li> <li>Contain any unlawful, harassing, abusive, defamatory, obscene, or otherwise objectionable material;</li> <li>Contain spam, unauthorized advertising, malicious links, impersonation, private information shared without permission, or content that exploits or endangers a person;</li> <li>Violate any applicable fishing regulations or conservation laws;</li> <li>Depict illegal fishing activity.</li> </ul> <h3>5.4 Leaderboard Integrity</h3> <p>Leaderboards reflect user-submitted catch data and may include photo-backed entries, but we do not independently certify every catch. You agree to submit only honest, unaltered catch data. Leaderboard standings are provided for recreational and competitive purposes and are not official certifications. We reserve the right to remove entries or suspend accounts suspected of fraudulent data.</p> <h3>5.5 Community Moderation</h3> <p>We may use automated and manual tools to screen, review, restrict, remove, or preserve Community content and related records. Users can report posts, comments, and other users, block users, and delete their own posts and comments. Moderation tools reduce risk but cannot guarantee that all objectionable content will be detected. Repeated violations may lead to temporary posting restrictions or permanent loss of Community access.</p> <div class="warn">Submitting falsified catch data (e.g., altered weights, wrong species) or manipulated photos is a violation of this Agreement and may result in permanent account suspension.</div> </div> <hr> <div class="section"> <div class="num">Section 06</div> <h2>Subscriptions &amp; In-App Purchases</h2> <h3>6.1 Premium Subscription</h3> <p>PB FISHING offers a free tier with optional monthly and annual auto-renewable subscriptions ("PB Fishing Premium") that unlock additional features. The exact title, duration, price, and included benefits are shown in the App before purchase and are confirmed by Apple on iPhone or by Google Play on Android.</p> <p>The annual plan may include a 7-day introductory free trial for eligible Apple ID accounts on iPhone and eligible Google Play accounts on Android. The monthly plan does not include that trial. Eligibility is determined by Apple or Google and is not guaranteed. Offer codes and promotional offers, when available, are subject to that store's eligibility and redemption terms.</p> <h3>6.2 Billing &amp; Renewal</h3> <div class="table-wrap"> <table> <thead> <tr><th>Topic</th><th>Detail</th></tr> </thead> <tbody> <tr><td><strong>Billing</strong></td><td>On iPhone, charged to your Apple ID at confirmation of purchase. On Android, charged to your Google Play account at confirmation of purchase.</td></tr> <tr><td><strong>Auto-renewal</strong></td><td>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.</td></tr> <tr><td><strong>Renewal charge</strong></td><td>Your account is charged within 24 hours prior to the end of the current monthly or annual period at the then-current price shown by Apple or Google Play, subject to that store's notice and consent requirements for price changes.</td></tr> <tr><td><strong>Cancel</strong></td><td>On iPhone: Settings → [Your Name] → Subscriptions → PB FISHING. On Android: Google Play → Payments &amp; subscriptions → PB Fishing.</td></tr> <tr><td><strong>Free trial</strong></td><td>For eligible users, the annual plan includes 7 days free and then renews annually at the displayed annual price unless cancelled at least 24 hours before the trial ends. The monthly plan has no free trial.</td></tr> <tr><td><strong>Refunds</strong></td><td>Refund requests are handled by Apple for iPhone purchases and by Google Play for Android purchases. UZSPOWER LLC does not process refunds directly.</td></tr> </tbody> </table> </div> <h3>6.3 Account Deletion &amp; Subscription Cancellation</h3> <p>Deleting the App or your PB FISHING account does <strong>not</strong> cancel a subscription. On iPhone, cancel in Settings → [Your Name] → Subscriptions. On Android, cancel in Google Play → Payments &amp; subscriptions. If you delete your account while a subscription remains active, contact support after creating a new account if you need help restoring access.</p> <h3>6.4 Price Changes</h3> <p>We may change subscription pricing at any time. Price changes will take effect at the start of your next billing cycle. We will notify you in advance as required by Apple or Google, depending on the store you subscribed through.</p> </div> <hr> <div class="section"> <div class="num">Section 07</div> <h2>Intellectual Property</h2> <p>The App, including its code, design, graphics, logos, trade names ("PB FISHING"), and all related intellectual property, are owned by or licensed to UZSPOWER LLC and are protected by United States and international copyright, trademark, and other intellectual property laws.</p> <p>Nothing in this Agreement transfers ownership of any intellectual property to you. The limited license granted in Section 2 is the full extent of your rights in the App.</p> </div> <hr> <div class="section"> <div class="num">Section 08</div> <h2>Third-Party Services &amp; Content</h2> <p>The App may display content from, or link to, third-party websites and services (e.g., public water condition data, partner websites). We do not endorse and are not responsible for any third-party content, products, or services. Your interactions with third parties are governed by their own terms and policies.</p> <p>The App uses publicly available environmental data APIs for water temperature, flow, and conditions information. This data is provided for informational and trip-planning purposes only and should not be relied upon for safety-critical decisions.</p> </div> <hr> <div class="section"> <div class="num">Section 09</div> <h2>Disclaimers &amp; Limitations</h2> <h3>9.1 Disclaimer of Warranties</h3> <p class="caps">THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR UNINTERRUPTED AVAILABILITY. WE DO NOT WARRANT THAT THE APP WILL BE ERROR-FREE, SECURE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.</p> <h3>9.2 Measurement &amp; Data Disclaimer</h3> <p>Catch weights and lengths logged through the App are user-submitted and are <strong>not</strong> officially certified measurements. The App is designed for personal tracking and recreation — measurements are not intended for use in official fishing tournaments, conservation reporting, or regulatory compliance without independent verification.</p> <h3>9.3 AI, Forecast &amp; Hotspot Disclaimer</h3> <p>AI fish identification, estimated measurements, Bite Scores, species odds, weather and marine forecasts, suggested windows, nearby results, and predictive hotspots are automated estimates based on photos, third-party environmental data, community activity, and statistical rules. They may be incomplete, delayed, or wrong and do not guarantee species identity, fish presence, catch success, navigability, access rights, or safe conditions. Verify important information independently and never rely on the App for emergency, navigation, weather-warning, or life-safety decisions.</p> <h3>9.4 Fishing Regulations</h3> <p>It is your sole responsibility to comply with all applicable federal, state, and local fishing laws and regulations, including but not limited to licensing requirements, size and bag limits, and protected species restrictions. Species regulation information displayed in the App is provided for general reference only and may not reflect current legal requirements. Always verify regulations with your state or local wildlife agency before fishing.</p> <h3>9.5 Limitation of Liability</h3> <p class="caps">TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, UZSPOWER LLC AND ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, AND LICENSORS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING LOSS OF PROFITS, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THE APP, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p> <p class="caps">OUR TOTAL LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATED TO THIS AGREEMENT OR THE APP SHALL NOT EXCEED THE GREATER OF (A) THE AMOUNT YOU PAID FOR A SUBSCRIPTION IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR (B) $10 USD.</p> </div> <hr> <div class="section"> <div class="num">Section 10</div> <h2>Privacy</h2> <p>Your use of the App is also governed by our <a href="https://pbfishing.app/privacy-policy">Privacy Policy</a>, which is incorporated into this Agreement by reference. By using the App, you consent to the collection, use, and disclosure of your information as described in the Privacy Policy.</p> </div> <hr> <div class="section"> <div class="num">Section 11</div> <h2>Store-Specific Terms</h2> <p>The App is distributed on iPhone through the Apple App Store and on Android through Google Play. The terms below apply to the store you used.</p> <h3>Apple App Store</h3> <ul> <li><strong>Scope of license:</strong> The license granted to you is limited to a non-transferable license to use the App on any Apple-branded product that you own or control as permitted by the App Store Terms of Service.</li> <li><strong>Maintenance &amp; support:</strong> UZSPOWER LLC — not Apple — is solely responsible for providing maintenance and support for the App.</li> <li><strong>Warranty:</strong> UZSPOWER LLC — not Apple — is solely responsible for any product warranties, whether express or implied by law. If the App fails to conform to an applicable warranty, you may notify Apple, and Apple may refund the purchase price, if any, paid for the App. To the maximum extent permitted by law, Apple has no other warranty obligation with respect to the App.</li> <li><strong>Product claims:</strong> UZSPOWER LLC — not Apple — is responsible for addressing any claims by you or a third party relating to the App, including but not limited to: (i) product liability claims; (ii) claims that the App fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</li> <li><strong>Intellectual property infringement:</strong> In the event of any third-party claim that the App or your possession and use of the App infringes that third party's intellectual property rights, UZSPOWER LLC — not Apple — will be solely responsible for the investigation, defense, settlement, and discharge of any such infringement claim.</li> <li><strong>Legal compliance:</strong> You represent that you are not located in a country or region subject to a U.S. Government embargo or designated by the U.S. Government as supporting terrorism, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li> <li><strong>Third-party beneficiary:</strong> Apple and its subsidiaries are third-party beneficiaries of this Agreement. Upon your acceptance of this Agreement, Apple will have the right (and will be deemed to have accepted the right) to enforce this Agreement against you as a third-party beneficiary.</li> <li><strong>App Store terms:</strong> You must also comply with all applicable third-party terms of agreement when using the App (e.g., your wireless data provider's agreement).</li> </ul> <h3>Google Play</h3> <ul> <li><strong>Scope of license:</strong> The license granted to you is a non-transferable license to use the App on Android devices you own or control, as permitted by the Google Play Terms of Service.</li> <li><strong>Maintenance &amp; support:</strong> UZSPOWER LLC — not Google — is solely responsible for providing maintenance and support for the App.</li> <li><strong>Billing:</strong> Payment is charged to your Google Play account at confirmation of purchase. Subscriptions renew automatically unless you cancel at least 24 hours before the end of the current period.</li> <li><strong>Cancel:</strong> Manage or cancel in Google Play → Payments &amp; subscriptions. Deleting the app or your PB FISHING account does not cancel the Google Play subscription.</li> <li><strong>Refunds:</strong> Refund requests are handled by Google Play.</li> </ul> </div> <hr> <div class="section"> <div class="num">Section 12</div> <h2>Termination</h2> <p>This Agreement is effective until terminated. Your rights under this Agreement will terminate automatically without notice if you fail to comply with any of its terms.</p> <p>You may terminate this Agreement at any time by deleting the App from your device and, optionally, deleting your account within the App (Profile → Settings → Delete Account). Deleting the App or account does not cancel an Apple or Google Play subscription; see Section 6.3.</p> <p>UZSPOWER LLC reserves the right to terminate or suspend your access to the Service at any time, with or without cause, with or without notice. Upon termination, you must cease all use of the App and delete all copies from your devices.</p> <p>Sections 5, 7, 9, 10, 13, and 14 of this Agreement will survive termination.</p> </div> <hr> <div class="section"> <div class="num">Section 13</div> <h2>Governing Law &amp; Disputes</h2> <p>This Agreement shall be governed by and construed in accordance with the laws of the State of Wyoming, United States, without regard to its conflict of law principles.</p> <p>Any dispute arising out of or related to this Agreement or the App shall be resolved by binding arbitration in accordance with the American Arbitration Association's Consumer Arbitration Rules, except that either party may seek injunctive or other equitable relief in a court of competent jurisdiction to prevent the actual or threatened infringement of intellectual property rights.</p> <p>Nothing in this section prevents either party from bringing an individual claim in small claims court where eligible, or limits rights or remedies that cannot lawfully be waived under the laws of your place of residence. If applicable law does not permit mandatory arbitration or a class-action waiver for your claim, that requirement will not apply to the extent prohibited.</p> <p><strong>Class action waiver:</strong> You agree that any arbitration or proceeding shall be limited to the dispute between us individually. To the full extent permitted by law, (a) no arbitration or proceeding shall be joined with any other; (b) there is no right or authority for any dispute to be arbitrated or resolved on a class-action basis or to utilize class action procedures; and (c) there is no right or authority for any dispute to be brought in a purported representative capacity.</p> </div> <hr> <div class="section"> <div class="num">Section 14</div> <h2>General Provisions</h2> <h3>Entire Agreement</h3> <p>This Agreement, together with the Privacy Policy and any other agreements expressly incorporated herein, constitutes the entire agreement between you and UZSPOWER LLC with respect to the App and supersedes all prior agreements and understandings.</p> <h3>Severability</h3> <p>If any provision of this Agreement is found to be unenforceable, that provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall continue in full force and effect.</p> <h3>Waiver</h3> <p>Our failure to enforce any right or provision of this Agreement will not be considered a waiver of that right or provision.</p> <h3>Assignment</h3> <p>You may not assign or transfer your rights under this Agreement without our prior written consent. We may assign our rights and obligations under this Agreement without restriction.</p> <h3>Updates to This Agreement</h3> <p>We may update this Agreement from time to time. We will notify you of material changes by updating the Effective Date and, where appropriate, by in-app notice or email. Your continued use of the App after any update constitutes your acceptance of the revised Agreement.</p> </div> <hr> <div class="section"> <div class="num">Section 15</div> <h2>Contact Us</h2> <p>If you have questions about this Agreement, please contact us:</p> <div class="contact"> <h3>UZSPOWER LLC</h3> <p>PB FISHING — Legal Inquiries</p> <a href="mailto:support@pbfishing.app">support@pbfishing.app</a> <p style="margin-top: 0.75rem;">1021 E LINCOLNWAY STE 7922<br>CHEYENNE, WY 82001</p> </div> </div> </div> </div>

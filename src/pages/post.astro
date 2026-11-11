@@ -1,0 +1,13 @@
+---
+// Shared-catch landing: /post?id=<post id>. Opened from share links in the app.
+// Behaviour is unchanged from the Tilda page: reads ?id, tries the pbfishing:// deep link on phones,
+// and fills the card from the post-preview Supabase function.
+import Base from "@/layouts/Base.astro";
+import { appLink } from "@/lib/site";
+import raw from "@/legacy/post.html?raw";
+const html = raw.replace('href="https://apps.apple.com/us/app/pb-fishing-catch-compete/id6773752665"', `href="${appLink("share", "post", "inline").replace(/&/g, "&amp;")}"`);
+---
+<Base title="PB Fishing - Post" description="A catch shared from PB Fishing. Open it in the app to like, comment or save, or get PB Fishing free on iPhone." path="/post" noindex chrome={false} smartBanner={false} campaign="share" content="post">
+  <style is:global>body { background: #f5f0e8; margin: 0; }</style>
+  <Fragment set:html={html} />
+</Base>

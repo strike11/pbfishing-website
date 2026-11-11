@@ -1,0 +1,137 @@
+---
+import Base from "@/layouts/Base.astro";
+import AppCta from "@/components/AppCta.astro";
+import Icon from "@/components/Icon.astro";
+import { appLink } from "@/lib/site";
+import { plain, inline } from "@/lib/content";
+
+interface Eq { slug: string; name: string; a: number; b: number; minTLmm?: number; source?: string; url?: string }
+const files = import.meta.glob<{ default: { species: Eq[]; note?: string; updated?: string } }>("/src/data/weight-equations.json", { eager: true });
+const data = Object.values(files)[0]?.default;
+const species: Eq[] = (data?.species ?? []).filter((s) => typeof s.a === "number" && typeof s.b === "number");
+const lbs = (eq: Eq, inches: number) => Math.pow(10, eq.a + eq.b * Math.log10(inches * 25.4)) / 453.592;
+const fmt = (w: number) => { const lb = Math.floor(w); const oz = Math.round((w - lb) * 16); return oz === 16 ? `${lb + 1} lb 0 oz` : `${lb} lb ${oz} oz`; };
+const lmb = species.find((s) => s.slug === "largemouth-bass") ?? species[0];
+const rows = lmb ? [12, 14, 16, 18, 20, 22, 24, 26].map((l) => ({ l, w: lbs(lmb, l) })) : [];
+const faq = [
+  { q: "How do you calculate fish weight from length?", a: "Fisheries biologists use a length–weight equation for each species: log10(W) = a + b × log10(L), with length in millimetres and weight in grams. The 'standard weight' version describes a well-fed fish of that length, so most fish weigh a bit less. Pick the species above and enter the total length." },
+  { q: "How do you calculate fish weight by length and girth?", a: "The classic angler formula for bass, walleye and most panfish is weight (lb) = length² × girth ÷ 1,200, with both in inches, measured at the fattest part of the body. For trout and salmon many anglers use length × girth² ÷ 800. Girth formulas follow the individual fish's build, so they beat length-only estimates for unusually fat or skinny fish." },
+  { q: "How accurate is a fish weight calculator?", a: "Expect an estimate, not a scale reading. Two bass of the same length can differ by 30% or more depending on season, spawn and food. Use a certified scale for records and tournaments; use the estimate for your log when you had no scale." },
+  { q: "What does a 20-inch largemouth bass weigh?", a: lmb ? `About ${fmt(lbs(lmb, 20))} at standard weight; a lean fish may be closer to ${fmt(lbs(lmb, 20) * 0.85)} and a heavy pre-spawn female ${fmt(lbs(lmb, 20) * 1.15)} or more. See the [largemouth bass weight chart](/blog/largemouth-bass-weight-chart).` : "About 5 lb for an average-build fish." },
+];
+const ld = [
+  { "@type": "WebApplication", "@id": "https://pbfishing.app/tools/fish-weight-calculator#app", name: "Fish weight calculator", url: "https://pbfishing.app/tools/fish-weight-calculator", applicationCategory: "UtilitiesApplication", operatingSystem: "Any (web browser)", isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, publisher: { "@id": "https://pbfishing.app/#org" }, description: "Estimate a fish's weight from its length (and girth) for bass, crappie, walleye, catfish, trout and more." },
+  { "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: plain(f.a) } })) },
+  { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://pbfishing.app/" }, { "@type": "ListItem", position: 2, name: "Fish weight calculator", item: "https://pbfishing.app/tools/fish-weight-calculator" }] },
+];
+---
+<Base title="Fish Weight Calculator: Length to Weight by Species" description="Free fish weight calculator. Enter length (and girth) to estimate the weight of a largemouth bass, crappie, walleye, catfish, trout and more, using fisheries equations." path="/tools/fish-weight-calculator" ogImage="/og/pages/fish-weight-calculator.jpg" jsonLd={ld} campaign="tool" content="weight-calculator">
+  <style>
+    .calc { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: stretch; margin-top: 1.5rem; }
+    .calc form { padding: 1.5rem; display: grid; gap: 1rem; }
+    .calc label { display: grid; gap: 0.4rem; font-weight: 700; color: var(--navy); font-size: 0.92rem; }
+    .calc label small { font-weight: 500; color: var(--ink-3); }
+    .calc select, .calc input { font: 600 1.05rem var(--font); padding: 0.8rem 0.9rem; border-radius: 12px; border: 1px solid var(--line-2); background: #fff; color: var(--ink); width: 100%; }
+    .calc input:focus, .calc select:focus { outline: 3px solid rgba(212, 160, 23, 0.5); border-color: var(--gold); }
+    .out { background: var(--navy); color: var(--bone); border-radius: var(--r-card); padding: 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .out .big { font-family: var(--mono); font-size: clamp(2.4rem, 6vw, 3.4rem); color: var(--gold-bright); line-height: 1; letter-spacing: -0.04em; }
+    .out .row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0; border-top: 1px solid var(--line-dark); font-size: 0.95rem; color: rgba(245, 240, 232, 0.85); }
+    .out .row b { font-family: var(--mono); color: var(--bone); }
+    .out p { color: rgba(245, 240, 232, 0.7); font-size: 0.85rem; margin: 0; }
+    .unit { display: flex; gap: 0.5rem; }
+    .unit button { flex: 1; padding: 0.55rem; border-radius: 10px; border: 1px solid var(--line-2); background: var(--card); font: 700 0.9rem var(--font); color: var(--ink-2); cursor: pointer; }
+    .unit button[aria-pressed="true"] { background: var(--navy); color: var(--bone); border-color: var(--navy); }
+    @media (max-width: 760px) { .calc { grid-template-columns: 1fr; } }
+  </style>
+  <section class="page-hero wrap">
+    <ol class="crumbs"><li><a href="/">Home</a></li></ol>
+    <span class="kicker">Free tool</span>
+    <h1>Fish weight calculator</h1>
+    <p class="lead">Caught a PB without a scale? Enter the length to get the standard weight for the species, then add girth for a better estimate of your fish.</p>
+    {species.length > 0 ? (
+      <div class="calc" data-calc={JSON.stringify(species.map(({ slug, name, a, b }) => ({ slug, name, a, b })))}>
+        <form class="card" onsubmit="return false" aria-label="Fish weight calculator">
+          <label>Species
+            <select name="species">{species.map((s) => <option value={s.slug} selected={s.slug === "largemouth-bass"}>{s.name}</option>)}</select>
+          </label>
+          <div class="unit" role="group" aria-label="Units"><button type="button" data-unit="in" aria-pressed="true">Inches</button><button type="button" data-unit="cm" aria-pressed="false">Centimetres</button></div>
+          <label>Total length <small>Mouth closed, tail pinched, nose to tip of tail</small>
+            <input name="length" type="number" inputmode="decimal" min="1" max="80" step="0.1" value="20" />
+          </label>
+          <label>Girth (optional) <small>Around the fattest part of the body, with a soft tape</small>
+            <input name="girth" type="number" inputmode="decimal" min="0" max="60" step="0.1" placeholder="e.g. 15" />
+          </label>
+        </form>
+        <div class="out" aria-live="polite">
+          <span class="kicker" style="color:rgba(245,240,232,.6);margin:0">Estimated weight</span>
+          <span class="big" data-w>–</span>
+          <div class="row"><span>Lean fish (Wr 85)</span><b data-lean>–</b></div>
+          <div class="row"><span>Heavy fish (Wr 115)</span><b data-heavy>–</b></div>
+          <div class="row"><span>Girth formula</span><b data-girth>add girth</b></div>
+          <p>Standard weight from the species' length–weight equation. Estimates, not certified weights.</p>
+          <a class="btn btn-gold" href={appLink("tool", "weight-calculator", "calculator")} data-cta="calculator" style="margin-top:.5rem"><Icon name="trophy" size={18} /> Log it as a PB in PB Fishing</a>
+        </div>
+      </div>
+    ) : <p class="callout warn"><strong>Loading data:</strong> species equations are being prepared.</p>}
+  </section>
+  <article class="prose-wrap prose">
+    <h2>How this calculator works</h2>
+    <p>Fisheries biologists describe how heavy a fish of a given length should be with a <strong>standard weight</strong> equation for each species: log<sub>10</sub>(W) = a + b · log<sub>10</sub>(L), with total length in millimetres and weight in grams. The coefficients come from thousands of measured fish across the species' range and describe a fish in good condition (roughly the 75th percentile). That is why a skinny post-spawn bass often weighs less than the number above, and a fat pre-spawn female more.</p>
+    <p>Biologists compare a real fish to the standard with <strong>relative weight (Wr)</strong>: actual weight ÷ standard weight × 100. A Wr of 85 is lean, 100 is right on the standard, 115 is a heavy, well-fed fish. The two rows under the estimate show that range.</p>
+    <p>The <strong>girth formula</strong> (length² × girth ÷ 1,200 for most species, length × girth² ÷ 800 for trout and salmon) uses your fish's own build, so add girth when you can.</p>
+    {rows.length > 0 && (
+      <>
+        <h2>Largemouth bass: length to weight at a glance</h2>
+        <div class="table-scroll"><table><thead><tr><th>Length</th><th>Lean (Wr 85)</th><th>Standard</th><th>Heavy (Wr 115)</th></tr></thead>
+          <tbody>{rows.map((r) => <tr><td>{r.l} in</td><td>{fmt(r.w * 0.85)}</td><td><strong>{fmt(r.w)}</strong></td><td>{fmt(r.w * 1.15)}</td></tr>)}</tbody></table></div>
+        <p>Full chart with smallmouth and spotted bass: <a href="/blog/largemouth-bass-weight-chart">largemouth bass weight chart</a>.</p>
+      </>
+    )}
+    <h2>Measure first, then estimate</h2>
+    <p>The estimate is only as good as the length. Lay the fish flat on a measuring board, mouth closed, and pinch the tail lobes together for total length. Step-by-step: <a href="/blog/how-to-measure-a-fish">how to measure a fish</a>. Want to know if your fish is a good one? <a href="/blog/what-is-a-good-size-bass">What is a good size bass</a>, and your state's records: <a href="/fishing/texas/state-record-fish">Texas</a>, <a href="/fishing/florida/state-record-fish">Florida</a>, <a href="/fishing/minnesota/state-record-fish">Minnesota</a>, <a href="/fishing/michigan/state-record-fish">Michigan</a>, <a href="/fishing/tennessee/state-record-fish">Tennessee</a>.</p>
+    <section class="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Questions anglers ask</h2>
+      {faq.map((f) => <details><summary>{f.q}</summary><p set:html={inline(f.a)} /></details>)}
+    </section>
+    {species.some((s) => s.source) && (
+      <section class="sources">
+        <h2>Equations and sources</h2>
+        <ul>{species.map((s) => <li>{s.name}: a = {s.a}, b = {s.b}{s.source && <> · {s.url ? <a href={s.url} rel="noopener">{s.source}</a> : s.source}</>}</li>)}</ul>
+        {data?.note && <p>{data.note}</p>}
+      </section>
+    )}
+    <AppCta campaign="tool" content="weight-calculator" title="Caught a PB without a scale? Make it official" text="Log the fish in PB Fishing with a side-profile photo, the length and the estimated weight. Your personal best updates itself, and you can see where it ranks in your state." />
+  </article>
+  <script>
+    const root = document.querySelector<HTMLElement>("[data-calc]");
+    if (root) {
+      const eqs: { slug: string; a: number; b: number }[] = JSON.parse(root.dataset.calc!);
+      const f = root.querySelector("form")!;
+      let unit = "in";
+      const out = (k: string) => root.querySelector<HTMLElement>(`[data-${k}]`)!;
+      const fmt = (w: number) => { if (!isFinite(w) || w <= 0) return "–"; const lb = Math.floor(w); let oz = Math.round((w - lb) * 16); return oz === 16 ? `${lb + 1} lb 0 oz` : lb ? `${lb} lb ${oz} oz` : `${oz} oz`; };
+      const trout = /trout|salmon/;
+      function calc() {
+        const eq = eqs.find((e) => e.slug === (f.elements.namedItem("species") as HTMLSelectElement).value)!;
+        const k = unit === "cm" ? 1 / 2.54 : 1;
+        const L = parseFloat((f.elements.namedItem("length") as HTMLInputElement).value) * k;
+        const G = parseFloat((f.elements.namedItem("girth") as HTMLInputElement).value) * k;
+        const w = Math.pow(10, eq.a + eq.b * Math.log10(L * 25.4)) / 453.592;
+        out("w").textContent = fmt(w);
+        out("lean").textContent = fmt(w * 0.85);
+        out("heavy").textContent = fmt(w * 1.15);
+        out("girth").textContent = G > 0 ? fmt(trout.test(eq.slug) ? (L * G * G) / 800 : (L * L * G) / 1200) : "add girth";
+      }
+      f.addEventListener("input", calc);
+      root.querySelectorAll<HTMLButtonElement>("[data-unit]").forEach((b) => b.addEventListener("click", () => {
+        if (b.dataset.unit === unit) return;
+        const conv = b.dataset.unit === "cm" ? 2.54 : 1 / 2.54;
+        for (const n of ["length", "girth"]) { const i = f.elements.namedItem(n) as HTMLInputElement; if (i.value) i.value = (parseFloat(i.value) * conv).toFixed(1); }
+        unit = b.dataset.unit!;
+        root.querySelectorAll("[data-unit]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        calc();
+      }));
+      calc();
+    }
+  </script>
+</Base>

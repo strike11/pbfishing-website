@@ -1,0 +1,22 @@
+---
+// Inline Lucide icon (ISC licence), read at build time: no icon font, no runtime JS.
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+interface Props { name: string; size?: number; class?: string; stroke?: number; label?: string }
+const { name, size = 20, class: cls = "", stroke = 2, label } = Astro.props;
+const g = globalThis as any;
+g.__icons ??= new Map<string, string>();
+let svg: string = g.__icons.get(name);
+if (!svg) {
+  svg = readFileSync(join(process.cwd(), "node_modules/lucide-static/icons", `${name}.svg`), "utf8").replace(/<!--[\s\S]*?-->/g, "").trim();
+  g.__icons.set(name, svg);
+}
+const a11y = label ? `role="img" aria-label="${label}"` : `aria-hidden="true" focusable="false"`;
+const out = svg
+  .replace(/\swidth="\d+"/, ` width="${size}"`)
+  .replace(/\sheight="\d+"/, ` height="${size}"`)
+  .replace(/stroke-width="[\d.]+"/, `stroke-width="${stroke}"`)
+  .replace(/class="[^"]*"/, `class="icon ${cls}"`)
+  .replace("<svg", `<svg ${a11y}`);
+---
+<Fragment set:html={out} />

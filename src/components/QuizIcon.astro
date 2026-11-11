@@ -1,0 +1,7 @@
+---
+import Icon from "./Icon.astro";
+import type { Tint } from "@/data/quiz-types";
+interface Props { name: string; tint?: Tint; size?: "lg" | "md"; selected?: boolean }
+const { name, tint = "steel", size = "md" } = Astro.props;
+---
+<span class:list={["qi", `qi-${size}`, `t-${tint}`]}><Icon name={name} size={size === "lg" ? 24 : 20} stroke={2.2} /></span>

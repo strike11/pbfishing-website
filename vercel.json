@@ -1,37 +1,32 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/page146371503", "destination": "/", "permanent": true },
+    { "source": "/page147409633", "destination": "/eula", "permanent": true },
+    { "source": "/page147516373", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/page147771293", "destination": "/support", "permanent": true },
+    { "source": "/page155252543", "destination": "/obalus-partner", "permanent": true },
+    { "source": "/page255801903", "destination": "/post", "permanent": true },
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/fishing/:state/", "destination": "/fishing/:state", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/_astro/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/fonts/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/og/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }] },
     {
-      "source": "/page146371503",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/page147409633",
-      "destination": "/eula",
-      "permanent": true
-    },
-    {
-      "source": "/page147516373",
-      "destination": "/privacy-policy",
-      "permanent": true
-    },
-    {
-      "source": "/page147771293",
-      "destination": "/support",
-      "permanent": true
-    },
-    {
-      "source": "/page155252543",
-      "destination": "/obalus-partner",
-      "permanent": true
-    },
-    {
-      "source": "/page255801903",
-      "destination": "/post",
-      "permanent": true
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
     }
   ]
 }

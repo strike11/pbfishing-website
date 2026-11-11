@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="presentation" aria-hidden="true">
+  <defs>
+    <style>
+      /* Each blob drifts slowly on its own path */
+      .bl1 { animation: drift1 20s ease-in-out infinite; }
+      .bl2 { animation: drift2 26s ease-in-out infinite; }
+      .bl3 { animation: drift3 16s ease-in-out infinite; }
+      @keyframes drift1 {
+        0%,100% { transform: translate(0px,0px)    scale(1);    }
+        33%      { transform: translate(14px,-18px) scale(1.04); }
+        66%      { transform: translate(-10px,12px) scale(0.97); }
+      }
+      @keyframes drift2 {
+        0%,100% { transform: translate(0px,0px)   scale(1);    }
+        40%      { transform: translate(-16px,8px) scale(1.05); }
+        70%      { transform: translate(10px,16px) scale(0.96); }
+      }
+      @keyframes drift3 {
+        0%,100% { transform: translate(0px,0px)    scale(1);    }
+        50%      { transform: translate(12px,-12px) scale(1.06); }
+      }
+    </style>
+  </defs>
+
+  <!-- Blob 1 — warm gold, upper right, organic bezier shape -->
+  <path class="bl1" fill="rgba(212,160,23,0.12)"
+    d="M320,18
+       C358,6 400,28 398,72
+       C396,116 368,152 328,156
+       C288,160 252,136 246,100
+       C240,64 248,32 280,18
+       C296,10 308,20 320,18 Z"/>
+
+  <!-- Blob 2 — steel blue, lower left -->
+  <path class="bl2" fill="rgba(74,124,143,0.10)"
+    d="M30,264
+       C8,238 4,196 24,164
+       C44,132 90,118 130,136
+       C170,154 188,196 174,232
+       C160,268 130,290 96,294
+       C62,298 52,290 30,264 Z"/>
+
+  <!-- Blob 3 — forest green, lower right -->
+  <path class="bl3" fill="rgba(45,90,61,0.09)"
+    d="M268,282
+       C294,262 322,264 336,286
+       C350,308 342,340 320,354
+       C298,368 268,360 252,340
+       C236,320 228,308 242,292
+       C250,282 260,292 268,282 Z"/>
+</svg>

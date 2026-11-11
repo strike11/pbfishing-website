@@ -1,0 +1,21 @@
+---
+import StoreBadge from "./StoreBadge.astro";
+import type { Placement } from "@/lib/site";
+interface Props { campaign: string; content: string; placement?: Placement; title?: string; text?: string }
+const {
+  campaign, content, placement = "end",
+  title = "Your next personal best deserves a record",
+  text = "PB Fishing logs every catch with a photo, species, length, weight and the conditions you caught it in. Track your PBs, see where you rank in your state, and plan the next trip around the bite forecast. Catch logging is free.",
+} = Astro.props;
+---
+<aside class="app-cta" aria-label="PB Fishing app">
+  <img class="app-icon" src="/brand/pb-logo-192.png" alt="" width="64" height="64" loading="lazy" />
+  <div>
+    <p class="h3" role="heading" aria-level="2">{title}</p>
+    <p>{text}</p>
+    <div class="cta-row">
+      <StoreBadge campaign={campaign} content={content} placement={placement} />
+      <span class="cta-note">Free on iPhone · iOS 17.6+ · Premium $29.99/yr with a 7-day trial</span>
+    </div>
+  </div>
+</aside>

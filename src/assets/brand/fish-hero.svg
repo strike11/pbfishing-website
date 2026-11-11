@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160" role="img" aria-label="Animated fish">
+  <defs>
+    <linearGradient id="gf" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#EEC639"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <linearGradient id="gf2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4A017"/>
+      <stop offset="100%" stop-color="#9A6E0A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Soft ambient halo -->
+  <ellipse cx="158" cy="82" rx="98" ry="50" fill="url(#gf)" opacity=".07"/>
+
+  <!-- Fish: float up/down -->
+  <g>
+    <animateTransform attributeName="transform" type="translate"
+      values="0,0; 0,-9; 0,0" dur="3.5s" keyTimes="0;0.5;1"
+      calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+      repeatCount="indefinite"/>
+
+    <!-- Tail group: sway around join point (75,80) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        values="-7,75,80; 7,75,80; -7,75,80" dur="2s" keyTimes="0;0.5;1"
+        calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+        repeatCount="indefinite"/>
+      <!-- Upper fork — symmetric about y=80 -->
+      <path fill="url(#gf)"
+        d="M75,80 C60,68 38,52 20,42 C12,37 14,58 30,63 C46,68 62,73 75,80 Z"/>
+      <!-- Lower fork — perfectly mirrored -->
+      <path fill="url(#gf)"
+        d="M75,80 C62,92 46,108 20,118 C12,123 14,102 30,97 C46,92 62,87 75,80 Z"/>
+    </g>
+
+    <!-- Body — symmetric about y=80 -->
+    <path fill="url(#gf)"
+      d="M75,80
+         C78,50 112,40 148,40 C180,40 212,50 235,64 C248,71 257,77 258,80
+         C257,83 248,89 235,96 C212,110 180,120 148,120 C112,120 78,110 75,80 Z"/>
+
+    <!-- Dorsal fin (top) -->
+    <path fill="url(#gf2)"
+      d="M118,41 C124,22 150,14 165,27 C153,31 137,36 128,41 Z"/>
+
+    <!-- Pectoral fin (belly) -->
+    <path fill="url(#gf2)" opacity=".85"
+      d="M152,118 C158,132 170,133 173,123 C164,120 158,119 152,118 Z"/>
+
+    <!-- Gill arc (decorative) -->
+    <path fill="none" stroke="#1B3A4B" stroke-width="2.5" stroke-linecap="round"
+      opacity=".2" d="M205,59 C201,66 199,73 199,80 C199,87 201,94 205,101"/>
+
+    <!-- Eye -->
+    <circle cx="230" cy="75" r="7.5" fill="#1B3A4B"/>
+    <circle cx="233" cy="72" r="3.5" fill="white" opacity=".95"/>
+    <circle cx="234" cy="71"  r="1.5" fill="white"/>
+
+    <!-- Mouth (subtle) -->
+    <path fill="none" stroke="#1B3A4B" stroke-width="2" stroke-linecap="round"
+      opacity=".35" d="M256,80 Q261,76 259,84"/>
+
+    <!-- Body sheen -->
+    <path fill="white" opacity=".08"
+      d="M112,44 C135,38 165,39 188,50 C168,43 145,41 124,44 Z"/>
+  </g>
+</svg>

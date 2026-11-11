@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 138" role="img" aria-label="Map pin">
+  <defs>
+    <linearGradient id="pg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4A017"/>
+      <stop offset="100%" stop-color="#2D5A3D"/>
+    </linearGradient>
+    <radialGradient id="pgr" cx="38%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#EEC639"/>
+      <stop offset="100%" stop-color="#2D5A3D"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Drop shadow under pin tip -->
+  <ellipse cx="50" cy="126" rx="18" ry="5" fill="rgba(27,58,75,0.18)">
+    <animate attributeName="rx" values="18;24;18" dur="2.8s" keyTimes="0;0.5;1"
+      calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.22;0.10;0.22" dur="2.8s" keyTimes="0;0.5;1"
+      repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Ripple 1 -->
+  <circle cx="50" cy="124" r="8" fill="none" stroke="#4A7C8F" stroke-width="2">
+    <animate attributeName="r"       values="8;34"   dur="2.8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.45;0" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Ripple 2 (offset) -->
+  <circle cx="50" cy="124" r="8" fill="none" stroke="#4A7C8F" stroke-width="2">
+    <animate attributeName="r"       values="8;28"   dur="2.8s" begin="1.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.35;0" dur="2.8s" begin="1.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Pin body — bounces up/down -->
+  <g>
+    <animateTransform attributeName="transform" type="translate"
+      values="0,0; 0,-11; 0,0" dur="2.8s" keyTimes="0;0.5;1"
+      calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+      repeatCount="indefinite"/>
+
+    <!-- Teardrop pin shape — symmetric about x=50 -->
+    <!-- M50,10: top, C70,10 86,24 86,44: right side curve, 86,44→50,118: right taper to tip
+         Symmetric: left side mirrors right exactly -->
+    <path fill="url(#pgr)"
+      d="M50,10
+         C70,10 86,24 86,44
+         C86,68 50,118 50,118
+         C50,118 14,68 14,44
+         C14,24 30,10 50,10 Z"/>
+
+    <!-- Inner window circle (white ring + coloured center) — centered at pin bulge -->
+    <circle cx="50" cy="40" r="14" fill="rgba(255,253,248,0.9)"/>
+    <circle cx="50" cy="40" r="9"  fill="#1B3A4B" opacity=".75"/>
+
+    <!-- Specular highlight on pin body -->
+    <path fill="white" opacity=".18"
+      d="M38,16 C28,24 22,34 22,44 C22,38 24,28 32,20 Z"/>
+  </g>
+</svg>

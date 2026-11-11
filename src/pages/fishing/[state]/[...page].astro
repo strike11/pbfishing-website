@@ -1,0 +1,55 @@
+---
+import { render } from "astro:content";
+import Article from "@/layouts/Article.astro";
+import PostCard from "@/components/PostCard.astro";
+import { allStatePages, allPosts, heroFor, statePagesFor, CATEGORY_LABEL, type StatePage } from "@/lib/content";
+import { STATE_PAGES, stateBySlug, statePagePath, STATES } from "@/data/states";
+
+export async function getStaticPaths() {
+  const pages = await allStatePages();
+  return pages.map((entry) => {
+    const sp = STATE_PAGES.find((p) => p.type === entry.data.type)!;
+    return { params: { state: entry.data.state, page: sp.slug || undefined }, props: { entry } };
+  });
+}
+const { entry } = Astro.props as { entry: StatePage };
+const d = entry.data;
+const state = stateBySlug(d.state)!;
+const { Content, headings } = await render(entry);
+const path = statePagePath(d.state, d.type);
+const siblings = await statePagesFor(d.state);
+const here = STATE_PAGES.find((p) => p.type === d.type)!;
+const crumbs = [
+  { name: "Fishing by state", href: "/fishing" },
+  ...(d.type === "hub" ? [] : [{ name: state.name, href: `/fishing/${state.slug}` }]),
+  { name: d.type === "hub" ? state.name : here.nav, href: path },
+];
+const posts = (await allPosts()).filter((p) => p.data.states.includes(d.state) || d.species.some((s) => p.data.species.includes(s))).slice(0, 3);
+const others = STATES.filter((s) => s.live && s.slug !== d.state);
+---
+<Article entry={entry} collection="states" path={path} crumbs={crumbs} kicker={d.type === "hub" ? `${state.name} fishing guide` : `${state.name} · ${here.nav}`} campaign="state" headings={headings} section={`${state.name} fishing`}>
+  <nav class="subnav" aria-label={`${state.name} fishing guide`} slot="above">
+    {siblings.map((s) => <a href={statePagePath(d.state, s.type)} aria-current={s.type === d.type ? "page" : undefined}>{s.nav}</a>)}
+  </nav>
+  <aside class="official" slot="intro" aria-labelledby="off-h">
+    <h2 id="off-h">Official source</h2>
+    <ul>
+      <li><a href={state.agencyUrl} rel="noopener">{state.agency}</a><small>Licenses, current regulations, stocking reports and state records are published here. Rules change each season, so check before every trip.</small></li>
+    </ul>
+  </aside>
+  <Content />
+  <section class="wrap section" slot="after" aria-labelledby="more-h">
+    <h2 id="more-h">More of the {state.name} guide</h2>
+    <div class="grid grid-3">
+      {siblings.filter((s) => s.type !== d.type).slice(0, 6).map((s) => <PostCard href={statePagePath(d.state, s.type)} title={s.entry!.data.title} text={s.entry!.data.description} meta={s.nav} image={heroFor("states", s.entry!.id.replace(/\//g, "-").replace(/-hub$/, ""))} alt={s.entry!.data.heroAlt} />)}
+    </div>
+    {posts.length > 0 && (
+      <>
+        <h2 style="margin-top:3rem">Related guides</h2>
+        <div class="grid grid-3">{posts.map((p) => <PostCard href={`/blog/${p.id}`} title={p.data.title} text={p.data.description} meta={CATEGORY_LABEL[p.data.category]} image={heroFor("blog", p.id)} alt={p.data.heroAlt} />)}</div>
+      </>
+    )}
+    <h2 style="margin-top:3rem">Other state guides</h2>
+    <div class="state-grid">{others.map((s) => <a class="state-link" href={statePagePath(s.slug, d.type)}>{s.name}<small>{here.nav}</small></a>)}</div>
+  </section>
+</Article>

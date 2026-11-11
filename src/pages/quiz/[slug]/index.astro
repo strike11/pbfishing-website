@@ -1,0 +1,154 @@
+---
+import Base from "@/layouts/Base.astro";
+import Icon from "@/components/Icon.astro";
+import QuizIcon from "@/components/QuizIcon.astro";
+import { QUIZZES, type Quiz } from "@/data/quizzes";
+import { abs } from "@/lib/site";
+import { inline, plain } from "@/lib/content";
+import "@/styles/quiz.css";
+
+export function getStaticPaths() {
+  return QUIZZES.map((quiz) => ({ params: { slug: quiz.slug }, props: { quiz } }));
+}
+const { quiz } = Astro.props as { quiz: Quiz };
+const n = quiz.questions.length;
+const url = abs(`/quiz/${quiz.slug}`);
+const data = {
+  slug: quiz.slug, kind: quiz.kind,
+  q: quiz.questions.map((q) => q.options.map((o) => (quiz.kind === "trivia" ? (o.correct ? 1 : 0) : o.scores ?? {}))),
+  r: quiz.results.map((r) => ({ slug: r.slug, min: r.minScore ?? 0 })),
+};
+const ld = [
+  {
+    "@type": "Quiz", "@id": `${url}#quiz`, name: quiz.title, description: quiz.description, url, inLanguage: "en-US",
+    educationalLevel: "beginner", about: { "@type": "Thing", name: "Recreational fishing" }, publisher: { "@id": "https://pbfishing.app/#org" },
+    datePublished: quiz.published,
+    ...(quiz.kind === "trivia" ? {
+      hasPart: quiz.questions.map((q) => ({
+        "@type": "Question", eduQuestionType: "Multiple choice", name: q.q, text: q.q,
+        acceptedAnswer: { "@type": "Answer", text: q.options.find((o) => o.correct)?.label },
+        suggestedAnswer: q.options.filter((o) => !o.correct).map((o) => ({ "@type": "Answer", text: o.label })),
+      })),
+    } : {}),
+  },
+  { "@type": "BreadcrumbList", itemListElement: [["Home", "/"], ["Quizzes", "/quiz"], [quiz.title, `/quiz/${quiz.slug}`]].map(([name, h], i) => ({ "@type": "ListItem", position: i + 1, name, item: abs(h) })) },
+  ...(quiz.faq?.length ? [{ "@type": "FAQPage", mainEntity: quiz.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: plain(f.a) } })) }] : []),
+];
+---
+<Base title={quiz.seoTitle ?? quiz.title} description={quiz.description} path={`/quiz/${quiz.slug}`} ogImage={`/og/quiz/${quiz.slug}.jpg`} jsonLd={ld} campaign="quiz" content={quiz.slug} sticky={false}>
+  <div class="quiz-shell" data-quiz={JSON.stringify(data)}>
+    <section class="q-intro" data-intro>
+      <ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/quiz">Quizzes</a></li></ol>
+      <QuizIcon name={quiz.icon} tint={quiz.tint} size="lg" />
+      <h1>{quiz.title}</h1>
+      <p class="lead">{quiz.intro}</p>
+      <p class="meta"><span>{n} questions</span><span class="dot">·</span><span>{quiz.minutes} min</span><span class="dot">·</span><span>Free, no sign-up</span></p>
+    </section>
+    <div class="q-progress" data-progress hidden>
+      <div class="row"><span data-count>Question 1 of {n}</span><span data-pct>0% done</span></div>
+      <div class="q-bar"><i data-bar></i></div>
+    </div>
+    <form data-form onsubmit="return false">
+      {quiz.questions.map((q, i) => (
+        <section class="q-step" data-step={i} hidden aria-labelledby={`q${i}`}>
+          <div class="q-head">
+            <QuizIcon name={q.icon} tint={q.tint} size="lg" />
+            <h2 id={`q${i}`}>{q.q}</h2>
+            {q.sub && <p>{q.sub}</p>}
+          </div>
+          <fieldset class="q-opts">
+            <legend class="sr-only">{q.q}</legend>
+            {q.options.map((o, j) => (
+              <label class="q-opt" data-opt={j}>
+                <input type="radio" name={`q${i}`} value={j} />
+                <QuizIcon name={o.icon} tint={o.tint} />
+                <span class="txt"><b>{o.label}</b>{o.sub && <small>{o.sub}</small>}</span>
+                <span class="mark" aria-hidden="true"></span>
+              </label>
+            ))}
+          </fieldset>
+          {q.explain && <p class="q-explain" data-explain hidden set:html={inline(q.explain)} />}
+        </section>
+      ))}
+    </form>
+    <div class="q-foot">
+      <div class="inner">
+        <button type="button" class="q-back" data-back hidden aria-label="Previous question"><Icon name="arrow-left" size={22} /></button>
+        <button type="button" class="q-next" data-next>Start the quiz</button>
+      </div>
+    </div>
+  </div>
+  {quiz.faq?.length ? (
+    <section class="q-seo prose" aria-labelledby="qfaq">
+      <h2 id="qfaq">About this quiz</h2>
+      {quiz.faq.map((f) => <><h3>{f.q}</h3><p set:html={inline(f.a)} /></>)}
+      <p>Possible results: {quiz.results.map((r, i) => <>{i > 0 && ", "}<a href={`/quiz/${quiz.slug}/${r.slug}`}>{r.title}</a></>)}.</p>
+    </section>
+  ) : null}
+  <script>
+    const root = document.querySelector<HTMLElement>("[data-quiz]")!;
+    const data = JSON.parse(root.dataset.quiz!);
+    const steps = [...root.querySelectorAll<HTMLElement>("[data-step]")];
+    const intro = root.querySelector<HTMLElement>("[data-intro]")!;
+    const prog = root.querySelector<HTMLElement>("[data-progress]")!;
+    const next = root.querySelector<HTMLButtonElement>("[data-next]")!;
+    const back = root.querySelector<HTMLButtonElement>("[data-back]")!;
+    const n = steps.length;
+    const answers: (number | null)[] = Array(n).fill(null);
+    let i = -1;
+
+    function show() {
+      intro.hidden = i >= 0;
+      prog.hidden = i < 0;
+      steps.forEach((s, k) => (s.hidden = k !== i));
+      back.hidden = i < 1;
+      if (i < 0) { next.textContent = "Start the quiz"; next.disabled = false; return; }
+      root.querySelector("[data-count]")!.textContent = `Question ${i + 1} of ${n}`;
+      const pct = Math.round(((i + (answers[i] !== null ? 1 : 0)) / n) * 100);
+      root.querySelector("[data-pct]")!.textContent = `${pct}% done`;
+      (root.querySelector("[data-bar]") as HTMLElement).style.width = `${pct}%`;
+      next.textContent = i < n - 1 ? "Next" : "See my result";
+      next.disabled = answers[i] === null;
+    }
+
+    function pick(k: number, j: number) {
+      if (data.kind === "trivia" && answers[k] !== null) return;
+      answers[k] = j;
+      if (data.kind === "trivia") {
+        const opts = steps[k].querySelectorAll<HTMLElement>("[data-opt]");
+        opts.forEach((o, m) => {
+          (o.querySelector("input") as HTMLInputElement).disabled = true;
+          if (data.q[k][m]) o.classList.add("is-right");
+          else if (m === j) o.classList.add("is-wrong");
+        });
+        const ex = steps[k].querySelector<HTMLElement>("[data-explain]");
+        if (ex) ex.hidden = false;
+      }
+      show();
+    }
+
+    steps.forEach((s, k) => s.querySelectorAll<HTMLInputElement>("input").forEach((inp) => inp.addEventListener("change", () => pick(k, +inp.value))));
+
+    function finish() {
+      let slug: string, extra = "";
+      if (data.kind === "trivia") {
+        const score = answers.reduce((a: number, j, k) => a + (j !== null && data.q[k][j] ? 1 : 0), 0);
+        const r = [...data.r].sort((a, b) => b.min - a.min).find((r) => score >= r.min) ?? data.r[data.r.length - 1];
+        slug = r.slug; extra = `?s=${score}&n=${n}`;
+      } else {
+        const tally: Record<string, number> = {};
+        answers.forEach((j, k) => { if (j === null) return; for (const [r, p] of Object.entries(data.q[k][j] as Record<string, number>)) tally[r] = (tally[r] ?? 0) + p; });
+        slug = data.r.reduce((best: any, r: any) => ((tally[r.slug] ?? 0) > (tally[best.slug] ?? 0) ? r : best), data.r[0]).slug;
+      }
+      location.href = `/quiz/${data.slug}/${slug}${extra}`;
+    }
+
+    next.addEventListener("click", () => {
+      if (i >= 0 && answers[i] === null) return;
+      if (i < n - 1) { i++; show(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+      else finish();
+    });
+    back.addEventListener("click", () => { if (i > 0) { i--; show(); } });
+    show();
+  </script>
+</Base>

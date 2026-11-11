@@ -1,0 +1,345 @@
+{
+  "updated": "2026-11-11",
+  "note": "Standard-weight (Ws) equations in metric form: log10(W, grams) = a + b × log10(TL, millimeters), where TL is total length. Ws is the 75th-percentile weight at a given length across many populations of the species, so it describes a well-fed, above-average fish, not an average one. Relative weight Wr = 100 × actual weight / Ws: about 100 is a well-conditioned fish, 85 is thin, 115 is heavy (pre-spawn females, fish on rich forage). Equations only apply at or above minTLmm (and at or below maxTLmm where given); weights for very large fish are extrapolations because few trophies are in the data sets. Coefficients were taken from the WSlit table in the FSA R package (Ogle et al.), whose documentation states that most equations can be found in, and its sources match, Neumann, Guy & Willis (2012), 'Length, weight, and associated indices', Fisheries Techniques, 3rd ed., American Fisheries Society. Cross-checks: largemouth b = 3.273 (Henson 1991) also appears in the Wikipedia 'Standard weight in fish' article; walleye -5.453 / 3.180 appears in the FSAWs package documentation; bluegill -5.374 / 3.316 appears in the Texas A&M AgriLife fish population assessment handout.",
+  "units": {
+    "weight": "g",
+    "length": "mm total length",
+    "log": "base 10"
+  },
+  "sourceDocs": [
+    {
+      "title": "WSlit: parameters for all known standard weight equations (FSA package)",
+      "url": "https://fishr-core-team.github.io/FSA/reference/WSlit.html",
+      "publisher": "fishR Core Team"
+    },
+    {
+      "title": "WSlit.csv (raw data)",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv",
+      "publisher": "fishR Core Team"
+    },
+    {
+      "title": "Neumann, R.M., C.S. Guy and D.W. Willis. 2012. Length, weight, and associated indices. Pages 637–676 in Zale, Parrish and Sutton, editors. Fisheries Techniques, 3rd edition. American Fisheries Society.",
+      "url": "https://fishr-core-team.github.io/FSA/reference/WSlit.html",
+      "publisher": "American Fisheries Society (cited via FSA documentation)"
+    }
+  ],
+  "species": [
+    {
+      "slug": "largemouth-bass",
+      "name": "Largemouth bass",
+      "a": -5.528,
+      "b": 3.273,
+      "minTLmm": 150,
+      "source": "Henson (1991) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "smallmouth-bass",
+      "name": "Smallmouth bass",
+      "a": -5.329,
+      "b": 3.2,
+      "minTLmm": 150,
+      "source": "Kolander et al. (1993) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "spotted-bass",
+      "name": "Spotted bass",
+      "a": -5.3467,
+      "b": 3.197,
+      "minTLmm": 150,
+      "maxTLmm": 490,
+      "source": "Sammons et al. (2025)",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv",
+      "note": "Revised 2025 equation (empirical-percentile method), valid 150–490 mm TL. It replaces Wiens et al. (1996): a = -5.392, b = 3.215, min 100 mm. Source listed in the FSA WSlit dataset."
+    },
+    {
+      "slug": "striped-bass",
+      "name": "Striped bass",
+      "a": -4.924,
+      "b": 3.007,
+      "minTLmm": 150,
+      "source": "Brown & Murphy (1991) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv",
+      "note": "Developed from inland (reservoir) striped bass populations."
+    },
+    {
+      "slug": "white-bass",
+      "name": "White bass",
+      "a": -5.066,
+      "b": 3.081,
+      "minTLmm": 115,
+      "source": "Brown & Murphy (1991) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "black-crappie",
+      "name": "Black crappie",
+      "a": -5.618,
+      "b": 3.345,
+      "minTLmm": 100,
+      "source": "Neumann & Murphy (1991) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "white-crappie",
+      "name": "White crappie",
+      "a": -5.642,
+      "b": 3.332,
+      "minTLmm": 100,
+      "source": "Neumann & Murphy (1991) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "bluegill",
+      "name": "Bluegill",
+      "a": -5.374,
+      "b": 3.316,
+      "minTLmm": 80,
+      "source": "Hillman (1982) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "redear-sunfish",
+      "name": "Redear sunfish",
+      "a": -4.968,
+      "b": 3.119,
+      "minTLmm": 70,
+      "source": "Pope et al. (1995) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "channel-catfish",
+      "name": "Channel catfish",
+      "a": -5.8,
+      "b": 3.294,
+      "minTLmm": 70,
+      "source": "Brown et al. (1995) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "blue-catfish",
+      "name": "Blue catfish",
+      "a": -6.067,
+      "b": 3.4,
+      "minTLmm": 160,
+      "source": "Muoneke & Pope (1999) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "flathead-catfish",
+      "name": "Flathead catfish",
+      "a": -5.542,
+      "b": 3.23,
+      "minTLmm": 130,
+      "source": "Bister et al. (2000) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "walleye",
+      "name": "Walleye",
+      "a": -5.453,
+      "b": 3.18,
+      "minTLmm": 150,
+      "source": "Murphy, Brown & Springer (1990) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "sauger",
+      "name": "Sauger",
+      "a": -5.492,
+      "b": 3.187,
+      "minTLmm": 70,
+      "source": "Anderson & Neumann (1996) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "yellow-perch",
+      "name": "Yellow perch",
+      "a": -5.386,
+      "b": 3.23,
+      "minTLmm": 100,
+      "source": "Willis et al. (1991) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "northern-pike",
+      "name": "Northern pike",
+      "a": -5.437,
+      "b": 3.096,
+      "minTLmm": 100,
+      "source": "Anderson & Neumann (1996) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "muskellunge",
+      "name": "Muskellunge",
+      "a": -6.066,
+      "b": 3.325,
+      "minTLmm": 380,
+      "source": "Neumann & Willis (1994) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv",
+      "note": "Sexes combined. Separate equations exist: female a = -6.105, b = 3.340; male a = -5.823, b = 3.245."
+    },
+    {
+      "slug": "rainbow-trout",
+      "name": "Rainbow trout (lakes and reservoirs)",
+      "a": -4.898,
+      "b": 2.99,
+      "minTLmm": 120,
+      "habitat": "lentic",
+      "source": "Simpkins & Hubert (1996) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "rainbow-trout-stream",
+      "name": "Rainbow trout (rivers and streams)",
+      "a": -5.023,
+      "b": 3.024,
+      "minTLmm": 120,
+      "habitat": "lotic",
+      "source": "Simpkins & Hubert (1996) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "brown-trout",
+      "name": "Brown trout (lakes and reservoirs)",
+      "a": -5.422,
+      "b": 3.194,
+      "minTLmm": 140,
+      "habitat": "lentic",
+      "source": "Hyatt & Hubert (2001) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "brown-trout-stream",
+      "name": "Brown trout (rivers and streams)",
+      "a": -4.867,
+      "b": 2.96,
+      "minTLmm": 140,
+      "habitat": "lotic",
+      "source": "Milewski & Brown (1994) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "brook-trout",
+      "name": "Brook trout",
+      "a": -5.186,
+      "b": 3.103,
+      "minTLmm": 120,
+      "source": "Hyatt & Hubert (2001) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv",
+      "note": "Range-wide equation, used for both lakes and streams. A separate 2021 equation exists for small southern Appalachian streams (Harris et al. 2021) and is not used here."
+    },
+    {
+      "slug": "lake-trout",
+      "name": "Lake trout",
+      "a": -5.681,
+      "b": 3.246,
+      "minTLmm": 280,
+      "source": "Piccolo et al. (1993) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    },
+    {
+      "slug": "common-carp",
+      "name": "Common carp",
+      "a": -4.639,
+      "b": 2.92,
+      "minTLmm": 200,
+      "source": "Bister et al. (2000) via Neumann, Guy & Willis (2012), as tabulated in the FSA package WSlit dataset",
+      "url": "https://github.com/fishR-Core-Team/FSA/blob/main/data-raw/WSlit.csv"
+    }
+  ],
+  "girthFormulas": [
+    {
+      "name": "Bass (largemouth, smallmouth, spotted)",
+      "formula": "L² × G / 1200",
+      "expression": "L*L*G/1200",
+      "inputs": "L = total length (in), G = girth at the widest point (in)",
+      "output": "lb",
+      "appliesTo": [
+        "largemouth-bass",
+        "smallmouth-bass",
+        "spotted-bass"
+      ],
+      "source": "Wisconsin DNR, Estimating fish weight",
+      "url": "https://dnr.wisconsin.gov/topic/Fishing/questions/estfishweight.html"
+    },
+    {
+      "name": "Trout and salmon (also used as an all-purpose formula)",
+      "formula": "L × G² / 800",
+      "expression": "L*G*G/800",
+      "inputs": "L = length (in), G = girth at the widest point (in)",
+      "output": "lb",
+      "appliesTo": [
+        "rainbow-trout",
+        "brown-trout",
+        "brook-trout",
+        "lake-trout",
+        "striped-bass",
+        "channel-catfish",
+        "blue-catfish",
+        "flathead-catfish",
+        "common-carp"
+      ],
+      "source": "Wisconsin DNR (trout); Texas Parks and Wildlife says the same formula 'works for all fish'; SC DNR uses it for saltwater fish measured to the fork",
+      "url": "https://dnr.wisconsin.gov/topic/Fishing/questions/estfishweight.html",
+      "alsoSee": [
+        "https://tpwd.texas.gov/landwater/land/habitats/faq/fisheries/f4.phtml",
+        "https://saltwaterfishing.sc.gov/weight.html"
+      ],
+      "note": "Tends to read high on long, thin fish and low on very deep-bodied fish. SC DNR measures length to the fork of the tail and suggests doubling a top-to-bottom measurement if you can only reach one side."
+    },
+    {
+      "name": "Muskellunge (Crawford method)",
+      "formula": "(L × G / 25) − 10",
+      "expression": "L*G/25-10",
+      "inputs": "L = total length (in), G = girth (in)",
+      "output": "lb",
+      "appliesTo": [
+        "muskellunge"
+      ],
+      "source": "In-Fisherman, 'Calculating Pike Weight' (Crawford method, derived from about 1,200 muskies of 6–60 lb)",
+      "url": "https://www.in-fisherman.com/editorial/calculating-pike-weight/370072",
+      "note": "Built on muskie data; only use for fish in roughly the 6–60 lb range."
+    },
+    {
+      "name": "Pike (length only)",
+      "formula": "L³ / 3500",
+      "expression": "L*L*L/3500",
+      "inputs": "L = total length (in)",
+      "output": "lb",
+      "appliesTo": [
+        "northern-pike"
+      ],
+      "source": "Wisconsin DNR, Estimating fish weight",
+      "url": "https://dnr.wisconsin.gov/topic/Fishing/questions/estfishweight.html"
+    },
+    {
+      "name": "Walleye (length only)",
+      "formula": "L³ / 2700",
+      "expression": "L*L*L/2700",
+      "inputs": "L = total length (in)",
+      "output": "lb",
+      "appliesTo": [
+        "walleye",
+        "sauger"
+      ],
+      "source": "Wisconsin DNR, Estimating fish weight",
+      "url": "https://dnr.wisconsin.gov/topic/Fishing/questions/estfishweight.html"
+    },
+    {
+      "name": "Sunfish (length only)",
+      "formula": "L³ / 1200",
+      "expression": "L*L*L/1200",
+      "inputs": "L = total length (in)",
+      "output": "lb",
+      "appliesTo": [
+        "bluegill",
+        "redear-sunfish"
+      ],
+      "source": "Wisconsin DNR, Estimating fish weight",
+      "url": "https://dnr.wisconsin.gov/topic/Fishing/questions/estfishweight.html"
+    }
+  ]
+}

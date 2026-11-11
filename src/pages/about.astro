@@ -1,0 +1,31 @@
+---
+import Base from "@/layouts/Base.astro";
+import AppCta from "@/components/AppCta.astro";
+const ld = [{ "@type": "AboutPage", "@id": "https://pbfishing.app/about", url: "https://pbfishing.app/about", name: "About PB Fishing and our editorial policy", about: { "@id": "https://pbfishing.app/#org" } }];
+---
+<Base title="About PB Fishing & Our Editorial Policy" description="Who makes PB Fishing, how we research fishing guides, where our facts come from, how we handle state regulations, and how to report an error." path="/about" jsonLd={ld} campaign="about" content="about">
+  <section class="page-hero prose-wrap">
+    <span class="kicker">About</span>
+    <h1>Built by anglers who wanted an honest record</h1>
+    <p class="lead">PB Fishing is an iPhone app made by UZSPOWER LLC, a small independent studio in the United States. These guides are written by the same team.</p>
+  </section>
+  <article class="prose-wrap prose">
+    <h2>What we make</h2>
+    <p>PB Fishing is a catch log first: a side-profile photo, the species, length and weight, the water and the conditions. From that log the app keeps your personal bests by species, ranks photo-backed catches on state and national leaderboards that reset every six months, and helps plan trips across 20,000+ named US waters. Catch logging is free. Premium is $3.99 a month or $29.99 a year.</p>
+    <h2>How we write these guides</h2>
+    <ul>
+      <li><strong>Questions first.</strong> Topics come from what anglers actually ask: App Store reviews, fishing forums and subreddits, and the questions people type into search. We read hundreds of them before we write.</li>
+      <li><strong>Primary sources.</strong> Licence fees, seasons, limits and state records come from the state's fish and wildlife agency. Biology comes from agencies, university extension services and peer-reviewed fisheries research. Sources are listed at the end of each guide.</li>
+      <li><strong>Dated facts.</strong> Regulations change every season. Pages that cite fees or rules say when they were checked and link to the official page. The agency always wins over us.</li>
+      <li><strong>Honest comparisons.</strong> When we compare fishing apps, including our own, we date the prices, say where other apps are better and never use their logos or screenshots.</li>
+      <li><strong>No fake voices.</strong> We don't publish invented reviews, testimonials or statistics.</li>
+    </ul>
+    <h2>Images</h2>
+    <p>Fish illustrations are public-domain works by the U.S. Fish and Wildlife Service (many by Duane Raver), via Wikimedia Commons. Other illustrations are drawn by us. App screenshots are our own.</p>
+    <h2>Corrections</h2>
+    <p>Found an error, an outdated fee or a record that has been broken? Email <a href="mailto:support@pbfishing.app">support@pbfishing.app</a> with the page and the source. We fix confirmed errors quickly and update the date on the page.</p>
+    <h2>Contact</h2>
+    <p>UZSPOWER LLC, United States · <a href="mailto:support@pbfishing.app">support@pbfishing.app</a> · <a href="/support">Support</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/eula">EULA</a></p>
+    <AppCta campaign="about" content="about" />
+  </article>
+</Base>

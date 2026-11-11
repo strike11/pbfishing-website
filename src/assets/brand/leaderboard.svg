@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130" role="img" aria-label="Leaderboard bar chart">
+  <defs>
+    <linearGradient id="bgl" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EEC639"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Card background -->
+  <rect x="8" y="8" width="224" height="114" rx="16" fill="#FFFDF8"
+    stroke="rgba(27,58,75,0.07)" stroke-width="1"/>
+
+  <!-- Label -->
+  <text x="20" y="26" font-family="Montserrat,sans-serif" font-size="9"
+    font-weight="800" letter-spacing="1.2" fill="#1B3A4B">LEADERBOARD</text>
+
+  <!-- Baseline -->
+  <line x1="18" y1="110" x2="222" y2="110"
+    stroke="rgba(27,58,75,0.1)" stroke-width="1.5"/>
+
+  <!--
+    5 bars, baseline y=110, spacing 40px (width=28, gap=12).
+    x positions: 22, 62, 102, 142, 182
+    Heights: 44, 76, 58, 34, 52
+    Bar top y = 110 - height
+    Each bar grows: y from 110 to (110-h), height from 0 to h
+  -->
+
+  <!-- Bar 1 — navy -->
+  <rect x="22" y="110" width="28" height="0" rx="5" fill="#1B3A4B">
+    <animate attributeName="y"      from="110" to="66" dur="0.85s" begin="0.1s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <animate attributeName="height" from="0"   to="44" dur="0.85s" begin="0.1s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+  </rect>
+
+  <!-- Bar 2 — gold (tallest = rank #1) -->
+  <rect x="62" y="110" width="28" height="0" rx="5" fill="url(#bgl)">
+    <animate attributeName="y"      from="110" to="34" dur="0.9s" begin="0.2s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <animate attributeName="height" from="0"   to="76" dur="0.9s" begin="0.2s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+  </rect>
+
+  <!-- Bar 3 — steel blue -->
+  <rect x="102" y="110" width="28" height="0" rx="5" fill="#4A7C8F">
+    <animate attributeName="y"      from="110" to="52" dur="0.85s" begin="0.35s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <animate attributeName="height" from="0"   to="58" dur="0.85s" begin="0.35s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+  </rect>
+
+  <!-- Bar 4 — sage -->
+  <rect x="142" y="110" width="28" height="0" rx="5" fill="#8FAE7E">
+    <animate attributeName="y"      from="110" to="76" dur="0.75s" begin="0.5s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <animate attributeName="height" from="0"   to="34" dur="0.75s" begin="0.5s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+  </rect>
+
+  <!-- Bar 5 — burnt orange -->
+  <rect x="182" y="110" width="28" height="0" rx="5" fill="#C4652A">
+    <animate attributeName="y"      from="110" to="58" dur="0.8s" begin="0.65s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <animate attributeName="height" from="0"   to="52" dur="0.8s" begin="0.65s" fill="freeze"
+      calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+  </rect>
+
+  <!-- Rank labels -->
+  <text x="36" y="122" text-anchor="middle" font-family="Montserrat,sans-serif"
+    font-size="8" font-weight="700" fill="#1B3A4B">3</text>
+  <text x="76" y="122" text-anchor="middle" font-family="Montserrat,sans-serif"
+    font-size="8" font-weight="800" fill="#B8860B">1</text>
+  <text x="116" y="122" text-anchor="middle" font-family="Montserrat,sans-serif"
+    font-size="8" font-weight="700" fill="#4A7C8F">2</text>
+  <text x="156" y="122" text-anchor="middle" font-family="Montserrat,sans-serif"
+    font-size="8" font-weight="700" fill="#8FAE7E">5</text>
+  <text x="196" y="122" text-anchor="middle" font-family="Montserrat,sans-serif"
+    font-size="8" font-weight="700" fill="#C4652A">4</text>
+</svg>

@@ -1,0 +1,28 @@
+{
+  "name": "pbfishing-website",
+  "private": true,
+  "type": "module",
+  "version": "2.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node tools/postbuild-check.mjs",
+    "preview": "astro preview",
+    "art": "node tools/art.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.7",
+    "@fontsource-variable/montserrat": "^5.3.0",
+    "@fontsource/geist-mono": "^5.3.0",
+    "astro": "^7.4.10",
+    "lucide-static": "^1.72.0",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "d3-geo": "^3.1.2",
+    "topojson-client": "^3.1.0",
+    "us-atlas": "^3.0.1"
+  }
+}

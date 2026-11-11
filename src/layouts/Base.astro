@@ -1,0 +1,91 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import StickyCta from "@/components/StickyCta.astro";
+import { APP_ID, SITE, SITE_NAME, ORG_LD, abs } from "@/lib/site";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path for the canonical URL, e.g. "/blog/best-fishing-apps". Defaults to the current path. */
+  path?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: "website" | "article";
+  jsonLd?: Record<string, unknown>[];
+  noindex?: boolean;
+  /** Campaign group + content id used by the App Store links on this page. */
+  campaign?: string;
+  content?: string;
+  /** Hide the sticky mobile install bar (e.g. on the quiz screens). */
+  sticky?: boolean;
+  /** Pass false to drop the shared header/footer (legacy pages that keep their own chrome). */
+  chrome?: boolean;
+  /** Extra <head> content: preloads, page CSS. */
+  published?: string;
+  modified?: string;
+  headerTheme?: "light" | "dark";
+  /** iOS Safari Smart App Banner (apple-itunes-app). */
+  smartBanner?: boolean;
+}
+const {
+  title, description, ogImage = "/og/default.jpg", ogImageAlt = "PB Fishing: photo-backed catch log, personal bests and leaderboards",
+  ogType = "website", jsonLd = [], noindex = false, campaign = "site", content, sticky = true, chrome = true,
+  published, modified, headerTheme = "light", smartBanner = true,
+} = Astro.props;
+const path = Astro.props.path ?? Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "") ?? "/";
+const canonical = abs(path || "/");
+const contentId = content ?? (path.split("/").filter(Boolean).join("-") || "home");
+const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+const og = abs(ogImage);
+const graph = [
+  { ...ORG_LD },
+  { "@type": "WebSite", "@id": `${SITE}/#website`, url: `${SITE}/`, name: SITE_NAME, publisher: { "@id": `${SITE}/#org` }, inLanguage: "en-US" },
+  ...jsonLd,
+];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
+  <meta name="theme-color" content="#1b3a4b" />
+  {smartBanner && <meta name="apple-itunes-app" content={`app-id=${APP_ID}, app-argument=${canonical}`} />}
+  <link rel="preload" href="/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/brand/pb-logo.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+  <link rel="alternate" type="application/rss+xml" title="PB Fishing Journal" href="/blog/rss.xml" />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={og} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={ogImageAlt} />
+  <meta property="og:locale" content="en_US" />
+  {published && <meta property="article:published_time" content={published} />}
+  {modified && <meta property="article:modified_time" content={modified} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={og} />
+  <meta name="twitter:image:alt" content={ogImageAlt} />
+  <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@graph": graph })} />
+  <slot name="head" />
+</head>
+<body>
+  {chrome && <a class="skip" href="#main">Skip to content</a>}
+  {chrome && <Header campaign={campaign} content={contentId} theme={headerTheme} />}
+  {chrome ? <main id="main"><slot /></main> : <slot />}
+  {chrome && <Footer campaign={campaign} content={contentId} />}
+  {chrome && sticky && <StickyCta campaign={campaign} content={contentId} />}
+</body>
+</html>

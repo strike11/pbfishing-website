@@ -1,0 +1,289 @@
+---
+import { Picture } from "astro:assets";
+import Base from "@/layouts/Base.astro";
+import Icon from "@/components/Icon.astro";
+import StoreBadge from "@/components/StoreBadge.astro";
+import PostCard from "@/components/PostCard.astro";
+import QuizIcon from "@/components/QuizIcon.astro";
+import { APP_LD, appLink } from "@/lib/site";
+import { allPosts, heroFor, CATEGORY_LABEL } from "@/lib/content";
+import { STATES } from "@/data/states";
+import { QUIZZES } from "@/data/quizzes";
+import heroWater from "@/assets/brand/hero-water.jpg";
+import shotHero from "@/assets/screens/hero.png";
+import shotCatch from "@/assets/screens/catch-log.png";
+import shotBoard from "@/assets/screens/leaderboard.png";
+import shotMap from "@/assets/screens/map.png";
+import shotCond from "@/assets/screens/conditions.png";
+import dashboard from "@/assets/brand/dashboard.png";
+import obalus from "@/assets/brand/obalus-logo.svg?raw";
+
+const posts = (await allPosts()).slice(0, 6);
+const live = STATES.filter((s) => s.live);
+const c = "home";
+const L = (p: Parameters<typeof appLink>[2]) => appLink(c, "home", p);
+const ld = [
+  APP_LD,
+  { "@type": "WebPage", "@id": "https://pbfishing.app/#webpage", url: "https://pbfishing.app/", name: "PB Fishing: catch log, leaderboards & trip planner", isPartOf: { "@id": "https://pbfishing.app/#website" }, about: { "@id": "https://pbfishing.app/#app" } },
+];
+const obalusLogo = obalus.replace(/fill="black"/g, 'fill="currentColor"').replace("<svg", '<svg aria-hidden="true" class="obalus-logo"');
+---
+<Base title="PB Fishing: Catch Log, Leaderboards & Trip Planner" description="Photo-backed fishing log, personal bests, state and national leaderboards, bite forecasts and trip planning for 20,000+ US waters. Free on iPhone." path="/" jsonLd={ld} campaign={c} content="home">
+  <style>
+    .hero { position: relative; color: var(--bone); background: var(--navy-deep); overflow: hidden; isolation: isolate; }
+    .hero-bg { position: absolute; inset: 0; z-index: -2; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.38; }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(18, 41, 58, 0.97) 20%, rgba(18, 41, 58, 0.72) 55%, rgba(18, 41, 58, 0.45)); }
+    .hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center; padding-block: clamp(3.5rem, 8vw, 6rem) 0; }
+    .hero h1 { color: var(--bone); font-size: clamp(3rem, 8.4vw, 6.2rem); line-height: 0.92; letter-spacing: -0.05em; margin-bottom: 1.5rem; }
+    .hero h1 span { display: block; }
+    .hero h1 span:nth-child(2) { color: var(--gold-bright); }
+    .hero .lead { color: rgba(245, 240, 232, 0.85); max-width: 34ch; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0 1.25rem; }
+    .deal { display: inline-flex; align-items: center; gap: 0.7rem; font-size: 0.92rem; color: rgba(245, 240, 232, 0.8); }
+    .deal b { background: var(--gold); color: var(--navy-deep); padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.05em; }
+    .hero-phone { align-self: end; justify-self: center; width: min(330px, 100%); filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.45)); margin-bottom: -6rem; position: relative; z-index: 3; }
+    .stats { background: var(--card); border-bottom: 1px solid var(--line); position: relative; z-index: 2; }
+    .stats ul { list-style: none; margin: 0 auto; padding: 1.4rem 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .stats li { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.86rem; color: var(--ink-3); }
+    .stats strong { font-family: var(--mono); font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--navy); letter-spacing: -0.03em; }
+    @media (max-width: 860px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .hero-phone { width: 270px; margin-bottom: -3rem; }
+      .stats ul { grid-template-columns: repeat(2, 1fr); }
+    }
+    .pillars { display: grid; gap: clamp(3rem, 7vw, 5.5rem); }
+    .pillar { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+    .pillar:nth-child(even) .pillar-img { order: -1; }
+    .pillar-img, :global(.store-shot) { justify-self: center; width: min(320px, 80%); border-radius: 28px; box-shadow: 0 24px 50px rgba(27, 58, 75, 0.18); border: 1px solid var(--line); }
+    .pillar .num { font-family: var(--mono); color: var(--gold-text); font-size: 0.9rem; }
+    .pillar h3 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin: 0.4rem 0 0.75rem; }
+    .pillar p { color: var(--ink-2); font-size: 1.08rem; max-width: 46ch; }
+    .mini-board { margin-top: 1.25rem; max-width: 360px; background: var(--card); border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow); padding: 0.4rem 1rem; }
+    .mini-board div { display: grid; grid-template-columns: 2.4rem 1fr auto; padding: 0.55rem 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+    .mini-board div:last-child { border: 0; }
+    .mini-board .you { color: var(--gold-text); font-weight: 700; }
+    .mini-board span:first-child, .mini-board span:last-child { font-family: var(--mono); }
+    @media (max-width: 760px) { .pillar { grid-template-columns: 1fr; } .pillar:nth-child(even) .pillar-img { order: 0; } }
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; counter-reset: s; }
+    .steps li { padding: 1.4rem 1.25rem; }
+    .steps .icon { color: var(--gold-dark); width: 28px; height: 28px; margin-bottom: 0.9rem; }
+    .steps h3 { font-size: 1.08rem; }
+    .steps p { color: var(--ink-3); font-size: 0.94rem; margin: 0; }
+    .steps .mono { color: var(--gold-text); font-size: 0.78rem; display: block; margin-bottom: 0.3rem; }
+    @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+    @media (max-width: 800px) { .split { grid-template-columns: 1fr; } }
+    .pull { border-left: 3px solid var(--gold); padding-left: 1.25rem; font-weight: 700; color: var(--navy); font-size: 1.15rem; margin: 1.5rem 0 0; }
+    .feature-list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.5rem; }
+    .feature-list li { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; align-items: start; }
+    .feature-list .icon { color: var(--gold-dark); margin-top: 3px; }
+    .feature-list b { display: block; color: var(--navy); }
+    .feature-list span { color: var(--ink-3); font-size: 0.93rem; }
+    @media (max-width: 520px) { .feature-list { grid-template-columns: 1fr; } }
+    .pricing { display: grid; grid-template-columns: 1.35fr 1fr; gap: 1rem; }
+    .plan { padding: 1.75rem; border-radius: var(--r-card); }
+    .plan-year { background: var(--navy); color: var(--bone); border: 1px solid rgba(212, 160, 23, 0.45); box-shadow: 0 28px 60px rgba(27, 58, 75, 0.22); }
+    .plan-year h3, .plan-year .price { color: var(--bone); }
+    .plan .label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+    .plan-year .label { color: rgba(245, 240, 232, 0.6); }
+    .price { font-family: var(--mono); font-size: clamp(2.5rem, 4vw, 3.3rem); color: var(--navy); line-height: 1; letter-spacing: -0.04em; margin: 0.5rem 0; }
+    .price small { font-family: var(--font); font-size: 0.95rem; letter-spacing: 0; font-weight: 600; opacity: 0.75; }
+    .save { display: inline-flex; gap: 0.4rem; align-items: baseline; background: var(--gold); color: var(--navy-deep); border-radius: 999px; padding: 0.35rem 0.7rem; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .plan ul { list-style: none; padding: 0; margin: 1.25rem 0 1.5rem; display: grid; gap: 0.55rem; font-size: 0.95rem; }
+    .plan li { display: flex; gap: 0.6rem; align-items: flex-start; }
+    .plan li .icon { color: var(--gold); flex: none; margin-top: 3px; }
+    .plan-year li { color: rgba(245, 240, 232, 0.88); }
+    .plan .fine { font-size: 0.82rem; opacity: 0.7; margin: 0.75rem 0 0; }
+    .plan-side { display: grid; gap: 1rem; }
+    .plan-side .plan { background: var(--card); border: 1px solid var(--line); }
+    @media (max-width: 860px) { .pricing { grid-template-columns: 1fr; } }
+    .partner { text-align: center; max-width: 680px; margin: 0 auto; }
+    .partner-logos { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-bottom: 1.75rem; color: var(--navy); }
+    .partner-logos img { width: 72px; height: 72px; }
+    .partner-logos .x { color: var(--gold); font-weight: 800; font-size: 1.6rem; }
+    .partner :global(.obalus-logo) { height: 36px; width: auto; }
+    .perks { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.5rem; margin: 1.5rem 0 2rem; color: var(--ink-2); font-size: 0.92rem; }
+    .perks span { display: inline-flex; gap: 0.4rem; align-items: center; }
+    .perks .icon { color: var(--gold-dark); }
+    .final { text-align: center; border-radius: var(--r-hero); padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem; }
+    .final h2 { font-size: clamp(2rem, 5vw, 3.2rem); }
+    .final p { max-width: 46ch; margin: 0 auto 1.75rem; }
+    .final .row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; align-items: center; }
+    .quiz-strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 0.75rem; }
+    .quiz-strip a { display: flex; gap: 0.9rem; align-items: center; padding: 0.9rem; border-radius: 16px; background: var(--card); border: 1px solid var(--line); text-decoration: none; color: var(--ink); font-weight: 600; font-size: 0.95rem; line-height: 1.3; }
+    .quiz-strip a:hover { border-color: var(--gold); }
+  </style>
+
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero-bg"><Picture src={heroWater} formats={["avif", "webp"]} widths={[640, 1200, 1920]} sizes="100vw" alt="" loading="eager" fetchpriority="high" /></div>
+    <div class="wrap">
+      <div>
+        <h1 id="hero-h"><span>Measure.</span><span>Rank.</span><span>Improve.</span></h1>
+        <p class="lead">Smarter catch logs, national leaderboards, trip planning, and a community of anglers who get the water. All in your pocket.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href={L("hero")} data-cta="hero"><Icon name="download" /> Get the app</a>
+          <a class="btn btn-ghost-dark" href="#how">See how it works <Icon name="arrow-right" /></a>
+        </div>
+        <p class="deal"><b>Save 37%</b> Yearly Premium is $2.50 a month</p>
+      </div>
+      <Picture class="hero-phone" src={dashboard} formats={["avif", "webp"]} widths={[300, 450, 700]} sizes="(max-width: 860px) 270px, 330px" alt="PB Fishing home screen: personal best, catches, rank and nearby waters with a bite forecast" loading="eager" />
+    </div>
+  </section>
+
+  <section class="stats" aria-label="PB Fishing in numbers">
+    <ul class="wrap">
+      <li><strong>12,000+</strong>anglers</li>
+      <li><strong>20,000+</strong>named US waters</li>
+      <li><strong>50</strong>state leaderboards</li>
+      <li><strong>100%</strong>photo-backed records</li>
+    </ul>
+  </section>
+
+  <section class="section" id="features" aria-labelledby="feat-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="feat-h">Three pillars. One app.</h2>
+        <p>Built for anglers who want progress, not guesswork. Every screen sharpens the loop between catch, record, and next cast.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <div>
+            <span class="num">01 · Measure</span>
+            <h3>Your catch log, sharpened</h3>
+            <p>Snap a side-profile photo. Log species, length, and weight. Every entry is photo-backed, so your record is never in question.</p>
+            <a href="/blog/how-to-measure-a-fish">How to measure a fish accurately →</a>
+          </div>
+          <Picture class="pillar-img" src={shotCatch} formats={["avif", "webp"]} widths={[300, 450, 640]} sizes="320px" alt="Catch log screen in PB Fishing with photo, species, length and weight" />
+        </article>
+        <article class="pillar">
+          <div>
+            <span class="num">02 · Compete</span>
+            <h3>Know where you stand</h3>
+            <p>Track your personal bests, climb the leaderboard, and compare catches with anglers across the country: by species, by state, by season.</p>
+            <div class="mini-board" aria-label="Example leaderboard">
+              <div><span>#1</span><span>M. Carter</span><span>24.6″</span></div>
+              <div><span>#2</span><span>J. Park</span><span>23.1″</span></div>
+              <div class="you"><span>#12</span><span>You</span><span>21.4″</span></div>
+            </div>
+          </div>
+          <Picture class="pillar-img" src={shotBoard} formats={["avif", "webp"]} widths={[300, 450, 640]} sizes="320px" alt="Largemouth bass national leaderboard in PB Fishing" />
+        </article>
+        <article class="pillar">
+          <div>
+            <span class="num">03 · Explore</span>
+            <h3>Plan better days out</h3>
+            <p>Twenty thousand named waters. Live conditions. Tackle ideas. State-by-state license links. Everything in your pocket before you launch.</p>
+            <a href="/fishing">Browse fishing guides by state →</a>
+          </div>
+          <Picture class="pillar-img" src={shotMap} formats={["avif", "webp"]} widths={[300, 450, 640]} sizes="320px" alt="Map of nearby waters with species and activity in PB Fishing" />
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-bg" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="how-h">From photo to personal best</h2><p>A four-step loop that keeps your stats honest and your trips sharper.</p></div>
+      <ol class="steps">
+        <li class="card"><Icon name="camera" size={28} /><span class="mono">01</span><h3>Snap a side-profile photo</h3><p>Fast capture flow tuned for the boat, bank, or dock. One tap, ready in seconds.</p></li>
+        <li class="card"><Icon name="ruler" size={28} /><span class="mono">02</span><h3>Log species, length &amp; weight</h3><p>Photo-backed entries with estimates that hold up over time and across trips.</p></li>
+        <li class="card"><Icon name="trophy" size={28} /><span class="mono">03</span><h3>Climb leaderboards &amp; PBs</h3><p>See how your best fish stack up: locally, by state, and nationwide.</p></li>
+        <li class="card"><Icon name="map" size={28} /><span class="mono">04</span><h3>Plan trips with map &amp; tackle tips</h3><p>Thousands of waters, conditions context, tackle recommendations, and license links at a glance.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="dash-h">
+    <div class="wrap split">
+      <div>
+        <h2 id="dash-h">The pocket dashboard</h2>
+        <p class="lead">Personal bests, recent catches, community pulse: packaged in a calm, glanceable layout that mirrors your sessions, not a spreadsheet.</p>
+        <p class="pull">Every catch, photo-backed.<br />Every personal best, honest.</p>
+      </div>
+      <Picture class="store-shot" src={shotHero} formats={["avif", "webp"]} widths={[300, 450, 640]} sizes="(max-width: 800px) 70vw, 340px" alt="PB Fishing: your personal best, proven. Measure, log, rank." style="justify-self:center" />
+    </div>
+  </section>
+
+  <section class="section sand-bg" aria-labelledby="comm-h">
+    <div class="wrap split">
+      <Picture src={shotCond} formats={["avif", "webp"]} widths={[300, 450, 640]} sizes="320px" alt="Conditions and bite forecast screen in PB Fishing" class="store-shot" style="justify-self:center" />
+      <div>
+        <h2 id="comm-h">Nationwide waters, local context</h2>
+        <p class="lead">Search thousands of named lakes and rivers, preview seasonal activity, scan community ratings, and jump to official license resources when regulations change state by state.</p>
+        <ul class="feature-list">
+          <li><Icon name="cloud-sun" /><div><b>Live conditions</b><span>Weather context that matches how you actually fish.</span></div></li>
+          <li><Icon name="package" /><div><b>Tackle guidance</b><span>Species, season, and weather-aware recommendations.</span></div></li>
+          <li><Icon name="file-badge" /><div><b>State licenses</b><span>Regulations and direct links to official agencies.</span></div></li>
+          <li><Icon name="calendar-days" /><div><b>Seasonal activity</b><span>Know what's biting before you drive to the water.</span></div></li>
+        </ul>
+        <h3 style="margin-top:2.25rem">Fish together, share the bite</h3>
+        <p>24-hour stories, curated posts, and familiar social touches, so your best days on the water don't evaporate after sunset. Stories stay fresh for 24 hours, For You and Following lanes keep the feed relevant, and likes, comments and saves never break the quiet of the bank.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" aria-labelledby="price-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="price-h">Start free. The year is the better buy.</h2><p>Catch logging stays free. Premium is the full water: forecasts, rankings, and trips. Pay once a year and keep $17.89.</p></div>
+      <div class="pricing">
+        <div class="plan plan-year">
+          <span class="save">Save <span class="mono">37%</span></span>
+          <p class="label" style="margin-top:1.25rem">Premium · Year</p>
+          <p class="price">$29.99 <small>/ year</small></p>
+          <p style="margin:0">$2.50 a month, down from $3.99 · billed once · 7-day free trial</p>
+          <ul>
+            {["Everything in Free", "Unlimited AI photo identifications", "Hourly bite forecast + species odds", "Full national leaderboard", "Full catch insights & trends", "Advanced stats (PB progress, patterns)", "Predictive fishing hotspots", "Unlimited trip planning", "10-day weather & catch history"].map((f) => <li><Icon name="check" size={18} />{f}</li>)}
+          </ul>
+          <a class="btn btn-gold" href={L("hero")} data-cta="pricing-year" style="width:100%">Start yearly free trial</a>
+          <p class="fine">Renews at $29.99/year unless you cancel. Same Premium either way.</p>
+        </div>
+        <div class="plan-side">
+          <div class="plan">
+            <p class="label">Premium · Month</p>
+            <p class="price">$3.99 <small>/ month</small></p>
+            <p class="muted" style="margin:0 0 1rem">Same Premium features. $1.49 more each month than the yearly plan.</p>
+            <a class="btn btn-line" href={L("inline")} data-cta="pricing-month" style="width:100%">Choose monthly</a>
+          </div>
+          <div class="plan">
+            <p class="label">Free</p>
+            <p class="price">$0 <small>forever</small></p>
+            <ul>{["Unlimited catch logging", "5 AI photo identifications", "Top 10 leaderboard preview", "Daily bite forecast", "Trip planner, up to 2 trips"].map((f) => <li><Icon name="check" size={18} />{f}</li>)}</ul>
+            <a class="btn btn-navy" href={L("inline")} data-cta="pricing-free" style="width:100%">Get started free</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-bg" aria-labelledby="blog-h">
+    <div class="wrap">
+      <div class="row-between section-head" style="max-width:none"><div><h2 id="blog-h">From the blog</h2><p>Guides built from the questions anglers actually ask.</p></div><a href="/blog">All guides →</a></div>
+      <div class="grid grid-3">{posts.map((p) => <PostCard href={`/blog/${p.id}`} title={p.data.title} text={p.data.description} meta={CATEGORY_LABEL[p.data.category]} image={heroFor("blog", p.id)} alt={p.data.heroAlt} />)}</div>
+      <h2 style="margin-top:3.5rem">Fishing guides by state</h2>
+      <div class="state-grid">{live.map((s) => <a class="state-link" href={`/fishing/${s.slug}`}>{s.name}<small>Lakes · license · records</small></a>)}<a class="state-link soon" href="/fishing">All 50 states →</a></div>
+      <h2 style="margin-top:3.5rem">One-minute quizzes</h2>
+      <div class="quiz-strip">{QUIZZES.map((q) => <a href={`/quiz/${q.slug}`}><QuizIcon name={q.icon} tint={q.tint} />{q.title}</a>)}</div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="partner-h">
+    <div class="wrap partner">
+      <p class="kicker">Official partner</p>
+      <div class="partner-logos"><img src="/brand/pb-logo.svg" alt="PB Fishing" width="72" height="72" loading="lazy" /><span class="x" aria-hidden="true">×</span><a href="https://obalus.com" rel="noopener" aria-label="Obalus" style="color:var(--navy)"><Fragment set:html={obalusLogo} /></a></div>
+      <h2 id="partner-h">Gear built for anglers who mean it.</h2>
+      <p class="lead">PB Fishing is proud to partner with Obalus: premium rods, reels, lures, and apparel trusted by over 50,000 anglers. Every product is built to perform where it counts: on the water.</p>
+      <div class="perks"><span><Icon name="check" size={16} />Premium gear: rods, reels &amp; lures</span><span><Icon name="truck" size={16} />Free shipping on all orders</span><span><Icon name="shield-check" size={16} />30-day satisfaction guarantee</span></div>
+      <a class="btn btn-navy" href="https://obalus.com" rel="noopener">Shop Obalus gear <Icon name="arrow-up-right" /></a>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="final dark">
+      <h2>Your next personal best starts here.</h2>
+      <p>Bring Measure. Rank. Improve. to every launch. Free to start. Yearly Premium is $2.50 a month.</p>
+      <div class="row"><StoreBadge campaign={c} content="home" placement="end" /><span style="color:rgba(245,240,232,.7);font-size:.9rem">Free on iPhone · iOS 17.6+</span></div>
+    </div>
+  </section>
+</Base>

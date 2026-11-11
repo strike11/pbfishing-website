@@ -1,0 +1,33 @@
+---
+import { render } from "astro:content";
+import Article from "@/layouts/Article.astro";
+import PostCard from "@/components/PostCard.astro";
+import { allSpecies, allPosts, heroFor, CATEGORY_LABEL, type Species } from "@/lib/content";
+import { stateBySlug, statePagePath } from "@/data/states";
+import credits from "@/data/species-credits.json";
+
+export async function getStaticPaths() {
+  return (await allSpecies()).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props as { entry: Species };
+const d = entry.data;
+const { Content, headings } = await render(entry);
+const artSlug = d.art.startsWith("species:") ? d.art.slice(8) : entry.id;
+const credit = (credits as Record<string, any>)[artSlug];
+const posts = (await allPosts()).filter((p) => p.data.species.includes(entry.id)).slice(0, 3);
+const others = (await allSpecies()).filter((s) => s.id !== entry.id);
+const states = d.states.map(stateBySlug).filter(Boolean);
+const ld = [{ "@type": "Thing", "@id": `https://pbfishing.app/species/${entry.id}#fish`, name: d.name, alternateName: d.scientific }];
+---
+<Article entry={entry} collection="species" path={`/species/${entry.id}`} crumbs={[{ name: "Species", href: "/species" }, { name: d.name, href: `/species/${entry.id}` }]} kicker={`Species guide · ${d.family}`} campaign="species" headings={headings} extraLd={ld} heroCaption={credit ? `${d.name}, <em>${d.scientific}</em>. Illustration: ${credit.author || "U.S. Fish and Wildlife Service"}, public domain, via <a href="${credit.page}" rel="noopener" style="color:inherit">Wikimedia Commons</a>.` : undefined}>
+  <div slot="intro">
+    <div class="table-scroll"><table><caption class="sr-only">{d.name} at a glance</caption><tbody>{d.facts.map((f) => <tr><th scope="row">{f.label}</th><td>{f.value}</td></tr>)}</tbody></table></div>
+  </div>
+  <Content />
+  <section class="wrap section" slot="after">
+    {states.length > 0 && (<><h2>Where to catch {d.name.toLowerCase()}</h2><div class="state-grid">{states.map((s) => <a class="state-link" href={statePagePath(s!.slug, "best-lakes")}>{s!.name}<small>Best lakes</small></a>)}</div></>)}
+    {posts.length > 0 && (<><h2 style="margin-top:3rem">Guides</h2><div class="grid grid-3">{posts.map((p) => <PostCard href={`/blog/${p.id}`} title={p.data.title} text={p.data.description} meta={CATEGORY_LABEL[p.data.category]} image={heroFor("blog", p.id)} alt={p.data.heroAlt} />)}</div></>)}
+    <h2 style="margin-top:3rem">Other species</h2>
+    <div class="hub-links">{others.map((s) => <a class="chip" href={`/species/${s.id}`}>{s.data.name}</a>)}</div>
+  </section>
+</Article>

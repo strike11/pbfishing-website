@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130" role="img" aria-label="Trophy">
+  <defs>
+    <linearGradient id="tg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EEC639"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Entire trophy: float + glow -->
+  <g>
+    <animate attributeName="opacity" values="1;0.92;1" dur="2.6s" repeatCount="indefinite"
+      calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" keyTimes="0;0.5;1"/>
+    <animateTransform attributeName="transform" type="translate"
+      values="0,0; 0,-4; 0,0" dur="2.6s" keyTimes="0;0.5;1"
+      calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+      repeatCount="indefinite"/>
+
+    <!-- Cup body — symmetric about x=60 -->
+    <!-- Left: x=60-R, Right: x=60+R where R varies from 34(top) to 48(middle) to 24(bottom) -->
+    <path fill="url(#tg)"
+      d="M26,22
+         C18,24 12,32 12,48
+         C12,64 22,76 36,82
+         C44,86 52,88 60,88
+         C68,88 76,86 84,82
+         C98,76 108,64 108,48
+         C108,32 102,24 94,22
+         Z"/>
+
+    <!-- Left handle — symmetric to right -->
+    <path fill="none" stroke="url(#tg)" stroke-width="7" stroke-linecap="round"
+      d="M12,38 Q0,54 12,68"/>
+
+    <!-- Right handle — perfect mirror of left about x=60 -->
+    <path fill="none" stroke="url(#tg)" stroke-width="7" stroke-linecap="round"
+      d="M108,38 Q120,54 108,68"/>
+
+    <!-- Cup sheen overlay -->
+    <path fill="white" opacity=".18"
+      d="M30,28 C24,32 20,40 20,50 C20,58 22,64 28,70
+         C24,62 22,54 22,46 C22,36 26,30 30,28 Z"/>
+
+    <!-- 5-point star (centered at 60,54, outer r=14, inner r=6) -->
+    <polygon fill="rgba(27,58,75,0.35)"
+      points="60,40 63.2,50 72.4,50 65.2,56 67.6,65 60,60 52.4,65 54.8,56 47.6,50 56.8,50"/>
+
+    <!-- Stem — symmetric trapezoid -->
+    <path fill="url(#tg)"
+      d="M48,88 L44,106 L76,106 L72,88 Z"/>
+
+    <!-- Base — symmetric rectangle -->
+    <rect x="30" y="106" width="60" height="12" rx="5" fill="url(#tg)"/>
+
+    <!-- Base sheen -->
+    <rect x="30" y="106" width="60" height="5" rx="5" fill="white" opacity=".15"/>
+  </g>
+</svg>

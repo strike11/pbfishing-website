@@ -1,0 +1,13 @@
+---
+// Landing for visitors coming from obalus.com. Keeps its own partner header and footer.
+import Base from "@/layouts/Base.astro";
+import { appLink } from "@/lib/site";
+import raw from "@/legacy/obalus.html?raw";
+import css from "@/legacy/obalus.css?raw";
+let n = 0;
+const html = raw.replaceAll('href="https://apps.apple.com/us/app/pb-fishing-catch-compete/id6773752665"', () => `href="${appLink("partner", "obalus", n++ ? "end" : "hero").replace(/&/g, "&amp;")}"`);
+---
+<Base title="PB Fishing - Obalus partner" description="PB Fishing is the iOS companion for photo-backed catch logs, bite forecasts, trip planning, and leaderboards. Get the app on the App Store." path="/obalus-partner" chrome={false} campaign="partner" content="obalus">
+  <Fragment slot="head" set:html={`<link rel="preconnect" href="https://obalus.com" crossorigin><link rel="preload" as="image" href="https://obalus.com/cdn/shop/files/hero3-pc1.jpg?v=1684002720&width=2400&quality=95&format=webp"><style>${css}</style>`} />
+  <Fragment set:html={html} />
+</Base>

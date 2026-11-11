@@ -1,0 +1,35 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Base from "@/layouts/Base.astro";
+import AppCta from "@/components/AppCta.astro";
+import { allSpecies } from "@/lib/content";
+const species = await allSpecies();
+const imgs = import.meta.glob<{ default: ImageMetadata }>("/src/assets/species/*.jpg", { eager: true });
+const ld = [
+  { "@type": "CollectionPage", "@id": "https://pbfishing.app/species", name: "Fish species guides", url: "https://pbfishing.app/species",
+    mainEntity: { "@type": "ItemList", itemListElement: species.map((s, i) => ({ "@type": "ListItem", position: i + 1, name: s.data.name, url: `https://pbfishing.app/species/${s.id}` })) } },
+  { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://pbfishing.app/" }, { "@type": "ListItem", position: 2, name: "Species", item: "https://pbfishing.app/species" }] },
+];
+---
+<Base title="Fish Species Guides: Bass, Crappie, Catfish, Trout & Walleye" description="How to identify and catch America's most popular game fish: where they live, what they eat, the best baits by season, typical sizes and state records." path="/species" jsonLd={ld} campaign="species" content="index">
+  <section class="page-hero wrap">
+    <ol class="crumbs"><li><a href="/">Home</a></li></ol>
+    <h1>Species guides</h1>
+    <p class="lead">Identify it, find it, catch it, measure it. Each guide covers habitat, seasonal patterns, the baits that work and what counts as a trophy.</p>
+  </section>
+  <section class="wrap">
+    <div class="grid grid-3">
+      {species.map((s) => {
+        const img = imgs[`/src/assets/species/${s.id}.jpg`]?.default;
+        return (
+          <a class="card post-card" href={`/species/${s.id}`}>
+            {img && <div style="background:#fff;padding:1rem"><Picture src={img} formats={["avif", "webp"]} widths={[400, 700]} sizes="360px" alt="" style="aspect-ratio:auto;object-fit:contain;background:#fff;height:150px" /></div>}
+            <div class="pc-body"><span class="pc-meta">{s.data.family}</span><h3>{s.data.name}</h3><p><em>{s.data.scientific}</em></p></div>
+          </a>
+        );
+      })}
+    </div>
+    <AppCta campaign="species" content="index" />
+  </section>
+</Base>
