@@ -1,6 +1,7 @@
 /.tilda-original-*.html
 .env*
 /README.md
+.claude/
 node_modules
 /dist
 /.astro
