@@ -13,8 +13,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/3237-3764-pb-fishing-logo-nobg.png" media="(prefers-color-scheme: dark)"/>
   <link rel="apple-touch-icon" type="image/png" href="/assets/6636-3361-pb-fishing-logo-nobg.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/6636-3361-pb-fishing-logo-nobg.png">
-  <!-- Base rules Tilda applied around this page (kept for 1:1 rendering) -->
+  <!-- Base CSS Tilda loaded before the page styles (tilda-grid reset + #allrecords rules), kept for 1:1 rendering -->
   <style id="tilda-compat">
+    *,*:before,*:after{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+    div,span,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,code,img,b,u,i,center,table,tr,th,td,video{margin:0;padding:0;border:0}
+    sup{line-height:0;font-size:smaller;vertical-align:super}
+    sub{line-height:0;font-size:smaller;vertical-align:sub}
     :where(.t-records) a,:where(.t-records) button,:where(.t-records) .t-radio,:where(.t-records) .t-checkbox,:where(.t-records) .t-img-select{outline:none}
     .t-records{-webkit-font-smoothing:antialiased;background-color:none}
     :where(.t-records) a,:where(.t-records) .tn-nested-link{color:#ff8562;text-decoration:none}
