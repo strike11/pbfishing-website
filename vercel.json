@@ -1,0 +1,37 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/page146371503.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/page147409633.html",
+      "destination": "/eula",
+      "permanent": true
+    },
+    {
+      "source": "/page147516373.html",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/page147771293.html",
+      "destination": "/support",
+      "permanent": true
+    },
+    {
+      "source": "/page155252543.html",
+      "destination": "/obalus-partner",
+      "permanent": true
+    },
+    {
+      "source": "/page255801903.html",
+      "destination": "/post",
+      "permanent": true
+    }
+  ]
+}

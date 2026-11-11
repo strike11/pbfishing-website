@@ -1,0 +1,1242 @@
+<!DOCTYPE html> <html lang="en"> <head>
+  <!-- SEO (as published by Tilda) -->
+  <title>PB Fishing — Catch Log, Leaderboards & Trip Planner</title>
+  <meta name="description" content="Photo-backed catch log for US anglers. Track length, weight, and personal bests, climb national leaderboards, and plan trips across 20,000 lakes and rivers." />
+  <meta name="keywords" content="fishing app, catch log, fishing leaderboard, trip planner, bass fishing, photo catch log, US lakes and rivers" />
+  <meta property="og:url" content="https://pbfishing.app" />
+  <meta property="og:title" content="PB Fishing — Measure. Rank. Improve." />
+  <meta property="og:description" content="" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://pbfishing.app">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/3237-3764-pb-fishing-logo-nobg.png" media="(prefers-color-scheme: dark)"/>
+  <link rel="apple-touch-icon" type="image/png" href="/assets/6636-3361-pb-fishing-logo-nobg.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/6636-3361-pb-fishing-logo-nobg.png">
+  <!-- Page head -->
+  <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" />  <!-- Canonical & theme -->  <meta name="theme-color" content="#1b3a4b" /> <meta name="color-scheme" content="light" /> <!-- Safari Smart App Banner --> <meta name="apple-itunes-app" content="app-id=6773752665, app-argument=https://pbfishing.app/" /> <!-- App Store URL — update here only --> <meta name="pb-app-store" content="https://apps.apple.com/us/app/pb-fishing-catch-compete/id6773752665" /> <!-- Open Graph -->  <meta property="og:site_name" content="PB FISHING" />    <meta property="og:image" content="https://pbfishing.app/assets/og-image.jpg" /> <meta property="og:image:width" content="1200" /> <meta property="og:image:height" content="630" /> <meta property="og:locale" content="en_US" /> <!-- Twitter / X Card --> <meta name="twitter:card" content="summary_large_image" /> <meta name="twitter:title" content="PB FISHING — Measure. Rank. Improve." /> <meta name="twitter:description" content="Photo-verified catch logs, national leaderboards, trip planning — all in your pocket." /> <meta name="twitter:image" content="https://pbfishing.app/assets/og-image.jpg" /> <link rel="preconnect" href="https://fonts.googleapis.com" /> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500;600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap"
+      rel="stylesheet" /> <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous" /> <style>
+      /* ── variables ─────────────────────────────────────────── */
+      :root {
+        --deep-navy: #1b3a4b;
+        --steel-blue: #4a7c8f;
+        --warm-gold: #d4a017;
+        --gold-dark: #b8860b;
+        --gold-bright: #eec639;
+        --bone-white: #f5f0e8;
+        --charcoal-text: #2c2c2c;
+        --forest-green: #2d5a3d;
+        --sage: #8fae7e;
+        --burnt-orange: #c4652a;
+        --sand: #ede6d6;
+        --dark-bark: #3b2f20;
+        --pb-background: var(--bone-white);
+        --soft-background: #f7f5f0;
+        --card-bg: #fffdf8;
+        --hero-surface: var(--deep-navy);
+        --hero-on-surface: var(--bone-white);
+        --card-shadow: rgba(27, 58, 75, 0.06);
+        --card-shadow-strong: rgba(27, 58, 75, 0.1);
+        --ink-1: var(--deep-navy);
+        --ink-2: #355668;
+        --ink-3: #6c8896;
+        --ink-4: #a4b4bc;
+        --hairline: rgba(27, 58, 75, 0.08);
+        --hairline-strong: rgba(27, 58, 75, 0.16);
+        --hairline-dark: rgba(245, 240, 232, 0.1);
+        --radius-btn: 14px;
+        --radius-card: 22px;
+        --radius-pill: 999px;
+        --radius-sm: 12px;
+        --radius-xs: 8px;
+        --section-y: clamp(4.5rem, 10vw, 8rem);
+        --container-max: 1140px;
+        --nav-height: 4.25rem;
+        --font-display: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        --font-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        --font-family: var(--font-sans);
+        --tracking-tight: -0.04em;
+        --tracking-snug: -0.02em;
+        --tracking-wide: 0.06em;
+        --tracking-wider: 0.12em;
+      }
+
+      /* ── base ──────────────────────────────────────────────── */
+      *, *::before, *::after { box-sizing: border-box; }
+
+      @media (prefers-reduced-motion: no-preference) {
+        html { scroll-behavior: smooth; }
+      }
+
+      body {
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--charcoal-text);
+        background: var(--soft-background);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--warm-gold);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        color: var(--ink-1);
+        line-height: 1.08;
+        letter-spacing: var(--tracking-tight);
+        margin: 0;
+      }
+
+      a { color: var(--ink-2); text-decoration: none; }
+      a:hover { color: var(--ink-1); }
+
+      /* ── Tilda #allrecords link reset ──────────────────────
+         Tilda wraps page content in #allrecords and applies
+         its own orange link color. These rules restore our
+         brand colors and let all component-level selectors
+         (buttons, nav, footer) override via normal specificity. */
+      #allrecords a,
+      #allrecords a:link,
+      #allrecords a:visited { color: var(--ink-2) !important; text-decoration: none; }
+      #allrecords a:hover,
+      #allrecords a:focus   { color: var(--ink-1) !important; text-decoration: none; }
+      /* Buttons must not be recolored */
+      #allrecords .btn-pb-primary,
+      #allrecords .btn-pb-primary:hover,
+      #allrecords .btn-pb-primary:visited { color: var(--deep-navy) !important; text-decoration: none; }
+      #allrecords .btn-pb-outline,
+      #allrecords .btn-pb-outline:hover   { color: var(--bone-white) !important; }
+      #allrecords .btn-pricing-free,
+      #allrecords .btn-pricing-free:hover { color: var(--ink-1) !important; }
+      #allrecords a.hero-deal,
+      #allrecords a.hero-deal:link,
+      #allrecords a.hero-deal:visited { color: var(--bone-white) !important; text-decoration: none; }
+      #allrecords a.hero-deal:hover { color: var(--gold-bright) !important; }
+      #allrecords .btn-sm-nav,
+      #allrecords .btn-sm-nav:link,
+      #allrecords .btn-sm-nav:visited {
+        background: var(--bone-white) !important;
+        color: var(--deep-navy) !important;
+        border-color: var(--bone-white) !important;
+        text-decoration: none;
+      }
+      #allrecords .btn-sm-nav:hover {
+        background: transparent !important;
+        color: var(--bone-white) !important;
+        border-color: rgba(245, 240, 232, 0.55) !important;
+        text-decoration: none;
+      }
+      #allrecords .navbar-pb.navbar-scrolled .btn-sm-nav,
+      #allrecords .navbar-pb.navbar-scrolled .btn-sm-nav:link,
+      #allrecords .navbar-pb.navbar-scrolled .btn-sm-nav:visited {
+        background: var(--deep-navy) !important;
+        color: var(--bone-white) !important;
+        border-color: transparent !important;
+      }
+      #allrecords .navbar-pb.navbar-scrolled .btn-sm-nav:hover {
+        background: transparent !important;
+        color: var(--deep-navy) !important;
+        border-color: var(--deep-navy) !important;
+      }
+      /* Nav links */
+      #allrecords .nav-link,
+      #allrecords .nav-link:link,
+      #allrecords .nav-link:visited { color: rgba(245,240,232,0.78) !important; text-decoration: none; }
+      #allrecords .nav-link:hover   { color: var(--bone-white) !important; text-decoration: none; }
+      #allrecords .navbar-pb.navbar-scrolled .nav-link,
+      #allrecords .navbar-pb.navbar-scrolled .nav-link:link,
+      #allrecords .navbar-pb.navbar-scrolled .nav-link:visited { color: var(--ink-2) !important; }
+      #allrecords .navbar-pb.navbar-scrolled .nav-link:hover   { color: var(--ink-1) !important; }
+      /* Ghost link */
+      #allrecords .link-ghost,
+      #allrecords .link-ghost:link,
+      #allrecords .link-ghost:visited { color: var(--bone-white) !important; text-decoration: none; }
+      #allrecords .link-ghost:hover   { color: rgba(245,240,232,0.7) !important; text-decoration: none; }
+      /* Footer links */
+      #allrecords .footer-links a         { color: rgba(245,240,232,0.65) !important; text-decoration: none; }
+      #allrecords .footer-links a:hover   { color: var(--bone-white) !important; }
+      #allrecords a.footer-credit,
+      #allrecords a.footer-credit:link,
+      #allrecords a.footer-credit:visited { color: var(--warm-gold) !important; }
+      #allrecords a.footer-credit:hover   { color: var(--bone-white) !important; }
+      #allrecords a.footer-copyright,
+      #allrecords a.footer-copyright:link,
+      #allrecords a.footer-copyright:visited { color: rgba(245,240,232,0.82) !important; }
+      #allrecords a.footer-copyright:hover   { color: var(--bone-white) !important; }
+      /* Collab / partner links */
+      #allrecords .navbar-collab-obalus,
+      #allrecords .partner-logo-obalus,
+      #allrecords .partner-cta { text-decoration: none; }
+      /* Navbar brand */
+      #allrecords .navbar-pb .navbar-brand,
+      #allrecords .navbar-pb .navbar-brand:link,
+      #allrecords .navbar-pb .navbar-brand:visited { color: var(--bone-white) !important; text-decoration: none; }
+      #allrecords .navbar-pb.navbar-scrolled .navbar-brand,
+      #allrecords .navbar-pb.navbar-scrolled .navbar-brand:link,
+      #allrecords .navbar-pb.navbar-scrolled .navbar-brand:visited { color: var(--ink-1) !important; }
+      p { margin: 0 0 1rem; }
+      p:last-child { margin-bottom: 0; }
+
+      .eyebrow {
+        font-family: var(--font-sans);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+
+      .eyebrow-mono {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+
+      .small-caps-brand {
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-1);
+      }
+
+      .mono {
+        font-family: var(--font-mono);
+        font-feature-settings: "tnum" 1, "ss01" 1;
+        letter-spacing: -0.01em;
+      }
+
+      .italic { font-style: italic; }
+      .text-muted-pb { color: var(--ink-3); }
+      .text-ink-2 { color: var(--ink-2); }
+
+      [data-lucide], .lucide {
+        width: 1em;
+        height: 1em;
+        stroke-width: 1.5;
+        vertical-align: -0.125em;
+        flex-shrink: 0;
+      }
+
+      .hairline {
+        height: 1px;
+        background: var(--hairline);
+        border: 0;
+        margin: 0;
+      }
+
+      .hero-wave-path { fill: var(--soft-background); }
+
+      button, [role="button"], [role="tab"], a, label[for], select, summary { cursor: pointer; }
+
+      /* ── components ────────────────────────────────────────── */
+
+      /* Navbar */
+      .navbar-pb {
+        background: transparent;
+        border-bottom: 1px solid transparent;
+        transition: background 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        padding-block: 0.75rem;
+      }
+
+      .navbar-pb.navbar-scrolled {
+        background: rgba(247, 245, 240, 0.94);
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+        border-bottom-color: var(--hairline);
+        box-shadow: 0 4px 24px rgba(27, 58, 75, 0.06);
+      }
+
+      .navbar-pb .navbar-brand {
+        gap: 0.625rem;
+        font-family: var(--font-sans);
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--bone-white) !important;
+        transition: color 0.3s ease;
+        margin-right: 0;
+        padding-right: 0;
+      }
+
+      .navbar-pb.navbar-scrolled .navbar-brand { color: var(--ink-1) !important; }
+
+      .navbar-pb .nav-link {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: rgba(245, 240, 232, 0.78) !important;
+        padding: 0.5rem 0.9rem !important;
+        border-radius: var(--radius-pill);
+        transition: color 0.2s ease, background 0.2s ease;
+      }
+
+      .navbar-pb .nav-link:hover {
+        color: var(--bone-white) !important;
+        background: rgba(245, 240, 232, 0.1);
+      }
+
+      .navbar-pb.navbar-scrolled .nav-link { color: var(--ink-2) !important; }
+
+      .navbar-pb.navbar-scrolled .nav-link:hover {
+        color: var(--ink-1) !important;
+        background: rgba(27, 58, 75, 0.05);
+      }
+
+      .navbar-pb .navbar-toggler {
+        border: 1px solid rgba(245, 240, 232, 0.3);
+        border-radius: 10px;
+        padding: 0.4rem 0.55rem;
+        transition: border-color 0.3s ease;
+        --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(245,240,232,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .navbar-pb.navbar-scrolled .navbar-toggler {
+        border-color: var(--hairline-strong);
+        --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(27,58,75,0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .navbar-pb .navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.3); }
+
+      .navbar-pb .navbar-collapse { background: transparent; }
+
+      @media (max-width: 991.98px) {
+        .navbar-pb .navbar-collapse.show,
+        .navbar-pb .navbar-collapse.collapsing {
+          background: var(--deep-navy);
+          border-radius: 0 0 var(--radius-card) var(--radius-card);
+          border: 1px solid rgba(245, 240, 232, 0.08);
+          border-top: none;
+          margin-top: 0.5rem;
+          padding: 1rem;
+        }
+        .navbar-pb.navbar-scrolled .navbar-collapse.show,
+        .navbar-pb.navbar-scrolled .navbar-collapse.collapsing {
+          background: rgba(247, 245, 240, 0.98);
+          border-color: var(--hairline);
+        }
+        .navbar-pb.navbar-scrolled .navbar-collapse.show .nav-link,
+        .navbar-pb.navbar-scrolled .navbar-collapse.collapsing .nav-link { color: var(--ink-2) !important; }
+        .navbar-pb.navbar-scrolled .navbar-collapse.show .nav-link:hover,
+        .navbar-pb.navbar-scrolled .navbar-collapse.collapsing .nav-link:hover {
+          color: var(--ink-1) !important;
+          background: rgba(27, 58, 75, 0.05);
+        }
+      }
+
+      /* PB Logo — dual image swap on scroll */
+      .navbar-pb-logo {
+        flex-shrink: 0;
+        display: block;
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+      }
+      .navbar-pb-logo-white  { display: block; }
+      .navbar-pb-logo-colored { display: none; }
+      .navbar-pb.navbar-scrolled .navbar-pb-logo-white  { display: none; }
+      .navbar-pb.navbar-scrolled .navbar-pb-logo-colored { display: block; }
+
+      /* Navbar collab */
+      .navbar-collab-x {
+        font-family: var(--font-sans);
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        color: rgba(245, 240, 232, 0.45);
+        padding-inline: 0.5rem;
+        line-height: 1;
+        transition: color 0.3s ease;
+        user-select: none;
+      }
+
+      .navbar-pb.navbar-scrolled .navbar-collab-x { color: var(--ink-4); }
+
+      .navbar-collab-obalus {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+      }
+
+      .navbar-collab-obalus:hover { opacity: 1; }
+
+      /* Obalus inline SVG in navbar — fill controlled by CSS */
+      .navbar-obalus-logo {
+        height: 16px;
+        width: auto;
+        display: block;
+      }
+      .navbar-obalus-logo path { fill: rgba(245,240,232,0.85); transition: fill 0.3s ease; }
+      .navbar-pb.navbar-scrolled .navbar-obalus-logo path { fill: #000000; }
+
+      /* Buttons */
+      .btn-pb-primary, .btn-pb-outline, .btn-pricing-free {
+        font-family: var(--font-sans);
+        font-weight: 600;
+        font-size: 0.9375rem;
+        letter-spacing: -0.005em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 48px;
+        padding: 0.7rem 1.4rem;
+        border-radius: var(--radius-btn);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+        white-space: nowrap;
+        user-select: none;
+      }
+
+      .btn-pb-primary {
+        background: var(--warm-gold);
+        color: var(--deep-navy) !important;
+        border-color: var(--gold-dark);
+        border-radius: var(--radius-xs);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        box-shadow: none;
+      }
+
+      .btn-pb-primary:hover {
+        background: var(--gold-dark);
+        border-color: var(--gold-dark);
+        color: var(--bone-white) !important;
+      }
+
+      .btn-pb-primary:active { background: #9a7209; border-color: #9a7209; }
+
+      .btn-pb-primary [data-lucide], .btn-pb-primary .lucide { width: 1em; height: 1em; }
+
+      .btn-pb-outline {
+        background: transparent;
+        border: 1px solid rgba(245, 240, 232, 0.3);
+        color: var(--bone-white) !important;
+      }
+
+      .btn-pb-outline:hover {
+        background: rgba(245, 240, 232, 0.08);
+        border-color: rgba(245, 240, 232, 0.55);
+        color: var(--bone-white) !important;
+      }
+
+      .btn-cta { font-size: 1rem; padding: 0.85rem 1.75rem; min-height: 54px; }
+
+      .btn-sm-nav {
+        min-height: 36px !important;
+        padding: 0.35rem 0.95rem !important;
+        font-size: 0.8125rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase;
+        border-radius: 6px !important;
+        background: var(--bone-white) !important;
+        color: var(--deep-navy) !important;
+        border-color: var(--bone-white) !important;
+      }
+
+      .btn-sm-nav:hover {
+        background: transparent !important;
+        color: var(--bone-white) !important;
+        border-color: rgba(245, 240, 232, 0.55) !important;
+      }
+
+      .navbar-pb.navbar-scrolled .btn-sm-nav {
+        background: var(--deep-navy) !important;
+        color: var(--bone-white) !important;
+        border-color: var(--deep-navy) !important;
+      }
+
+      .navbar-pb.navbar-scrolled .btn-sm-nav:hover {
+        background: transparent !important;
+        color: var(--deep-navy) !important;
+        border-color: var(--deep-navy) !important;
+      }
+
+      .link-ghost {
+        font-family: var(--font-sans);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--bone-white);
+        font-weight: 500;
+        font-size: 0.9375rem;
+        text-decoration: none;
+        padding: 0.7rem 0.4rem;
+        position: relative;
+        transition: color 0.2s ease;
+      }
+
+      .link-ghost::after {
+        content: "";
+        position: absolute;
+        left: 0.4rem;
+        right: 1.6rem;
+        bottom: 0.5rem;
+        height: 1px;
+        background: rgba(245, 240, 232, 0.3);
+        transition: background 0.2s ease;
+      }
+
+      .link-ghost:hover { color: var(--gold-bright); }
+      .link-ghost:hover::after { background: rgba(238, 198, 57, 0.5); }
+
+      .link-ghost [data-lucide], .link-ghost .lucide {
+        width: 1.05em;
+        height: 1.05em;
+        transition: transform 0.2s ease;
+      }
+
+      .link-ghost:hover [data-lucide], .link-ghost:hover .lucide { transform: translateX(2px); }
+
+      .navbar-toggler { border: 1px solid var(--hairline-strong); border-radius: 10px; padding: 0.4rem 0.55rem; }
+      .navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.3); }
+
+      .card-pb {
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius-card);
+        background: var(--card-bg);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+        overflow: hidden;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .card-pb:hover {
+        border-color: var(--hairline-strong);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 12px 36px var(--card-shadow);
+      }
+
+      /* ── sections ──────────────────────────────────────────── */
+
+      .section-pb { padding-block: var(--section-y); background: var(--soft-background); }
+      .section-head { max-width: 640px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+      .section-title {
+        font-size: clamp(1.875rem, 4vw, 2.875rem);
+        font-weight: 800;
+        color: var(--ink-1);
+        letter-spacing: var(--tracking-tight);
+        line-height: 1.06;
+        margin-bottom: 0.875rem;
+      }
+
+      .section-subtitle {
+        font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+        color: var(--ink-3);
+        max-width: 52ch;
+        line-height: 1.7;
+        margin-bottom: 0;
+      }
+
+      /* Hero */
+      .hero-pb {
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: var(--nav-height);
+        background:
+          linear-gradient(165deg, rgba(27,58,75,0.94) 0%, rgba(27,58,75,0.70) 48%, rgba(27,58,75,0.90) 100%),
+          url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80') 68% 38% / cover no-repeat;
+        color: var(--bone-white);
+      }
+
+      .hero-pb-inner {
+        position: relative;
+        z-index: 3;
+        padding-top: clamp(2.5rem, 6vw, 5rem);
+        padding-bottom: clamp(6rem, 14vw, 11rem);
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 9.5vw, 6.75rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.025em;
+        line-height: 0.91;
+        color: var(--bone-white);
+        margin-bottom: 1.625rem;
+        max-width: 11ch;
+      }
+
+      .hero-tagline {
+        font-size: clamp(0.9375rem, 1.75vw, 1.125rem);
+        color: rgba(245, 240, 232, 0.78);
+        max-width: 44ch;
+        line-height: 1.68;
+        margin-bottom: 2.5rem;
+      }
+
+      .hero-cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+
+      .hero-cta-row .btn-pb-primary {
+        background: var(--bone-white);
+        color: var(--deep-navy) !important;
+        border-color: var(--bone-white);
+      }
+
+      .hero-cta-row .btn-pb-primary:hover {
+        background: transparent;
+        color: var(--bone-white) !important;
+        border-color: rgba(245, 240, 232, 0.55);
+      }
+
+      .hero-cta-row .btn-pb-primary:active {
+        background: rgba(245, 240, 232, 0.12);
+        border-color: var(--bone-white);
+        color: var(--bone-white) !important;
+      }
+
+      .hero-deal {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.75rem;
+        padding: 0.35rem 0.95rem 0.35rem 0.35rem;
+        border-radius: var(--radius-pill);
+        background: rgba(212, 160, 23, 0.16);
+        color: var(--bone-white);
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.18s ease, color 0.18s ease;
+      }
+
+      .hero-deal:hover { background: rgba(212, 160, 23, 0.28); color: var(--gold-bright); }
+
+      .hero-deal-mark {
+        background: var(--warm-gold);
+        color: var(--deep-navy);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.4rem 0.65rem;
+        border-radius: var(--radius-pill);
+      }
+
+      .hero-parallax-stack { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+      .parallax-layer { position: absolute; width: 100%; }
+      .waves-layer { bottom: -6%; left: 0; width: 100%; }
+      .waves-back { z-index: 1; opacity: 0.18; }
+      .waves-mid  { z-index: 2; opacity: 0.24; bottom: -2%; }
+      .waves-layer:last-child { z-index: 3; opacity: 0.32; bottom: 0; }
+
+
+      .hero-scroll-hint {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        color: rgba(245, 240, 232, 0.45);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .hero-scroll-hint:hover { color: rgba(245, 240, 232, 0.75); }
+      .hero-scroll-hint [data-lucide] { width: 1rem; height: 1rem; }
+
+      .hero-wave-foot { position: absolute; bottom: 0; left: 0; right: 0; z-index: 5; line-height: 0; }
+      .hero-wave-foot svg { display: block; width: 100%; height: auto; }
+
+      /* Stat strip */
+      .stat-strip { background: var(--soft-background); padding: 1.125rem 0; border-bottom: 1px solid var(--hairline); }
+      .stat-strip-text { color: var(--ink-3); font-size: 0.875rem; text-align: center; margin: 0; line-height: 1.5; }
+      .stat-strip-text .mono { color: var(--ink-1); font-weight: 700; font-size: 0.9375rem; }
+
+      /* Features */
+      .features-section { padding-block: var(--section-y); background: var(--soft-background); }
+      .features-intro { max-width: 580px; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+
+      .feature-chapter { padding-block: clamp(2.5rem, 5.5vw, 4.5rem); border-top: 1px solid var(--hairline); }
+      .feature-chapter:last-child { border-bottom: 1px solid var(--hairline); }
+
+      .feature-num-wrap { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.125rem; }
+      .feature-chapter-num { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--warm-gold); letter-spacing: 0.06em; }
+      .feature-chapter-rule { width: 1.75rem; height: 1px; background: var(--hairline-strong); flex-shrink: 0; }
+      .feature-chapter-tag { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-4); }
+      .feature-chapter-title { font-size: clamp(1.375rem, 2.75vw, 2rem); font-weight: 700; color: var(--ink-1); letter-spacing: var(--tracking-tight); line-height: 1.1; margin-bottom: 0.875rem; }
+      .feature-chapter-body { font-size: clamp(0.9375rem, 1.25vw, 1rem); color: var(--ink-3); max-width: 44ch; line-height: 1.72; margin-bottom: 0; }
+
+      .feature-chapter-img { width: 100%; max-width: 340px; height: auto; margin: 0 auto; display: block; }
+
+      .feature-compete-panel { background: var(--card-bg); border: 1px solid var(--hairline); border-radius: var(--radius-card); padding: 1.75rem; max-width: 380px; margin: 0 auto; }
+      .feature-compete-header { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.5rem; padding-bottom: 1.125rem; border-bottom: 1px solid var(--hairline); }
+      .feature-compete-header img, .feature-compete-header svg { flex-shrink: 0; }
+      .feature-compete-label { font-size: 0.875rem; font-weight: 600; color: var(--ink-1); }
+      .feature-compete-sublabel { font-size: 0.75rem; color: var(--ink-3); margin-top: 0.1rem; }
+
+      .mini-leaderboard { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.625rem; }
+      .ml-row { display: flex; align-items: center; gap: 0.875rem; padding: 0.625rem 0.875rem; border-radius: var(--radius-sm); background: transparent; transition: background 0.15s ease; }
+      .ml-row-1 { background: rgba(212, 160, 23, 0.07); }
+      .ml-row-2 { background: rgba(27, 58, 75, 0.04); }
+      .ml-row-you { background: var(--deep-navy); border-radius: var(--radius-sm); }
+      .ml-rank { font-size: 0.8rem; font-weight: 600; color: var(--ink-3); min-width: 2.25rem; }
+      .ml-row-you .ml-rank { color: rgba(245, 240, 232, 0.6); }
+      .ml-name { flex: 1; font-size: 0.875rem; font-weight: 500; color: var(--ink-1); }
+      .ml-row-you .ml-name { color: var(--bone-white); }
+      .ml-val { font-size: 0.875rem; font-weight: 600; color: var(--ink-1); }
+      .ml-row-1 .ml-val { color: var(--warm-gold); }
+      .ml-row-you .ml-val { color: var(--gold-bright); }
+
+      /* Map pin cluster */
+      .map-pin-cluster { position: relative; width: 240px; height: 260px; margin: 0 auto; }
+      .map-pin-main { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); animation: pin-float-center 3s ease-in-out infinite; }
+      .map-pin-left { position: absolute; bottom: 30px; left: 8px; animation: pin-float 3.6s 0.4s ease-in-out infinite; opacity: 0.7; }
+      .map-pin-right { position: absolute; top: 100px; right: 10px; animation: pin-float 4s 0.8s ease-in-out infinite; opacity: 0.8; }
+      @keyframes pin-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+      @keyframes pin-float-center { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+
+      /* How it works */
+      .how-section { background: var(--pb-background); }
+      .timeline { list-style: none; padding: 0; margin: 0; position: relative; max-width: 680px; }
+      .timeline::before { content: ""; position: absolute; left: 1.25rem; top: 0.5rem; bottom: 0.5rem; width: 1px; background: var(--hairline-strong); }
+      .timeline-step { display: flex; gap: 2rem; padding-bottom: clamp(2rem, 4vw, 3.25rem); position: relative; }
+      .timeline-step:last-child { padding-bottom: 0; }
+      .timeline-marker { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; padding-top: 0.2rem; width: 2.5rem; position: relative; z-index: 1; }
+      .timeline-num { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; color: var(--warm-gold); letter-spacing: 0.06em; margin-bottom: 0.4rem; display: block; }
+      .timeline-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--deep-navy); border: 2px solid var(--soft-background); box-shadow: 0 0 0 2px var(--deep-navy); margin-top: 0.1rem; display: block; }
+      .timeline-content { padding-top: 0.1rem; }
+      .timeline-icon { width: 1.25rem; height: 1.25rem; color: var(--warm-gold); margin-bottom: 0.625rem; display: block; }
+      .timeline-title { font-size: 1.0625rem; font-weight: 700; color: var(--ink-1); letter-spacing: var(--tracking-snug); margin-bottom: 0.375rem; line-height: 1.3; }
+      .timeline-body { font-size: 0.9375rem; color: var(--ink-3); line-height: 1.65; margin: 0; max-width: 44ch; }
+
+      /* Preview */
+      .preview-section { background: var(--soft-background); }
+      .preview-pull { border-left: 3px solid var(--warm-gold); padding-left: 1.25rem; margin: 0; }
+      .preview-pull p { font-size: clamp(1.0625rem, 2vw, 1.25rem); font-weight: 600; color: var(--ink-1); line-height: 1.5; margin: 0; letter-spacing: var(--tracking-snug); }
+
+      /* App screenshot */
+      .app-screenshot {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        border-radius: var(--radius-card);
+      }
+
+      /* Community */
+      .community-section { background: var(--pb-background); }
+      .community-illustration { width: 100%; max-width: 320px; height: auto; }
+      .community-rows { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; }
+      .community-row { display: flex; gap: 1rem; align-items: flex-start; padding: 1.125rem 0; border-bottom: 1px solid var(--hairline); }
+      .community-row:first-child { border-top: 1px solid var(--hairline); }
+      .community-check { color: var(--warm-gold); width: 1rem; height: 1rem; flex-shrink: 0; margin-top: 0.25rem; }
+      .community-row strong { font-size: 0.9375rem; font-weight: 700; color: var(--ink-1); display: block; margin-bottom: 0.2rem; }
+      .community-row p { font-size: 0.875rem; color: var(--ink-3); margin: 0; line-height: 1.6; }
+
+      /* Map */
+      .map-section { background: var(--soft-background); }
+      .map-feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; }
+      .map-feature { display: flex; gap: 0.875rem; align-items: flex-start; }
+      .map-feature-icon { width: 2.25rem; height: 2.25rem; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(27, 58, 75, 0.06); border-radius: var(--radius-sm); color: var(--deep-navy); }
+      .map-feature-icon [data-lucide] { width: 1rem; height: 1rem; }
+      .map-feature strong { font-size: 0.875rem; font-weight: 700; color: var(--ink-1); display: block; margin-bottom: 0.2rem; }
+      .map-feature p { font-size: 0.8125rem; color: var(--ink-3); margin: 0; line-height: 1.55; }
+
+      /* Pricing */
+      .pricing-section { background: var(--sand); }
+      .pricing-section .section-head { max-width: 38rem; }
+      .pricing-board {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.85fr);
+        gap: 1rem;
+        align-items: stretch;
+      }
+      .pricing-card {
+        border-radius: var(--radius-card);
+        padding: clamp(1.35rem, 2.4vw, 1.85rem);
+        display: flex;
+        flex-direction: column;
+      }
+      .pricing-annual {
+        background: var(--deep-navy);
+        color: var(--bone-white);
+        border: 1px solid rgba(212, 160, 23, 0.45);
+        box-shadow: 0 28px 60px rgba(27, 58, 75, 0.22);
+        position: relative;
+        overflow: hidden;
+      }
+      .pricing-save {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+        margin: -0.15rem 0 1.35rem;
+        padding-bottom: 1.15rem;
+        border-bottom: 1px solid rgba(245, 240, 232, 0.12);
+      }
+      .pricing-save-mark {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.35rem;
+        background: var(--warm-gold);
+        color: var(--deep-navy);
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        padding: 0.45rem 0.7rem;
+        border-radius: var(--radius-pill);
+      }
+      .pricing-save-mark strong {
+        font-family: var(--font-mono);
+        font-size: 1.15rem;
+        letter-spacing: -0.03em;
+        font-weight: 600;
+      }
+      .pricing-save-copy {
+        margin: 0;
+        flex: 1 1 12rem;
+        font-size: 0.9375rem;
+        line-height: 1.35;
+        color: rgba(245, 240, 232, 0.78);
+      }
+      .pricing-save-copy b { color: var(--gold-bright); font-weight: 700; }
+      .pricing-plan {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: 0.55rem;
+      }
+      .pricing-annual .pricing-plan { color: rgba(245, 240, 232, 0.58); }
+      .pricing-price {
+        font-family: var(--font-mono);
+        font-size: clamp(2.6rem, 4vw, 3.4rem);
+        font-weight: 600;
+        color: var(--ink-1);
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+      }
+      .pricing-annual .pricing-price { color: var(--gold-bright); }
+      .pricing-equiv-line {
+        margin: 0.55rem 0 0;
+        font-size: 1rem;
+        line-height: 1.3;
+        color: rgba(245, 240, 232, 0.72);
+      }
+      .pricing-equiv-line b {
+        font-family: var(--font-mono);
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: var(--bone-white);
+      }
+      .pricing-equiv-line s { color: rgba(245, 240, 232, 0.62); }
+      .pricing-price-note { font-size: 0.8125rem; color: var(--ink-3); margin: 0.4rem 0 0.15rem; }
+      .pricing-annual .pricing-price-note { color: rgba(245, 240, 232, 0.55); }
+      .pricing-ledger {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr auto 1fr;
+        align-items: center;
+        gap: 0.65rem;
+        margin: 1.15rem 0 0.25rem;
+        padding: 0.8rem 0.9rem;
+        border-radius: 14px;
+        background: rgba(245, 240, 232, 0.06);
+      }
+      .pricing-ledger span { display: block; }
+      .pricing-ledger-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(245, 240, 232, 0.45);
+      }
+      .pricing-ledger-value {
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--bone-white);
+        margin-top: 0.15rem;
+      }
+      .pricing-ledger-keep .pricing-ledger-value { color: var(--gold-bright); }
+      .pricing-ledger-op { color: rgba(245, 240, 232, 0.35); font-weight: 700; }
+      .pricing-divider { height: 1px; background: var(--hairline); margin: 1.1rem 0; }
+      .pricing-annual .pricing-divider { background: rgba(245, 240, 232, 0.1); }
+      .pricing-features { list-style: none; padding: 0; margin: 0 0 1.35rem; display: flex; flex-direction: column; gap: 0.55rem; flex: 1; }
+      .pricing-features li { display: flex; align-items: center; gap: 0.625rem; font-size: 0.875rem; color: var(--ink-2); line-height: 1.4; }
+      .pricing-annual .pricing-features li { color: rgba(245, 240, 232, 0.86); }
+      .pricing-features-compact { margin-bottom: 1rem; }
+      .feat-ok { color: var(--warm-gold); width: 1em; height: 1em; flex-shrink: 0; }
+      .btn-pricing-free { background: transparent; border: 1px solid var(--hairline-strong); color: var(--ink-1) !important; }
+      .btn-pricing-free:hover { background: rgba(27, 58, 75, 0.05); border-color: rgba(27, 58, 75, 0.25); color: var(--ink-1) !important; }
+      .pricing-trial-note { font-size: 0.78rem; color: rgba(245, 240, 232, 0.48); text-align: center; margin-top: 0.7rem; margin-bottom: 0; }
+      .pricing-side { display: flex; flex-direction: column; gap: 1rem; }
+      .pricing-monthly, .pricing-free { background: var(--card-bg); border: 1px solid var(--hairline); }
+      .pricing-monthly { flex: 0 0 auto; }
+      .pricing-free { flex: 1; }
+      .pricing-side-price {
+        font-family: var(--font-mono);
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--ink-1);
+        line-height: 1;
+        letter-spacing: -0.03em;
+      }
+      .pricing-side-note { font-size: 0.8125rem; color: var(--ink-2); margin: 0.7rem 0 1rem; line-height: 1.5; }
+      .pricing-side-note b { color: var(--ink-1); font-weight: 700; }
+
+      /* CTA */
+      .cta-band { background: var(--deep-navy); padding-block: clamp(4rem, 9vw, 7rem); text-align: center; position: relative; overflow: hidden; }
+      .cta-band::before { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70vw; height: 70vw; max-width: 700px; max-height: 700px; background: radial-gradient(ellipse at center, rgba(212, 160, 23, 0.08) 0%, transparent 65%); pointer-events: none; }
+      .cta-inner { position: relative; z-index: 2; }
+      .cta-trophy { display: block; margin-bottom: 1.5rem; animation: ctaGlow 3s ease-in-out infinite; }
+      .cta-trophy svg { filter: drop-shadow(0 0 10px rgba(212, 160, 23, 0.3)); }
+      .cta-heading { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: var(--bone-white); letter-spacing: var(--tracking-tight); line-height: 1.08; margin-bottom: 1.25rem; }
+      .cta-sub { font-size: clamp(0.9375rem, 1.5vw, 1.0625rem); color: rgba(245, 240, 232, 0.65); max-width: 46ch; margin: 0 auto 2.25rem; line-height: 1.65; }
+      .btn-cta { font-size: 1rem; padding: 0.875rem 1.875rem; min-height: 54px; }
+      .cta-hint { font-size: 0.78rem; color: rgba(245, 240, 232, 0.35); margin-top: 0.875rem; margin-bottom: 0; }
+      .download-card {
+        max-width: 420px;
+        margin-inline: auto;
+        padding: clamp(1.75rem, 4vw, 2.5rem);
+        border-radius: var(--radius-card);
+        border: 1px solid rgba(245, 240, 232, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+      }
+      .download-app-icon {
+        display: block;
+        width: 88px;
+        height: 88px;
+        margin: 0 auto 1.25rem;
+        border-radius: 20px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      }
+      .download-app-name {
+        font-size: 1.125rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--bone-white);
+        margin-bottom: 0.35rem;
+      }
+      .download-app-tagline {
+        font-size: 0.875rem;
+        color: rgba(245, 240, 232, 0.55);
+        margin-bottom: 1.75rem;
+      }
+      .download-actions { display: flex; flex-direction: column; align-items: center; gap: 0.875rem; }
+      .download-meta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1rem;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(245, 240, 232, 0.1);
+        font-size: 0.75rem;
+        color: rgba(245, 240, 232, 0.45);
+      }
+      .download-meta span { white-space: nowrap; }
+
+      /* Footer */
+      .footer-pb { background: var(--deep-navy); padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(1.5rem, 3vw, 2.5rem); color: rgba(245, 240, 232, 0.7); font-size: 0.875rem; border-top: 1px solid rgba(245, 240, 232, 0.07); }
+      .footer-brand { display: flex; align-items: center; gap: 0.625rem; font-family: var(--font-sans); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bone-white); }
+      .footer-pb-logo { display: block; opacity: 0.9; width: 40px; height: 40px; object-fit: contain; }
+      .footer-tagline { font-size: 0.875rem; color: rgba(245, 240, 232, 0.55); line-height: 1.65; margin-top: 0.5rem; }
+      .footer-heading { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245, 240, 232, 0.45); margin-bottom: 1rem; }
+      .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; }
+      .footer-links a { color: rgba(245, 240, 232, 0.65); font-size: 0.875rem; text-decoration: none; transition: color 0.18s ease; }
+      .footer-links a:hover { color: var(--bone-white); }
+      .footer-credit { font-size: 0.8rem; color: var(--warm-gold); text-decoration: none; transition: color 0.18s ease; }
+      .footer-credit:hover { color: var(--bone-white); }
+      .footer-copyright { color: rgba(245, 240, 232, 0.82); text-decoration: none; transition: color 0.18s ease; }
+      .footer-copyright:hover { color: var(--bone-white); }
+      .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-top: clamp(2.5rem, 5vw, 4rem); padding-top: 1.5rem; border-top: 1px solid rgba(245, 240, 232, 0.08); font-size: 0.8rem; color: rgba(245, 240, 232, 0.35); }
+      .footer-bottom-meta { display: flex; align-items: center; gap: 1.25rem; }
+      .footer-locale { display: flex; align-items: center; gap: 0.4rem; }
+      .footer-locale [data-lucide] { width: 0.9em; height: 0.9em; }
+      .footer-version { font-family: var(--font-mono); font-size: 0.72rem; }
+
+      /* Partner */
+      .partner-section { background: var(--pb-background); border-top: 1px solid var(--hairline); }
+      .partner-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 680px; margin-inline: auto; }
+      .partner-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 2rem; }
+      .partner-logos-row { display: flex; align-items: center; gap: 2rem; margin-bottom: 2.5rem; }
+      .partner-logo-pb { display: flex; align-items: center; gap: 0.6rem; }
+      .partner-pb-logo { width: 88px; height: 88px; display: block; object-fit: contain; }
+      .partner-pb-text { font-family: var(--font-sans); font-weight: 800; font-size: 1.05rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-1); }
+      .partner-x { font-family: var(--font-sans); font-size: 1.75rem; font-weight: 800; color: var(--warm-gold); line-height: 1; user-select: none; }
+      .partner-logo-obalus { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s ease, transform 0.2s ease; }
+      .partner-logo-obalus:hover { opacity: 0.7; transform: translateY(-1px); }
+      .partner-obalus-img { height: 54px; width: auto; display: block; }
+      .partner-heading { margin-bottom: 1rem; }
+      .partner-sub { margin-bottom: 2rem; }
+      .partner-perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem 1.5rem; width: 100%; max-width: 580px; margin-bottom: 2.5rem; }
+      .partner-perk { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; color: var(--ink-2); font-weight: 500; }
+      .partner-perk [data-lucide], .partner-perk .lucide { width: 1rem; height: 1rem; color: var(--warm-gold); flex-shrink: 0; }
+      .partner-cta { gap: 0.5rem; }
+      .partner-cta [data-lucide], .partner-cta .lucide { width: 1em; height: 1em; }
+
+      /* Responsive */
+      @media (max-width: 991.98px) {
+        .feature-chapter .row { flex-direction: column; }
+        .feature-chapter .order-lg-1 { order: 0 !important; }
+        .feature-chapter .order-lg-2 { order: 0 !important; }
+        .feature-chapter-body { max-width: 100%; }
+        .map-feature-grid { grid-template-columns: 1fr; gap: 1rem; }
+        .pricing-board { grid-template-columns: 1fr; }
+        .partner-perks { grid-template-columns: 1fr; }
+      }
+
+      @media (max-width: 640px) {
+        .pricing-ledger { grid-template-columns: 1fr; gap: 0.45rem; }
+        .pricing-ledger-op { display: none; }
+      }
+
+      @media (max-width: 767.98px) {
+        .hero-title { font-size: clamp(2.75rem, 13vw, 4rem); }
+        .timeline::before { left: 0.875rem; }
+        .timeline-step { gap: 1.25rem; }
+        .timeline-marker { width: 1.75rem; }
+        .feature-compete-panel { max-width: 100%; }
+        .feature-chapter-img { max-width: 260px; }
+        .map-pin-cluster { transform: scale(0.85); }
+        .section-head { max-width: 100%; }
+        .stat-strip-text { font-size: 0.78rem; }
+        .footer-bottom { flex-direction: column; align-items: flex-start; }
+      }
+
+      @media (max-width: 575.98px) {
+        .partner-logos-row { gap: 1.25rem; }
+        .partner-pb-logo { width: 60px; height: 60px; }
+        .partner-obalus-img { height: 38px; }
+        .partner-x { font-size: 1.4rem; }
+        .partner-perks { grid-template-columns: 1fr; gap: 0.75rem; }
+        .partner-perk { justify-content: center; }
+      }
+
+      @media (max-width: 479.98px) {
+        .hero-cta-row { flex-direction: column; align-items: flex-start; }
+      }
+
+      /* ── animations ────────────────────────────────────────── */
+      @keyframes fadeUp { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+      .hero-stagger > * { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+      .hero-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+      .hero-stagger > *:nth-child(2) { animation-delay: 0.18s; }
+      .hero-stagger > *:nth-child(3) { animation-delay: 0.31s; }
+      .hero-stagger > *:nth-child(4) { animation-delay: 0.44s; }
+      .hero-stagger > *:nth-child(5) { animation-delay: 0.55s; }
+
+      .reveal { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+      .reveal.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+      .reveal-delay-1 { transition-delay: 0.08s; }
+      .reveal-delay-2 { transition-delay: 0.16s; }
+      .reveal-delay-3 { transition-delay: 0.24s; }
+      .reveal-delay-4 { transition-delay: 0.32s; }
+
+      @keyframes ctaGlow {
+        0%, 100% { filter: drop-shadow(0 0 14px rgba(212, 160, 23, 0.35)); }
+        50%       { filter: drop-shadow(0 0 24px rgba(212, 160, 23, 0.55)); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-stagger > * { animation: fadeIn 0.3s ease forwards; animation-delay: 0s !important; }
+        .reveal { opacity: 1; transform: none; transition: none; }
+        .reveal.is-visible { transform: none; }
+      }
+    </style>
+</head> <body> <!-- ── NAVBAR ──────────────────────────────────────────────── --> <nav class="navbar navbar-expand-lg navbar-pb fixed-top"> <div class="container-xl"> <div class="d-flex align-items-center gap-0"> <a class="navbar-brand" href="#top" data-scroll> <!-- White logo: shown over dark hero --> <img class="navbar-pb-logo navbar-pb-logo-white"
+              src="https://i.ibb.co/YFhyG9RV/pb-fishing-logo-nobg.png"
+              alt="PB FISHING" width="44" height="44" /> <!-- Colored logo: shown after scroll on cream bg --> <img class="navbar-pb-logo navbar-pb-logo-colored"
+              src="https://i.ibb.co/3Y9tmzwB/pb-fishing-logo-nobg-1.png"
+              alt="PB FISHING" width="44" height="44" /> </a> <span class="navbar-collab-x" aria-hidden="true">×</span> <a class="navbar-collab-obalus" href="https://obalus.com" target="_blank" rel="noopener noreferrer" aria-label="Obalus — Official Gear Partner"> <!-- Obalus inline SVG — CSS controls fill: white on dark, black on cream --> <svg class="navbar-obalus-logo" viewBox="0 0 1000 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <path d="M199.084 130.23V1.26612L307.971 0.904376C322.321 0.904376 332.932 3.91896 339.805 9.94814C346.799 15.8567 350.296 24.7799 350.296 36.7177C350.296 48.6555 346.317 57.3978 338.358 62.9446C343.664 65.8386 347.583 69.6973 350.115 74.5206C352.647 79.2234 353.914 85.3128 353.914 92.789C353.914 104.968 350.417 114.253 343.423 120.644C336.549 126.914 325.938 130.049 311.589 130.049L199.084 130.23ZM304.535 24.0564H228.024V52.9965H304.535C315.508 52.9965 320.994 48.0525 320.994 38.1647C320.994 28.7592 315.508 24.0564 304.535 24.0564ZM308.152 76.1485H228.024V106.897H308.152C319.125 106.897 324.612 101.712 324.612 91.342C324.612 81.213 319.125 76.1485 308.152 76.1485Z" fill="black"/> <path d="M362.925 130.23L421.167 0.904376H465.843L524.085 130.23H492.612L480.313 102.918H406.697L394.397 130.23H362.925ZM417.187 79.4043H469.822L444.68 23.5138H442.329L417.187 79.4043Z" fill="black"/> <path d="M538.579 130.23V0.904376H567.519V106.716H662.117V130.23H538.579Z" fill="black"/> <path d="M732.514 131.135C719.37 131.135 709 129.446 701.403 126.07C693.806 122.573 688.38 117.328 685.124 110.334C681.869 103.34 680.241 94.5375 680.241 83.9261V0.904376H709.181V83.9261C709.181 93.0905 711.291 99.3608 715.511 102.737C719.852 105.993 727.148 107.621 737.397 107.621H772.306C782.556 107.621 789.791 105.993 794.011 102.737C798.352 99.3608 800.523 93.0905 800.523 83.9261V0.904376H829.463V83.9261C829.463 94.5375 827.835 103.34 824.579 110.334C821.324 117.328 815.897 122.573 808.3 126.07C800.704 129.446 790.334 131.135 777.19 131.135H732.514Z" fill="black"/> <path d="M850.597 131.135V107.621L954.6 107.802C959.906 107.802 963.946 106.596 966.719 104.184C969.613 101.652 971.06 97.6124 971.06 92.0655C971.06 86.5187 969.613 82.5394 966.719 80.1278C963.946 77.5955 959.906 76.3294 954.6 76.3294H889.847C876.462 76.3294 866.032 73.1339 858.556 66.743C851.2 60.2315 847.522 50.7054 847.522 38.1647C847.522 25.624 851.2 16.1582 858.556 9.76727C866.032 3.25576 876.462 0 889.847 0H991.499V23.5138L892.922 23.3329C887.737 23.3329 883.697 24.5387 880.803 26.9504C877.909 29.2415 876.462 32.9796 876.462 38.1647C876.462 43.3498 877.909 47.1482 880.803 49.5598C883.697 51.8509 887.737 52.9965 892.922 52.9965H957.675C971.06 52.9965 981.43 56.3125 988.786 62.9446C996.262 69.4561 1000 79.1631 1000 92.0655C1000 104.847 996.262 114.554 988.786 121.186C981.43 127.819 971.06 131.135 957.675 131.135H850.597Z" fill="black"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9919 16.6405C6.33064 27.6136 0 43.8924 0 65.4769C0 87.1819 6.33064 103.581 18.9919 114.675C31.6532 125.648 49.4995 131.135 72.531 131.135H107.259C130.532 131.135 148.499 125.648 161.16 114.675C173.821 103.581 180.152 87.1819 180.152 65.4769C180.152 43.8924 173.821 27.6136 161.16 16.6405C148.499 5.54684 130.23 0 106.355 0H73.7971C49.9216 0 31.6532 5.54684 18.9919 16.6405ZM150.762 102.743C159.041 95.4715 164.325 84.0071 164.325 65.4769C164.325 47.0663 159.044 35.7499 150.795 28.6005L150.762 28.5724L150.73 28.5442C141.961 20.8606 127.983 15.8266 106.355 15.8266H73.7971C52.1687 15.8266 38.1912 20.8606 29.4218 28.5442L29.3896 28.5725L29.3572 28.6005C21.108 35.7499 15.8266 47.0663 15.8266 65.4769C15.8266 84.0071 21.1107 95.4715 29.3897 102.743C38.2533 110.408 51.905 115.308 72.531 115.308H107.259C128.175 115.308 141.925 110.385 150.762 102.743Z" fill="black"/> <path d="M21.4193 65.5049C21.4193 50.6191 26.27 39.3923 35.9714 31.8247C45.6727 24.1739 59.6704 20.3485 77.9644 20.3485H102.911C111.775 20.3485 119.631 21.2467 126.479 23.0432C129.771 23.9071 132.83 24.9787 135.656 26.2579C136.558 26.6661 137.436 27.0954 138.29 27.5459L125.649 40.1875C124.586 39.8179 123.455 39.4732 122.251 39.1574C117.079 37.8005 110.69 37.008 102.911 37.008H77.9644C61.6842 37.008 51.9316 40.4547 46.2876 44.9058L46.2529 44.9332L46.218 44.9604C41.4234 48.7005 38.0789 54.5527 38.0789 65.5049C38.0789 76.5448 41.4315 82.5082 46.2535 86.3265C51.998 90.7908 61.525 94.1265 76.9942 94.1265H103.604C119.305 94.1265 128.903 90.7705 134.622 86.3263C139.444 82.508 142.796 76.5446 142.796 65.5049C142.796 57.2748 140.908 51.9245 137.934 48.1864L149.757 36.3634C156.223 43.6386 159.456 53.3524 159.456 65.5049C159.456 80.4739 154.605 91.7838 144.904 99.4346C135.202 107.002 121.436 110.786 103.604 110.786H76.9942C59.347 110.786 45.6727 107.002 35.9714 99.4346C26.27 91.7838 21.4193 80.4739 21.4193 65.5049Z" fill="black"/> </svg> </a> </div> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navMain"> <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 mb-3 mb-lg-0"> <li class="nav-item"><a class="nav-link" href="#features" data-scroll>Features</a></li> <li class="nav-item"><a class="nav-link" href="#how-it-works" data-scroll>How it works</a></li> <li class="nav-item"><a class="nav-link" href="#community" data-scroll>Community</a></li> <li class="nav-item"><a class="nav-link" href="#pricing" data-scroll>Pricing</a></li> <li class="nav-item ms-lg-3"> <a class="btn btn-pb-primary btn-sm-nav" href="#download" data-scroll>Get the app</a> </li> </ul> </div> </div> </nav> <main id="top"> <!-- ── HERO ──────────────────────────────────────────────── --> <header class="hero-pb"> <div class="hero-parallax-stack" aria-hidden="true"> <div class="parallax-layer waves-layer waves-back" data-parallax="0.18"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"> <defs><style>.wg1{animation:ws1 22s linear infinite}.wg2{animation:ws2 16s linear infinite}.wg3{animation:ws3 11s linear infinite reverse}@keyframes ws1{from{transform:translateX(0)}to{transform:translateX(-1440px)}}@keyframes ws2{from{transform:translateX(0)}to{transform:translateX(-1440px)}}@keyframes ws3{from{transform:translateX(-1440px)}to{transform:translateX(0)}}</style></defs> <g class="wg1"><path fill="rgba(27,58,75,0.22)" d="M0,218C90,196 270,240 360,218C450,196 630,240 720,218C810,196 990,240 1080,218C1170,196 1350,240 1440,218C1530,196 1710,240 1800,218C1890,196 2070,240 2160,218C2250,196 2430,240 2520,218C2610,196 2790,240 2880,218L2880,300L0,300Z"/></g> <g class="wg2"><path fill="rgba(74,124,143,0.18)" d="M0,242C60,226 180,258 240,242C300,226 420,258 480,242C540,226 660,258 720,242C780,226 900,258 960,242C1020,226 1140,258 1200,242C1260,226 1380,258 1440,242C1500,226 1620,258 1680,242C1740,226 1860,258 1920,242C1980,226 2100,258 2160,242C2220,226 2340,258 2400,242C2460,226 2580,258 2640,242C2700,226 2820,258 2880,242L2880,300L0,300Z"/></g> <g class="wg3"><path fill="rgba(212,160,23,0.09)" d="M0,260C45,250 135,270 180,260C225,250 315,270 360,260C405,250 495,270 540,260C585,250 675,270 720,260C765,250 855,270 900,260C945,250 1035,270 1080,260C1125,250 1215,270 1260,260C1305,250 1395,270 1440,260C1485,250 1575,270 1620,260C1665,250 1755,270 1800,260C1845,250 1935,270 1980,260C2025,250 2115,270 2160,260C2205,250 2295,270 2340,260C2385,250 2475,270 2520,260C2565,250 2655,270 2700,260C2745,250 2835,270 2880,260L2880,300L0,300Z"/></g> </svg> </div> <div class="parallax-layer waves-layer waves-mid" data-parallax="0.42"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"> <g style="animation:ws1 18s linear infinite"><path fill="rgba(27,58,75,0.18)" d="M0,218C90,196 270,240 360,218C450,196 630,240 720,218C810,196 990,240 1080,218C1170,196 1350,240 1440,218C1530,196 1710,240 1800,218C1890,196 2070,240 2160,218C2250,196 2430,240 2520,218C2610,196 2790,240 2880,218L2880,300L0,300Z"/></g> <g style="animation:ws2 13s linear infinite"><path fill="rgba(74,124,143,0.14)" d="M0,242C60,226 180,258 240,242C300,226 420,258 480,242C540,226 660,258 720,242C780,226 900,258 960,242C1020,226 1140,258 1200,242C1260,226 1380,258 1440,242C1500,226 1620,258 1680,242C1740,226 1860,258 1920,242C1980,226 2100,258 2160,242C2220,226 2340,258 2400,242C2460,226 2580,258 2640,242C2700,226 2820,258 2880,242L2880,300L0,300Z"/></g> </svg> </div> <div class="parallax-layer waves-layer" data-parallax="0.68"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"> <g style="animation:ws1 12s linear infinite reverse"><path fill="rgba(27,58,75,0.28)" d="M0,218C90,196 270,240 360,218C450,196 630,240 720,218C810,196 990,240 1080,218C1170,196 1350,240 1440,218C1530,196 1710,240 1800,218C1890,196 2070,240 2160,218C2250,196 2430,240 2520,218C2610,196 2790,240 2880,218L2880,300L0,300Z"/></g> <g style="animation:ws3 9s linear infinite reverse"><path fill="rgba(212,160,23,0.07)" d="M0,260C45,250 135,270 180,260C225,250 315,270 360,260C405,250 495,270 540,260C585,250 675,270 720,260C765,250 855,270 900,260C945,250 1035,270 1080,260C1125,250 1215,270 1260,260C1305,250 1395,270 1440,260C1485,250 1575,270 1620,260C1665,250 1755,270 1800,260C1845,250 1935,270 1980,260C2025,250 2115,270 2160,260C2205,250 2295,270 2340,260C2385,250 2475,270 2520,260C2565,250 2655,270 2700,260C2745,250 2835,270 2880,260L2880,300L0,300Z"/></g> </svg> </div> </div> <div class="container-xl hero-pb-inner"> <div class="hero-stagger"> <h1 class="hero-title">MEASURE.<br>RANK.<br>IMPROVE.</h1> <p class="hero-tagline">
+              Smarter catch logs, national leaderboards, trip planning, and a community of anglers who get the water — all in your pocket.
+            </p> <div class="hero-cta-row"> <a class="btn btn-pb-primary" href="#download" data-scroll>Get the app</a> <a class="link-ghost" href="#features" data-scroll>
+                See how it works
+                <i data-lucide="arrow-right"></i> </a> </div> <a class="hero-deal" href="#pricing" data-scroll> <span class="hero-deal-mark">Save 37%</span> <span>Yearly Premium is $2.50 a month</span> </a> </div> </div> <div class="hero-wave-foot" aria-hidden="true"> <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"> <path class="hero-wave-path" d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z"/> </svg> </div> </header> <!-- ── STATS STRIP ──────────────────────────────────────── --> <section id="stats" class="stat-strip"> <div class="container-xl"> <p class="stat-strip-text"> <span class="mono">12,000+</span> anglers&ensp;&middot;&ensp;<span class="mono">20,000+</span> US waters&ensp;&middot;&ensp;<span class="mono">4.8</span> App Store rating&ensp;&middot;&ensp;<span class="mono">100%</span> photo-backed records
+          </p> </div> </section> <!-- ── FEATURES ─────────────────────────────────────────── --> <section id="features" class="features-section"> <div class="container-xl"> <div class="features-intro reveal"> <h2 class="section-title">Three pillars.<br>One app.</h2> <p class="section-subtitle">
+              Built for anglers who want progress, not guesswork. Every screen sharpens the loop between catch, record, and next cast.
+            </p> </div> <!-- Feature 01: Measure --> <div class="feature-chapter reveal"> <div class="row g-5 align-items-center"> <div class="col-lg-6"> <div class="feature-num-wrap"> <span class="feature-chapter-num mono">01</span> <span class="feature-chapter-rule"></span> <span class="feature-chapter-tag">Measure</span> </div> <h3 class="feature-chapter-title">Your catch log, sharpened</h3> <p class="feature-chapter-body">
+                  Snap a side-profile photo. Log species, length, and weight. Every entry photo-backed, so your record is never in question.
+                </p> </div> <div class="col-lg-6 text-center reveal reveal-delay-2"> <!-- Camera measure inline SVG --> <svg class="feature-chapter-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Camera measurement" width="320" height="280"> <defs> <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#D4A017"/><stop offset="100%" stop-color="#4A7C8F"/></linearGradient> <clipPath id="lens-clip"><circle cx="60" cy="68" r="22"/></clipPath> </defs> <rect x="12" y="28" width="96" height="64" rx="12" fill="#FFFDF8" stroke="#1B3A4B" stroke-width="3.5"/> <path fill="#1B3A4B" d="M44,22 Q44,28 52,28 L68,28 Q76,28 76,22 L74,16 Q74,12 70,12 L50,12 Q46,12 46,16 Z"/> <circle cx="92" cy="20" r="6" fill="url(#cg)"/> <circle cx="92" cy="20" r="3.5" fill="#EEC639"/> <circle cx="60" cy="68" r="26" fill="#E8F0F4" stroke="#1B3A4B" stroke-width="2.5"/> <circle cx="60" cy="68" r="20" fill="#C8DDE8" stroke="#4A7C8F" stroke-width="1.5"/> <circle cx="68" cy="60" r="4" fill="white" opacity=".55"/> <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"> <polyline stroke="#D4A017" points="18,48 18,34 32,34"><animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" keyTimes="0;0.5;1" repeatCount="indefinite"/></polyline> <polyline stroke="#D4A017" points="88,34 102,34 102,48"><animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" keyTimes="0;0.5;1" begin="0.35s" repeatCount="indefinite"/></polyline> <polyline stroke="#D4A017" points="18,72 18,86 32,86"><animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" keyTimes="0;0.5;1" begin="0.2s" repeatCount="indefinite"/></polyline> <polyline stroke="#D4A017" points="88,86 102,86 102,72"><animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" keyTimes="0;0.5;1" begin="0.5s" repeatCount="indefinite"/></polyline> </g> <circle cx="60" cy="68" r="28" fill="#EEC639" opacity="0"> <animate attributeName="opacity" values="0;0;0;0.35;0" dur="3.5s" keyTimes="0;0.8;0.87;0.91;0.97" repeatCount="indefinite"/> <animate attributeName="r" values="22;22;22;30;22" dur="3.5s" keyTimes="0;0.8;0.87;0.91;0.97" repeatCount="indefinite"/> </circle> </svg> </div> </div> </div> <!-- Feature 02: Compete --> <div class="feature-chapter reveal"> <div class="row g-5 align-items-center"> <div class="col-lg-6 order-lg-2"> <div class="feature-num-wrap"> <span class="feature-chapter-num mono">02</span> <span class="feature-chapter-rule"></span> <span class="feature-chapter-tag">Compete</span> </div> <h3 class="feature-chapter-title">Know where you stand</h3> <p class="feature-chapter-body">
+                  Track your personal bests, climb the global leaderboard, and compare catches with anglers across the country — by species, by state, by season.
+                </p> </div> <div class="col-lg-6 order-lg-1 reveal reveal-delay-1"> <div class="feature-compete-panel"> <div class="feature-compete-header"> <!-- Trophy inline SVG --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130" role="img" aria-label="Trophy" width="40" height="44"> <defs><linearGradient id="tg-f" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#B8860B"/></linearGradient></defs> <g> <animate attributeName="opacity" values="1;0.92;1" dur="2.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" keyTimes="0;0.5;1"/> <animateTransform attributeName="transform" type="translate" values="0,0; 0,-4; 0,0" dur="2.6s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <path fill="url(#tg-f)" d="M26,22C18,24 12,32 12,48C12,64 22,76 36,82C44,86 52,88 60,88C68,88 76,86 84,82C98,76 108,64 108,48C108,32 102,24 94,22Z"/> <path fill="none" stroke="url(#tg-f)" stroke-width="7" stroke-linecap="round" d="M12,38 Q0,54 12,68"/> <path fill="none" stroke="url(#tg-f)" stroke-width="7" stroke-linecap="round" d="M108,38 Q120,54 108,68"/> <path fill="white" opacity=".18" d="M30,28 C24,32 20,40 20,50 C20,58 22,64 28,70 C24,62 22,54 22,46 C22,36 26,30 30,28 Z"/> <polygon fill="rgba(27,58,75,0.35)" points="60,40 63.2,50 72.4,50 65.2,56 67.6,65 60,60 52.4,65 54.8,56 47.6,50 56.8,50"/> <path fill="url(#tg-f)" d="M48,88 L44,106 L76,106 L72,88 Z"/> <rect x="30" y="106" width="60" height="12" rx="5" fill="url(#tg-f)"/> <rect x="30" y="106" width="60" height="5" rx="5" fill="white" opacity=".15"/> </g> </svg> <div> <div class="feature-compete-label mono">Largemouth Bass</div> <div class="feature-compete-sublabel">National leaderboard</div> </div> </div> <ul class="mini-leaderboard"> <li class="ml-row ml-row-1"> <span class="ml-rank mono">#1</span> <span class="ml-name">M. Carter</span> <span class="ml-val mono">24.6″</span> </li> <li class="ml-row ml-row-2"> <span class="ml-rank mono">#2</span> <span class="ml-name">J. Park</span> <span class="ml-val mono">23.1″</span> </li> <li class="ml-row ml-row-you"> <span class="ml-rank mono">#12</span> <span class="ml-name">You</span> <span class="ml-val mono">21.4″</span> </li> </ul> </div> </div> </div> </div> <!-- Feature 03: Explore --> <div class="feature-chapter reveal"> <div class="row g-5 align-items-center"> <div class="col-lg-6"> <div class="feature-num-wrap"> <span class="feature-chapter-num mono">03</span> <span class="feature-chapter-rule"></span> <span class="feature-chapter-tag">Explore</span> </div> <h3 class="feature-chapter-title">Plan better days out</h3> <p class="feature-chapter-body">
+                  Twenty thousand named waters. Live conditions. Tackle ideas. State-by-state license links. Everything in your pocket before you launch.
+                </p> </div> <div class="col-lg-6 text-center reveal reveal-delay-2"> <div class="map-pin-cluster"> <!-- Map pin inline SVGs --> <svg class="map-pin-main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 138" width="78" height="108" aria-hidden="true"> <defs> <linearGradient id="pg-f1m" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#D4A017"/><stop offset="100%" stop-color="#2D5A3D"/></linearGradient> <radialGradient id="pgr-f1m" cx="38%" cy="35%" r="55%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#2D5A3D"/></radialGradient> </defs> <ellipse cx="50" cy="126" rx="18" ry="5" fill="rgba(27,58,75,0.18)"><animate attributeName="rx" values="18;24;18" dur="2.8s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/><animate attributeName="opacity" values="0.22;0.10;0.22" dur="2.8s" keyTimes="0;0.5;1" repeatCount="indefinite"/></ellipse> <circle cx="50" cy="124" r="8" fill="none" stroke="#4A7C8F" stroke-width="2"><animate attributeName="r" values="8;34" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.45;0" dur="2.8s" repeatCount="indefinite"/></circle> <circle cx="50" cy="124" r="8" fill="none" stroke="#4A7C8F" stroke-width="2"><animate attributeName="r" values="8;28" dur="2.8s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.35;0" dur="2.8s" begin="1.2s" repeatCount="indefinite"/></circle> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-11; 0,0" dur="2.8s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <path fill="url(#pgr-f1m)" d="M50,10 C70,10 86,24 86,44 C86,68 50,118 50,118 C50,118 14,68 14,44 C14,24 30,10 50,10 Z"/> <circle cx="50" cy="40" r="14" fill="rgba(255,253,248,0.9)"/> <circle cx="50" cy="40" r="9" fill="#1B3A4B" opacity=".75"/> <path fill="white" opacity=".18" d="M38,16 C28,24 22,34 22,44 C22,38 24,28 32,20 Z"/></g> </svg> <svg class="map-pin-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 138" width="56" height="78" aria-hidden="true"> <defs><radialGradient id="pgr-f1l" cx="38%" cy="35%" r="55%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#2D5A3D"/></radialGradient></defs> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-8; 0,0" dur="3.6s" begin="0.4s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <path fill="url(#pgr-f1l)" d="M50,10 C70,10 86,24 86,44 C86,68 50,118 50,118 C50,118 14,68 14,44 C14,24 30,10 50,10 Z"/> <circle cx="50" cy="40" r="14" fill="rgba(255,253,248,0.9)"/> <circle cx="50" cy="40" r="9" fill="#1B3A4B" opacity=".75"/></g> </svg> <svg class="map-pin-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 138" width="64" height="90" aria-hidden="true"> <defs><radialGradient id="pgr-f1r" cx="38%" cy="35%" r="55%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#2D5A3D"/></radialGradient></defs> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-8; 0,0" dur="4s" begin="0.8s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <path fill="url(#pgr-f1r)" d="M50,10 C70,10 86,24 86,44 C86,68 50,118 50,118 C50,118 14,68 14,44 C14,24 30,10 50,10 Z"/> <circle cx="50" cy="40" r="14" fill="rgba(255,253,248,0.9)"/> <circle cx="50" cy="40" r="9" fill="#1B3A4B" opacity=".75"/></g> </svg> </div> </div> </div> </div> </div> </section> <!-- ── HOW IT WORKS ─────────────────────────────────────── --> <section id="how-it-works" class="section-pb how-section"> <div class="container-xl"> <div class="section-head reveal"> <h2 class="section-title">From photo to personal best</h2> <p class="section-subtitle">
+              A four-step loop that keeps your stats honest and your trips sharper.
+            </p> </div> <ol class="timeline"> <li class="timeline-step reveal"> <div class="timeline-marker"> <span class="timeline-num mono">01</span> <span class="timeline-dot" aria-hidden="true"></span> </div> <div class="timeline-content"> <i data-lucide="camera" class="timeline-icon"></i> <h3 class="timeline-title">Snap a side-profile photo</h3> <p class="timeline-body">Fast capture flow tuned for the boat, bank, or dock. One tap, ready in seconds.</p> </div> </li> <li class="timeline-step reveal reveal-delay-1"> <div class="timeline-marker"> <span class="timeline-num mono">02</span> <span class="timeline-dot" aria-hidden="true"></span> </div> <div class="timeline-content"> <i data-lucide="ruler" class="timeline-icon"></i> <h3 class="timeline-title">Log species, length &amp; weight</h3> <p class="timeline-body">Photo-backed entries with estimates that hold up over time and across trips.</p> </div> </li> <li class="timeline-step reveal reveal-delay-2"> <div class="timeline-marker"> <span class="timeline-num mono">03</span> <span class="timeline-dot" aria-hidden="true"></span> </div> <div class="timeline-content"> <i data-lucide="trophy" class="timeline-icon"></i> <h3 class="timeline-title">Climb leaderboards &amp; personal bests</h3> <p class="timeline-body">See how your best fish stack up — locally, by state, and nationwide.</p> </div> </li> <li class="timeline-step reveal reveal-delay-3"> <div class="timeline-marker"> <span class="timeline-num mono">04</span> <span class="timeline-dot" aria-hidden="true"></span> </div> <div class="timeline-content"> <i data-lucide="compass" class="timeline-icon"></i> <h3 class="timeline-title">Plan trips with map &amp; tackle tips</h3> <p class="timeline-body">Thousands of waters, conditions context, tackle recommendations, and license links at a glance.</p> </div> </li> </ol> </div> </section> <!-- ── PREVIEW — text only, phone mockup replaced ─────── --> <section id="preview" class="section-pb preview-section"> <div class="container-xl"> <div class="row g-5 align-items-center"> <div class="col-lg-5 reveal"> <h2 class="section-title mb-4">The pocket<br>dashboard</h2> <p class="section-subtitle mb-5">
+                Personal bests, recent catches, community pulse — packaged in a calm, glanceable layout that mirrors your sessions, not a spreadsheet.
+              </p> <blockquote class="preview-pull"> <p>Every catch, photo-backed.<br>Every personal best, honest.</p> </blockquote> </div> <div class="col-lg-7 reveal reveal-delay-2 text-center"> <img
+                src="https://i.ibb.co/YFHv64Bx/dashboard-pbfishing.png"
+                alt="PB FISHING app dashboard showing nearby waters, bite forecast, and personal stats"
+                class="app-screenshot"
+                width="340"
+                loading="lazy"
+              /> </div> </div> </div> </section> <!-- ── COMMUNITY ───────────────────────────────────────── --> <section id="community" class="section-pb community-section"> <div class="container-xl"> <div class="row g-5 align-items-center"> <div class="col-lg-6 order-lg-2 text-center reveal"> <!-- Community bubbles inline SVG --> <svg class="community-illustration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" aria-hidden="true" width="320" height="246"> <defs> <linearGradient id="rg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#D4A017"/></linearGradient> <linearGradient id="rg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A7C8F"/><stop offset="100%" stop-color="#2D5A3D"/></linearGradient> <linearGradient id="rg3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2D5A3D"/><stop offset="100%" stop-color="#8FAE7E"/></linearGradient> <clipPath id="ac1"><circle cx="98" cy="90" r="44"/></clipPath> <clipPath id="ac2"><circle cx="190" cy="112" r="30"/></clipPath> <clipPath id="ac3"><circle cx="58" cy="140" r="22"/></clipPath> </defs> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-7; 0,0" dur="4s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <circle cx="98" cy="90" r="50" fill="none" stroke="url(#rg1)" stroke-width="4.5"/> <circle cx="98" cy="90" r="44" fill="#EDE6D6" clip-path="url(#ac1)"/> <g clip-path="url(#ac1)"><circle cx="98" cy="78" r="15" fill="#4A7C8F"/><ellipse cx="98" cy="120" rx="28" ry="22" fill="#4A7C8F"/></g> <circle cx="136" cy="128" r="13" fill="#D4A017" stroke="#FFFDF8" stroke-width="3"/> <line x1="130" y1="128" x2="142" y2="128" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <line x1="136" y1="122" x2="136" y2="134" stroke="white" stroke-width="2.5" stroke-linecap="round"/></g> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur="3.4s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" begin="0.5s" repeatCount="indefinite"/> <circle cx="190" cy="112" r="36" fill="none" stroke="url(#rg2)" stroke-width="4"/> <circle cx="190" cy="112" r="30" fill="#E8F4F4" clip-path="url(#ac2)"/> <g clip-path="url(#ac2)"><circle cx="190" cy="102" r="11" fill="#2D5A3D"/><ellipse cx="190" cy="134" rx="22" ry="18" fill="#2D5A3D"/></g> <circle cx="216" cy="86" r="8" fill="#EEC639" stroke="#FFFDF8" stroke-width="2.5"/> <line x1="212" y1="86" x2="220" y2="86" stroke="white" stroke-width="2" stroke-linecap="round"/> <line x1="216" y1="82" x2="216" y2="90" stroke="white" stroke-width="2" stroke-linecap="round"/></g> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-4; 0,0" dur="5s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" begin="1.1s" repeatCount="indefinite"/> <circle cx="58" cy="140" r="28" fill="none" stroke="url(#rg3)" stroke-width="3.5"/> <circle cx="58" cy="140" r="22" fill="#EDE6D6" clip-path="url(#ac3)"/> <g clip-path="url(#ac3)"><circle cx="58" cy="131" r="9" fill="#2D5A3D"/><ellipse cx="58" cy="156" rx="17" ry="14" fill="#2D5A3D"/></g></g> </svg> </div> <div class="col-lg-6 order-lg-1 reveal"> <h2 class="section-title">Fish together,<br>share the bite</h2> <p class="section-subtitle mb-4">
+                24-hour stories, curated posts, and familiar social touches — so your best days on the water don't evaporate after sunset.
+              </p> <ul class="community-rows"> <li class="community-row"> <i data-lucide="check" class="community-check"></i> <div> <strong>Stories</strong> <p>Quick captures that stay fresh for 24 hours.</p> </div> </li> <li class="community-row"> <i data-lucide="check" class="community-check"></i> <div> <strong>Feed</strong> <p>For You and Following lanes keep your timeline relevant.</p> </div> </li> <li class="community-row"> <i data-lucide="check" class="community-check"></i> <div> <strong>Social</strong> <p>Likes, comments, saves — engage without losing the quiet of the bank.</p> </div> </li> </ul> </div> </div> </div> </section> <!-- ── MAP & LICENSES ──────────────────────────────────── --> <section id="map" class="section-pb map-section"> <div class="container-xl"> <div class="row g-5 align-items-center"> <div class="col-lg-5 reveal"> <div class="map-pin-cluster"> <svg class="map-pin-main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 138" width="78" height="108" aria-hidden="true"> <defs> <radialGradient id="pgr-mm" cx="38%" cy="35%" r="55%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#2D5A3D"/></radialGradient> </defs> <ellipse cx="50" cy="126" rx="18" ry="5" fill="rgba(27,58,75,0.18)"><animate attributeName="rx" values="18;24;18" dur="2.8s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/><animate attributeName="opacity" values="0.22;0.10;0.22" dur="2.8s" keyTimes="0;0.5;1" repeatCount="indefinite"/></ellipse> <circle cx="50" cy="124" r="8" fill="none" stroke="#4A7C8F" stroke-width="2"><animate attributeName="r" values="8;34" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.45;0" dur="2.8s" repeatCount="indefinite"/></circle> <circle cx="50" cy="124" r="8" fill="none" stroke="#4A7C8F" stroke-width="2"><animate attributeName="r" values="8;28" dur="2.8s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.35;0" dur="2.8s" begin="1.2s" repeatCount="indefinite"/></circle> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-11; 0,0" dur="2.8s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <path fill="url(#pgr-mm)" d="M50,10 C70,10 86,24 86,44 C86,68 50,118 50,118 C50,118 14,68 14,44 C14,24 30,10 50,10 Z"/> <circle cx="50" cy="40" r="14" fill="rgba(255,253,248,0.9)"/> <circle cx="50" cy="40" r="9" fill="#1B3A4B" opacity=".75"/> <path fill="white" opacity=".18" d="M38,16 C28,24 22,34 22,44 C22,38 24,28 32,20 Z"/></g> </svg> <svg class="map-pin-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 138" width="56" height="78" aria-hidden="true"> <defs><radialGradient id="pgr-ml" cx="38%" cy="35%" r="55%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#2D5A3D"/></radialGradient></defs> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-8; 0,0" dur="3.6s" begin="0.4s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <path fill="url(#pgr-ml)" d="M50,10 C70,10 86,24 86,44 C86,68 50,118 50,118 C50,118 14,68 14,44 C14,24 30,10 50,10 Z"/> <circle cx="50" cy="40" r="14" fill="rgba(255,253,248,0.9)"/> <circle cx="50" cy="40" r="9" fill="#1B3A4B" opacity=".75"/></g> </svg> <svg class="map-pin-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 138" width="64" height="90" aria-hidden="true"> <defs><radialGradient id="pgr-mr" cx="38%" cy="35%" r="55%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#2D5A3D"/></radialGradient></defs> <g><animateTransform attributeName="transform" type="translate" values="0,0; 0,-8; 0,0" dur="4s" begin="0.8s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <path fill="url(#pgr-mr)" d="M50,10 C70,10 86,24 86,44 C86,68 50,118 50,118 C50,118 14,68 14,44 C14,24 30,10 50,10 Z"/> <circle cx="50" cy="40" r="14" fill="rgba(255,253,248,0.9)"/> <circle cx="50" cy="40" r="9" fill="#1B3A4B" opacity=".75"/></g> </svg> </div> </div> <div class="col-lg-7 reveal reveal-delay-2"> <h2 class="section-title mb-4">Nationwide waters,<br>local context</h2> <p class="section-subtitle mb-5">
+                Search thousands of named lakes and rivers, preview seasonal activity, scan community ratings, and jump to official license resources when regulations change state-by-state.
+              </p> <div class="map-feature-grid"> <div class="map-feature"> <span class="map-feature-icon"><i data-lucide="cloud-sun"></i></span> <div><strong>Live conditions</strong><p>Weather context that matches how you actually fish.</p></div> </div> <div class="map-feature"> <span class="map-feature-icon"><i data-lucide="fish"></i></span> <div><strong>Tackle guidance</strong><p>Species, season, and weather-aware recommendations.</p></div> </div> <div class="map-feature"> <span class="map-feature-icon"><i data-lucide="file-text"></i></span> <div><strong>State licenses</strong><p>Regulations and direct links to official agencies.</p></div> </div> <div class="map-feature"> <span class="map-feature-icon"><i data-lucide="chart-line"></i></span> <div><strong>Seasonal activity</strong><p>Know what's biting before you drive to the water.</p></div> </div> </div> </div> </div> </div> </section> <!-- ── PRICING ─────────────────────────────────────────── --> <section id="pricing" class="section-pb pricing-section"> <div class="container-xl"> <div class="section-head reveal"> <h2 class="section-title">Start free.<br>The year is the better buy.</h2> <p class="section-subtitle">Catch logging stays free. Premium is the full water: forecasts, rankings, and trips. Pay once a year and keep $17.89.</p> </div> <div class="pricing-board"> <article class="pricing-card pricing-annual reveal" aria-label="Premium yearly, save 37 percent"> <div class="pricing-save"> <span class="pricing-save-mark">Save <strong>37%</strong></span> <p class="pricing-save-copy"><b>$17.89</b> less than a year of monthly.</p> </div> <p class="pricing-plan">Premium · Year</p> <div class="pricing-price mono">$29.99</div> <p class="pricing-equiv-line"><b>$2.50</b> a month, down from <s>$3.99</s></p> <p class="pricing-price-note">billed once · 7-day free trial</p> <div class="pricing-ledger" aria-label="Yearly savings versus monthly billing"> <div> <span class="pricing-ledger-label">12 months</span> <span class="pricing-ledger-value">$47.88</span> </div> <span class="pricing-ledger-op" aria-hidden="true">−</span> <div> <span class="pricing-ledger-label">Yearly</span> <span class="pricing-ledger-value">$29.99</span> </div> <span class="pricing-ledger-op" aria-hidden="true">=</span> <div class="pricing-ledger-keep"> <span class="pricing-ledger-label">You keep</span> <span class="pricing-ledger-value">$17.89</span> </div> </div> <div class="pricing-divider"></div> <ul class="pricing-features"> <li><i data-lucide="check" class="feat-ok"></i> Everything in Free</li> <li><i data-lucide="check" class="feat-ok"></i> Unlimited AI photo identifications</li> <li><i data-lucide="check" class="feat-ok"></i> Hourly bite forecast + species odds</li> <li><i data-lucide="check" class="feat-ok"></i> Full national leaderboard</li> <li><i data-lucide="check" class="feat-ok"></i> Full catch insights &amp; trends</li> <li><i data-lucide="check" class="feat-ok"></i> Advanced stats (PB progress, patterns)</li> <li><i data-lucide="check" class="feat-ok"></i> Predictive fishing hotspots</li> <li><i data-lucide="check" class="feat-ok"></i> Unlimited trip planning</li> <li><i data-lucide="check" class="feat-ok"></i> 10-day weather &amp; catch history</li> </ul> <a class="btn btn-pb-primary w-100 mt-auto" href="#download" data-scroll>Start yearly free trial</a> <p class="pricing-trial-note">Renews at $29.99/year unless you cancel. Same Premium either way.</p> </article> <div class="pricing-side"> <article class="pricing-card pricing-monthly reveal reveal-delay-1"> <p class="pricing-plan">Premium · Month</p> <div class="pricing-side-price mono">$3.99</div> <p class="pricing-price-note">billed every month</p> <p class="pricing-side-note">Same Premium features. <b>$1.49 more</b> each month than the yearly plan.</p> <a class="btn btn-pricing-free w-100 mt-auto" href="#download" data-scroll>Choose monthly</a> </article> <article class="pricing-card pricing-free reveal reveal-delay-2"> <p class="pricing-plan">Free</p> <div class="pricing-side-price mono">$0</div> <p class="pricing-price-note">forever</p> <div class="pricing-divider"></div> <ul class="pricing-features pricing-features-compact"> <li><i data-lucide="check" class="feat-ok"></i> Unlimited catch logging</li> <li><i data-lucide="check" class="feat-ok"></i> 5 AI photo identifications</li> <li><i data-lucide="check" class="feat-ok"></i> Top 10 leaderboard preview</li> <li><i data-lucide="check" class="feat-ok"></i> Daily bite forecast</li> <li><i data-lucide="check" class="feat-ok"></i> Trip planner, up to 2 trips</li> </ul> <a class="btn btn-pricing-free w-100 mt-auto" href="#download" data-scroll>Get started free</a> </article> </div> </div> </div> </section> <!-- ── PARTNER ───────────────────────────────────────────── --> <section id="partner" class="section-pb partner-section"> <div class="container-xl"> <div class="partner-inner reveal"> <p class="partner-eyebrow mono">Official Partner</p> <div class="partner-logos-row"> <div class="partner-logo-pb"> <img src="https://i.ibb.co/3Y9tmzwB/pb-fishing-logo-nobg-1.png" alt="PB FISHING" class="partner-pb-logo" /> </div> <span class="partner-x" aria-hidden="true">×</span> <a class="partner-logo-obalus" href="https://obalus.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Obalus"> <!-- Obalus inline SVG — full color for partner section --> <svg class="partner-obalus-img" viewBox="0 0 1000 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <path d="M199.084 130.23V1.26612L307.971 0.904376C322.321 0.904376 332.932 3.91896 339.805 9.94814C346.799 15.8567 350.296 24.7799 350.296 36.7177C350.296 48.6555 346.317 57.3978 338.358 62.9446C343.664 65.8386 347.583 69.6973 350.115 74.5206C352.647 79.2234 353.914 85.3128 353.914 92.789C353.914 104.968 350.417 114.253 343.423 120.644C336.549 126.914 325.938 130.049 311.589 130.049L199.084 130.23ZM304.535 24.0564H228.024V52.9965H304.535C315.508 52.9965 320.994 48.0525 320.994 38.1647C320.994 28.7592 315.508 24.0564 304.535 24.0564ZM308.152 76.1485H228.024V106.897H308.152C319.125 106.897 324.612 101.712 324.612 91.342C324.612 81.213 319.125 76.1485 308.152 76.1485Z" fill="black"/> <path d="M362.925 130.23L421.167 0.904376H465.843L524.085 130.23H492.612L480.313 102.918H406.697L394.397 130.23H362.925ZM417.187 79.4043H469.822L444.68 23.5138H442.329L417.187 79.4043Z" fill="black"/> <path d="M538.579 130.23V0.904376H567.519V106.716H662.117V130.23H538.579Z" fill="black"/> <path d="M732.514 131.135C719.37 131.135 709 129.446 701.403 126.07C693.806 122.573 688.38 117.328 685.124 110.334C681.869 103.34 680.241 94.5375 680.241 83.9261V0.904376H709.181V83.9261C709.181 93.0905 711.291 99.3608 715.511 102.737C719.852 105.993 727.148 107.621 737.397 107.621H772.306C782.556 107.621 789.791 105.993 794.011 102.737C798.352 99.3608 800.523 93.0905 800.523 83.9261V0.904376H829.463V83.9261C829.463 94.5375 827.835 103.34 824.579 110.334C821.324 117.328 815.897 122.573 808.3 126.07C800.704 129.446 790.334 131.135 777.19 131.135H732.514Z" fill="black"/> <path d="M850.597 131.135V107.621L954.6 107.802C959.906 107.802 963.946 106.596 966.719 104.184C969.613 101.652 971.06 97.6124 971.06 92.0655C971.06 86.5187 969.613 82.5394 966.719 80.1278C963.946 77.5955 959.906 76.3294 954.6 76.3294H889.847C876.462 76.3294 866.032 73.1339 858.556 66.743C851.2 60.2315 847.522 50.7054 847.522 38.1647C847.522 25.624 851.2 16.1582 858.556 9.76727C866.032 3.25576 876.462 0 889.847 0H991.499V23.5138L892.922 23.3329C887.737 23.3329 883.697 24.5387 880.803 26.9504C877.909 29.2415 876.462 32.9796 876.462 38.1647C876.462 43.3498 877.909 47.1482 880.803 49.5598C883.697 51.8509 887.737 52.9965 892.922 52.9965H957.675C971.06 52.9965 981.43 56.3125 988.786 62.9446C996.262 69.4561 1000 79.1631 1000 92.0655C1000 104.847 996.262 114.554 988.786 121.186C981.43 127.819 971.06 131.135 957.675 131.135H850.597Z" fill="black"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9919 16.6405C6.33064 27.6136 0 43.8924 0 65.4769C0 87.1819 6.33064 103.581 18.9919 114.675C31.6532 125.648 49.4995 131.135 72.531 131.135H107.259C130.532 131.135 148.499 125.648 161.16 114.675C173.821 103.581 180.152 87.1819 180.152 65.4769C180.152 43.8924 173.821 27.6136 161.16 16.6405C148.499 5.54684 130.23 0 106.355 0H73.7971C49.9216 0 31.6532 5.54684 18.9919 16.6405ZM150.762 102.743C159.041 95.4715 164.325 84.0071 164.325 65.4769C164.325 47.0663 159.044 35.7499 150.795 28.6005L150.762 28.5724L150.73 28.5442C141.961 20.8606 127.983 15.8266 106.355 15.8266H73.7971C52.1687 15.8266 38.1912 20.8606 29.4218 28.5442L29.3896 28.5725L29.3572 28.6005C21.108 35.7499 15.8266 47.0663 15.8266 65.4769C15.8266 84.0071 21.1107 95.4715 29.3897 102.743C38.2533 110.408 51.905 115.308 72.531 115.308H107.259C128.175 115.308 141.925 110.385 150.762 102.743Z" fill="black"/> <path d="M21.4193 65.5049C21.4193 50.6191 26.27 39.3923 35.9714 31.8247C45.6727 24.1739 59.6704 20.3485 77.9644 20.3485H102.911C111.775 20.3485 119.631 21.2467 126.479 23.0432C129.771 23.9071 132.83 24.9787 135.656 26.2579C136.558 26.6661 137.436 27.0954 138.29 27.5459L125.649 40.1875C124.586 39.8179 123.455 39.4732 122.251 39.1574C117.079 37.8005 110.69 37.008 102.911 37.008H77.9644C61.6842 37.008 51.9316 40.4547 46.2876 44.9058L46.2529 44.9332L46.218 44.9604C41.4234 48.7005 38.0789 54.5527 38.0789 65.5049C38.0789 76.5448 41.4315 82.5082 46.2535 86.3265C51.998 90.7908 61.525 94.1265 76.9942 94.1265H103.604C119.305 94.1265 128.903 90.7705 134.622 86.3263C139.444 82.508 142.796 76.5446 142.796 65.5049C142.796 57.2748 140.908 51.9245 137.934 48.1864L149.757 36.3634C156.223 43.6386 159.456 53.3524 159.456 65.5049C159.456 80.4739 154.605 91.7838 144.904 99.4346C135.202 107.002 121.436 110.786 103.604 110.786H76.9942C59.347 110.786 45.6727 107.002 35.9714 99.4346C26.27 91.7838 21.4193 80.4739 21.4193 65.5049Z" fill="black"/> </svg> </a> </div> <h2 class="section-title partner-heading">Gear built for anglers who mean it.</h2> <p class="section-subtitle partner-sub">
+              PB FISHING is proud to partner with <strong>Obalus</strong> — premium rods, reels, lures, and apparel trusted by over 50,000 anglers. Every product is built to perform where it counts: on the water.
+            </p> <div class="partner-perks"> <div class="partner-perk"> <i data-lucide="award"></i> <span>Premium gear — rods, reels &amp; lures</span> </div> <div class="partner-perk"> <i data-lucide="package"></i> <span>Free shipping on all orders</span> </div> <div class="partner-perk"> <i data-lucide="shield-check"></i> <span>30-day satisfaction guarantee</span> </div> </div> <a class="btn btn-pb-primary partner-cta" href="https://obalus.com" target="_blank" rel="noopener noreferrer">
+              Shop Obalus Gear
+              <i data-lucide="arrow-up-right"></i> </a> </div> </div> </section> <!-- ── DOWNLOAD (single App Store destination) ─────────── --> <section id="download" class="section-pb cta-band"> <div class="container-xl"> <div class="cta-inner reveal"> <span class="cta-trophy"> <!-- Trophy inline SVG for CTA --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130" width="48" height="52" aria-hidden="true"> <defs><linearGradient id="tg-cta" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#EEC639"/><stop offset="100%" stop-color="#B8860B"/></linearGradient></defs> <g> <animate attributeName="opacity" values="1;0.92;1" dur="2.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" keyTimes="0;0.5;1"/> <animateTransform attributeName="transform" type="translate" values="0,0; 0,-4; 0,0" dur="2.6s" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/> <path fill="url(#tg-cta)" d="M26,22C18,24 12,32 12,48C12,64 22,76 36,82C44,86 52,88 60,88C68,88 76,86 84,82C98,76 108,64 108,48C108,32 102,24 94,22Z"/> <path fill="none" stroke="url(#tg-cta)" stroke-width="7" stroke-linecap="round" d="M12,38 Q0,54 12,68"/> <path fill="none" stroke="url(#tg-cta)" stroke-width="7" stroke-linecap="round" d="M108,38 Q120,54 108,68"/> <path fill="white" opacity=".18" d="M30,28 C24,32 20,40 20,50 C20,58 22,64 28,70 C24,62 22,54 22,46 C22,36 26,30 30,28 Z"/> <polygon fill="rgba(27,58,75,0.35)" points="60,40 63.2,50 72.4,50 65.2,56 67.6,65 60,60 52.4,65 54.8,56 47.6,50 56.8,50"/> <path fill="url(#tg-cta)" d="M48,88 L44,106 L76,106 L72,88 Z"/> <rect x="30" y="106" width="60" height="12" rx="5" fill="url(#tg-cta)"/> <rect x="30" y="106" width="60" height="5" rx="5" fill="white" opacity=".15"/> </g> </svg> </span> <h2 class="cta-heading">Your next personal best<br>starts here.</h2> <p class="cta-sub">
+              Bring Measure. Rank. Improve. to every launch. Free to start. Yearly Premium is $2.50 a month.
+            </p> <div class="download-card"> <img class="download-app-icon"
+                src="https://i.ibb.co/3Y9tmzwB/pb-fishing-logo-nobg-1.png"
+                alt="PB FISHING app icon"
+                width="88" height="88" /> <p class="download-app-name">PB Fishing</p> <p class="download-app-tagline">Catch &amp; Compete</p> <div class="download-actions"> <a id="app-store-download" class="btn btn-pb-primary btn-cta" href="#"
+                  target="_blank" rel="noopener noreferrer"
+                  aria-label="Download PB FISHING on the App Store">
+                  Download on the App Store
+                </a> </div> <div class="download-meta"> <span>Free on iPhone</span> <span>iOS 17.6+</span> <span>Yearly $29.99 · save 37%</span> </div> </div> </div> </div> </section> </main> <!-- ── FOOTER ────────────────────────────────────────────── --> <footer class="footer-pb"> <div class="container-xl"> <div class="row g-4 g-lg-5"> <div class="col-lg-5"> <div class="footer-brand mb-3"> <!-- White logo on dark footer background --> <img src="https://i.ibb.co/YFhyG9RV/pb-fishing-logo-nobg.png" alt="PB FISHING" class="footer-pb-logo" width="40" height="40" /> </div> <p class="footer-tagline">Measure. Rank. Improve.<br>The iOS fishing companion for serious anglers.</p> </div> <div class="col-6 col-lg-2"> <h3 class="footer-heading">Product</h3> <ul class="footer-links"> <li><a href="#features" data-scroll>Features</a></li> <li><a href="#how-it-works" data-scroll>How it works</a></li> <li><a href="#community" data-scroll>Community</a></li> <li><a href="#map" data-scroll>Map</a></li> <li><a href="#pricing" data-scroll>Pricing</a></li> <li><a href="#download" data-scroll>Download</a></li> </ul> </div> <div class="col-6 col-lg-2"> <h3 class="footer-heading">Company</h3> <ul class="footer-links"> <li><a href="https://pbfishing.app/privacy-policy">Privacy Policy</a></li> <li><a href="https://pbfishing.app/eula">EULA</a></li> <li><a href="mailto:support@pbfishing.app">Contact</a></li> </ul> </div> </div> <div class="footer-bottom"> <p class="mb-0">
+            © 2026
+            <a class="footer-copyright" href="https://uzspower.com" target="_blank" rel="noopener noreferrer">UZSPOWER LLC</a>.
+            All rights reserved.
+          </p> <div class="footer-bottom-meta"> <a class="footer-credit" href="https://strike11.github.io/Diyor-Babadjanov-Portfolio-WebSite/"
+              target="_blank" rel="noopener noreferrer">
+              Web development by Diyor Babadjanov
+            </a> <span class="footer-locale"> <i data-lucide="globe"></i>
+              United States · English
+            </span> <span class="footer-version">v1.0</span> </div> </div> </div> </footer> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script> <script src="https://unpkg.com/lucide@1.16.0/dist/umd/lucide.min.js"></script> <script>
+      (function () {
+        "use strict";
+
+        var prefersReduced =
+          typeof window.matchMedia === "function" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        var lucideRetries = 0;
+        function initLucideIcons() {
+          if (window.lucide && typeof window.lucide.createIcons === "function") {
+            window.lucide.createIcons({ attrs: { "stroke-width": 1.5 } });
+          } else if (lucideRetries < 30) {
+            lucideRetries++;
+            setTimeout(initLucideIcons, 80);
+          }
+        }
+
+        var nav = document.querySelector(".navbar-pb");
+        function onScrollNavbar() {
+          if (!nav) return;
+          var y = window.scrollY || window.pageYOffset;
+          nav.classList.toggle("navbar-scrolled", y > 40);
+        }
+
+        var parallaxRoots = document.querySelectorAll(".hero-parallax-stack");
+        function onParallax() {
+          if (prefersReduced) return;
+          var scrollY = window.scrollY || window.pageYOffset;
+          parallaxRoots.forEach(function (root) {
+            root.querySelectorAll("[data-parallax]").forEach(function (layer) {
+              var speed = parseFloat(layer.getAttribute("data-parallax"), 10) || 0.4;
+              var y = scrollY * speed;
+              layer.style.transform = "translate3d(0, " + y + "px, 0)";
+            });
+          });
+        }
+
+        function initReveals() {
+          var nodes = document.querySelectorAll(".reveal");
+          if (!nodes.length) return;
+          if (prefersReduced || !("IntersectionObserver" in window)) {
+            nodes.forEach(function (el) { el.classList.add("is-visible"); });
+            return;
+          }
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+          );
+          nodes.forEach(function (el) { io.observe(el); });
+        }
+
+        function initAnchorSmooth() {
+          document.querySelectorAll('a[data-scroll][href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener("click", function (e) {
+              var id = anchor.getAttribute("href");
+              if (!id || id === "#") return;
+              var target = document.querySelector(id);
+              if (!target) return;
+              e.preventDefault();
+              var navH = nav ? nav.offsetHeight : 0;
+              var top = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+              window.scrollTo({ top: Math.max(0, top), behavior: prefersReduced ? "auto" : "smooth" });
+              var collapseEl = document.querySelector(".navbar-collapse.show");
+              if (collapseEl && typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+                bootstrap.Collapse.getOrCreateInstance(collapseEl).hide();
+              }
+            });
+          });
+        }
+
+        function initAppStoreLink() {
+          var meta = document.querySelector('meta[name="pb-app-store"]');
+          var link = document.getElementById("app-store-download");
+          if (!meta || !link) return;
+          var url = meta.getAttribute("content");
+          if (url) link.href = url;
+        }
+
+        function tick() {
+          onScrollNavbar();
+          onParallax();
+        }
+
+        window.addEventListener("scroll", tick, { passive: true });
+        window.addEventListener("load", tick);
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", function () {
+            initAppStoreLink();
+            initLucideIcons();
+            initReveals();
+            initAnchorSmooth();
+            tick();
+          });
+        } else {
+          initAppStoreLink();
+          initLucideIcons();
+          initReveals();
+          initAnchorSmooth();
+          tick();
+        }
+      })();
+    </script> </body> </html>
