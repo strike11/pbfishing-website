@@ -1073,7 +1073,18 @@
         .reveal.is-visible { transform: none; }
       }
     </style>
-</head> <body> <!-- ── NAVBAR ──────────────────────────────────────────────── --> <nav class="navbar navbar-expand-lg navbar-pb fixed-top"> <div class="container-xl"> <div class="d-flex align-items-center gap-0"> <a class="navbar-brand" href="#top" data-scroll> <!-- White logo: shown over dark hero --> <img class="navbar-pb-logo navbar-pb-logo-white"
+  <!-- Base rules Tilda applied around this page (kept for 1:1 rendering) -->
+  <style id="tilda-compat">
+    :where(.t-records) a,:where(.t-records) button,:where(.t-records) .t-radio,:where(.t-records) .t-checkbox,:where(.t-records) .t-img-select{outline:none}
+    .t-records{-webkit-font-smoothing:antialiased;background-color:none}
+    :where(.t-records) a,:where(.t-records) .tn-nested-link{color:#ff8562;text-decoration:none}
+    :where(.t-records) a[href^=tel]{color:inherit;text-decoration:none}
+    :where(.t-records) ol{padding-left:22px;margin-top:0px;margin-bottom:10px}
+    :where(.t-records) ul{padding-left:20px;margin-top:0px;margin-bottom:10px}
+    :where(.t-records) b,:where(.t-records) strong{font-weight:700}
+  </style>
+</head> <body>
+<div id="allrecords" class="t-records"> <!-- ── NAVBAR ──────────────────────────────────────────────── --> <nav class="navbar navbar-expand-lg navbar-pb fixed-top"> <div class="container-xl"> <div class="d-flex align-items-center gap-0"> <a class="navbar-brand" href="#top" data-scroll> <!-- White logo: shown over dark hero --> <img class="navbar-pb-logo navbar-pb-logo-white"
               src="https://i.ibb.co/YFhyG9RV/pb-fishing-logo-nobg.png"
               alt="PB FISHING" width="44" height="44" /> <!-- Colored logo: shown after scroll on cream bg --> <img class="navbar-pb-logo navbar-pb-logo-colored"
               src="https://i.ibb.co/3Y9tmzwB/pb-fishing-logo-nobg-1.png"
@@ -1239,4 +1250,5 @@
           tick();
         }
       })();
-    </script> </body> </html>
+    </script> </div>
+</body> </html>

@@ -4,32 +4,32 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/page146371503.html",
+      "source": "/page146371503",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/page147409633.html",
+      "source": "/page147409633",
       "destination": "/eula",
       "permanent": true
     },
     {
-      "source": "/page147516373.html",
+      "source": "/page147516373",
       "destination": "/privacy-policy",
       "permanent": true
     },
     {
-      "source": "/page147771293.html",
+      "source": "/page147771293",
       "destination": "/support",
       "permanent": true
     },
     {
-      "source": "/page155252543.html",
+      "source": "/page155252543",
       "destination": "/obalus-partner",
       "permanent": true
     },
     {
-      "source": "/page255801903.html",
+      "source": "/page255801903",
       "destination": "/post",
       "permanent": true
     }
