@@ -176,6 +176,25 @@ const KICKER = { blog: { apps: "Fishing apps", "how-to": "How-to", tips: "Tips",
 const STATE_NAV = { hub: "Fishing guide", "best-lakes": "Best lakes", "bass-fishing": "Bass fishing", "species-seasons": "Species & seasons", "fishing-license": "License & rules", "state-record-fish": "State records", "beginner-spots": "Beginner spots" };
 
 const jobs = [];
+const RET = process.argv.indexOf("--retention");
+if (RET > 0) {
+  // App Store retention-message image: 3840×2160, three app screens on the contour backdrop.
+  const dest = process.argv[RET + 1];
+  const W = 3840, H = 2160;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${backdrop(W, H, "retention").replace(/stroke-width="1(\.8)?"/g, (m) => m.replace(/[\d.]+/, (n) => String(+n * 2.2)))}</svg>`;
+  const ch = 1720, cw = Math.round(ch * (1242 / 2688)), gap = 150;
+  const shots = ["catch-log", "leaderboard", "conditions"];
+  const x0 = Math.round((W - (cw * 3 + gap * 2)) / 2), y = Math.round((H - ch) / 2);
+  const overlays = [];
+  for (const [i, n] of shots.entries()) {
+    overlays.push({ input: await cardImage(join(ROOT, "src/assets/screens", `${n}.png`), cw, ch, { pad: 0, bg: BONE, fit: "cover", radius: 64 }), left: x0 + i * (cw + gap), top: y + (i === 1 ? -40 : 40) });
+  }
+  const shadow = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="40" stdDeviation="50" flood-color="#000" flood-opacity=".45"/></filter></defs>${shots.map((_, i) => `<rect x="${x0 + i * (cw + gap)}" y="${y + (i === 1 ? -40 : 40)}" width="${cw}" height="${ch}" rx="64" fill="#000" filter="url(#s)"/>`).join("")}</svg>`);
+  const base = await sharp(Buffer.from(svg)).png().toBuffer();
+  await out(dest, await sharp(base).composite([{ input: shadow }, ...overlays]).jpeg({ quality: 90 }).toBuffer());
+  console.log("retention image →", dest);
+  process.exit(0);
+}
 const SAMPLE = process.argv.indexOf("--sample");
 if (SAMPLE > 0) {
   const [spec, dest] = process.argv.slice(SAMPLE + 1);
