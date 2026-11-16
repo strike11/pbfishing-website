@@ -70,7 +70,7 @@ sources:
     publisher: "Florida Fish and Wildlife Conservation Commission"
 cta:
   title: "Not a state record? Still a PB"
-  text: "PB Fishing logs your catch with a photo, length and weight, tracks your personal best per species, and ranks it on a Florida leaderboard that resets each season. Free on iPhone."
+  text: "PB Fishing logs your catch with a photo, length and weight, tracks your personal best per species, and ranks it on a Florida leaderboard that resets each season. Free on iPhone and Android."
 ---
 
 State records are the far end of the same urge that makes you weigh a 3-pounder at the ramp. Florida keeps its freshwater records through FWC, with weights to the hundredth of a pound, and its saltwater records through FWC's Catch a Florida Memory program with the International Game Fish Association (IGFA). This page covers both, with most of the space on fresh water, where Florida's bass record draws the questions.

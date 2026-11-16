@@ -50,7 +50,7 @@ sources:
     publisher: "Florida Fish and Wildlife Conservation Commission"
 cta:
   title: "Know the water before you drive"
-  text: "PB Fishing covers 20,000+ named US waters, Florida's included, with species, seasonal activity and a daily bite forecast. Free catch logging, iPhone only."
+  text: "PB Fishing covers 20,000+ named US waters, Florida's included, with species, seasonal activity and a daily bite forecast. Free catch logging on iPhone and Android."
 ---
 
 Florida sells itself as the "Fishing Capital of the World," and FWC's own regulations guide uses that line without irony. It has earned it. Few states let you throw a frog for a 10-pound bass in the morning and soak shrimp for redfish off a pier the same evening. But that mix is also what trips people up: different seasons, different limits, and two different licenses depending on what bites.

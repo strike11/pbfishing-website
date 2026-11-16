@@ -44,7 +44,7 @@ sources:
     publisher: "Keep Fish Wet"
 cta:
   title: "Log your first fish, then beat it"
-  text: "PB Fishing keeps a free, unlimited photo log and tracks your personal best for every species. iPhone only."
+  text: "PB Fishing keeps a free, unlimited photo log and tracks your personal best for every species. On iPhone and Android."
 ---
 
 Most first trips go wrong in the same three places: too much gear, the wrong water, and a target fish that is hard to catch. Fix those and your odds of a bent rod on day one go way up. Everything below is aimed at a bank angler with no boat and no fishing friends, which, judging by r/FishingForBeginners, is most of you.

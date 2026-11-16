@@ -2,7 +2,7 @@
 import Base from "@/layouts/Base.astro";
 import Icon from "@/components/Icon.astro";
 const faq = [
-  { q: "How do I manage or cancel my subscription?", a: "Subscriptions are handled by Apple. On your device, open <strong>Settings → [your name] → Subscriptions</strong>, select PB FISHING, and choose to change or cancel your plan. Cancellations take effect at the end of the current billing period." },
+  { q: "How do I manage or cancel my subscription?", a: "Subscriptions are handled by Apple or Google, depending on where you subscribed. On iPhone or iPad, open <strong>Settings → [your name] → Subscriptions</strong>, select PB FISHING, and change or cancel your plan. On Android, open the <strong>Google Play Store → profile icon → Payments & subscriptions → Subscriptions</strong>, select PB FISHING, and cancel. Cancellations take effect at the end of the current billing period." },
   { q: "How do I delete my account?", a: "You can permanently delete your account from within the app: <strong>Profile → Settings → Delete Account</strong>. This removes your account and associated data and is irreversible." },
   { q: "I found a bug. What should I do?", a: "Please email us at <a href=\"mailto:support@pbfishing.app\">support@pbfishing.app</a> with a description, your device and app version, and a screenshot if possible. Bug reports help us improve the app for everyone." },
   { q: "How is my data handled?", a: "We never sell your personal information. Read the full <a href=\"/privacy-policy\">Privacy Policy</a> for details on what we collect and how it's protected." },
@@ -13,7 +13,7 @@ const ld = [
   { "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: strip(f.a) } })) },
 ];
 ---
-<Base title="Support" description="Get help with PB FISHING, the iOS fishing companion by UZSPOWER LLC. Contact our support team at support@pbfishing.app, manage subscriptions, delete your account." path="/support" jsonLd={ld} campaign="support" content="support" sticky={false}>
+<Base title="Support" description="Get help with PB FISHING, the iPhone and Android fishing companion by UZSPOWER LLC. Contact our support team at support@pbfishing.app, manage subscriptions, delete your account." path="/support" jsonLd={ld} campaign="support" content="support" sticky={false}>
   <section class="page-hero wrap" style="max-width:780px">
     <span class="kicker">Support</span>
     <h1>We're here to help</h1>
@@ -33,7 +33,7 @@ const ld = [
       <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))">
         <div class="card" style="padding:1.1rem 1.2rem"><strong>Your account email</strong><p style="margin:.3rem 0 0;font-size:.95rem">The email address you use to sign in to PB FISHING so we can locate your account.</p></div>
         <div class="card" style="padding:1.1rem 1.2rem"><strong>What happened</strong><p style="margin:.3rem 0 0;font-size:.95rem">A clear description of the issue or question, and the steps that led to it.</p></div>
-        <div class="card" style="padding:1.1rem 1.2rem"><strong>Device &amp; app version</strong><p style="margin:.3rem 0 0;font-size:.95rem">Your iPhone/iPad model, iOS version, and the PB FISHING version (Settings → About).</p></div>
+        <div class="card" style="padding:1.1rem 1.2rem"><strong>Device &amp; app version</strong><p style="margin:.3rem 0 0;font-size:.95rem">Your phone model (iPhone, iPad or Android), its OS version, and the PB FISHING version (Settings → About).</p></div>
         <div class="card" style="padding:1.1rem 1.2rem"><strong>Screenshots</strong><p style="margin:.3rem 0 0;font-size:.95rem">If something looks wrong, a screenshot or screen recording helps us diagnose it quickly.</p></div>
       </div>
       <section class="faq" aria-labelledby="faq-h">

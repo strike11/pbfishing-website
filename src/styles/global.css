@@ -187,8 +187,13 @@ a.chip:hover { background: rgba(212, 160, 23, 0.16); color: var(--navy); }
 .store-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: #000; color: #fff; border-radius: 12px; padding: 0.55rem 1.1rem 0.55rem 0.9rem; text-decoration: none; min-height: 52px; border: 1px solid rgba(255, 255, 255, 0.25); }
 .store-badge:hover { color: #fff; background: #111; }
 .store-badge svg { width: 26px; height: 26px; }
-.store-badge span { display: flex; flex-direction: column; line-height: 1.05; font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+.store-badge span { display: flex; flex-direction: column; line-height: 1.05; font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
 .store-badge small { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.01em; }
+.store-badge-play small { text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.62rem; }
+.store-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.store-badges .store-badge { min-width: 180px; justify-content: center; }
+.is-android .store-badges .store-badge-play { order: -1; }
+@media (max-width: 400px) { .store-badges .store-badge { min-width: 0; flex: 1 1 160px; padding-inline: 0.7rem; } }
 
 /* Sticky mobile install bar */
 .sticky-cta { position: fixed; left: 0.75rem; right: 0.75rem; bottom: 0.75rem; z-index: 40; display: none; align-items: center; gap: 0.75rem; padding: 0.6rem 0.6rem 0.6rem 0.75rem; border-radius: 18px; background: rgba(18, 41, 58, 0.96); color: var(--bone); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25); transform: translateY(130%); transition: transform 0.25s ease; }
@@ -196,7 +201,7 @@ a.chip:hover { background: rgba(212, 160, 23, 0.16); color: var(--navy); }
 .sticky-cta img { width: 40px; height: 40px; border-radius: 10px; background: var(--bone); padding: 4px; }
 .sticky-cta strong { display: block; font-size: 0.9rem; line-height: 1.2; }
 .sticky-cta small { display: block; font-size: 0.75rem; color: rgba(245, 240, 232, 0.7); }
-.sticky-cta .btn { margin-left: auto; min-height: 42px; padding: 0.5rem 1rem; }
+.sticky-cta .btn { margin-left: auto; min-height: 42px; padding: 0.5rem 1rem; white-space: nowrap; }
 .sticky-cta button.x { background: none; border: 0; color: rgba(245, 240, 232, 0.6); width: 32px; height: 32px; font-size: 1.2rem; cursor: pointer; }
 @media (max-width: 760px) { .sticky-cta { display: flex; } }
 
@@ -211,7 +216,7 @@ a.chip:hover { background: rgba(212, 160, 23, 0.16); color: var(--navy); }
 .hero-fig figcaption { font-size: 0.78rem; color: rgba(245, 240, 232, 0.7); padding: 0.5rem 1rem; background: var(--navy-deep); }
 .article-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 3.5rem; align-items: start; }
 .article-layout > .prose { max-width: var(--prose); }
-@media (max-width: 1020px) { .article-layout { grid-template-columns: 1fr; } .toc { display: none; } }
+@media (max-width: 1020px) { .article-layout { grid-template-columns: minmax(0, 1fr); } .toc { display: none; } }
 .toc { position: sticky; top: 90px; font-size: 0.9rem; border-left: 2px solid var(--line-2); padding-left: 1.1rem; }
 .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
 .toc a { color: var(--ink-2); text-decoration: none; line-height: 1.35; display: block; }

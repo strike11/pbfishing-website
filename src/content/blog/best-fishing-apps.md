@@ -4,6 +4,7 @@ seoTitle: "Best Fishing Apps 2026: Free vs Paid, Honestly Compared"
 description: "The best fishing apps of 2026 picked by job: logging PBs, depth maps, catch data, forecasts, saltwater and regs. Real US App Store prices, free tiers and limits."
 keyword: "best fishing apps"
 published: 2026-11-11
+updated: 2026-11-16
 art: "screen:hero"
 heroAlt: "PB Fishing home screen on an iPhone over gold lake contour lines"
 lede: "No single app does everything well. Here are the ones worth a spot on your home screen in 2026, sorted by the job you need done, with **prices checked on the US App Store in November 2026**."
@@ -11,7 +12,7 @@ takeaways:
   - "Pick by job: one app for your log, one for maps, and the free state agency app for your license."
   - "Fishbrain has the biggest catch database and Garmin depth maps in Pro, at $79.99 a year or $12.99 to $14.99 a month."
   - "Navionics Boating ($49.99 a year for US and Canada) is still the depth-chart standard."
-  - "Anglers' Log, MyCatch and PB Fishing all log catches free. PB Fishing adds species PBs and state leaderboards but is iPhone only."
+  - "Anglers' Log, MyCatch and PB Fishing all log catches free. PB Fishing adds species PBs and state leaderboards."
   - "Read the subscription screen before you tap a free trial. Most of the 1-star reviews in this category are about billing."
 faq:
   - q: "What are some of the best fishing apps?"
@@ -23,7 +24,7 @@ faq:
   - q: "What is the best app for finding the best fishing conditions?"
     a: "Fishing Points is strongest on tides, wind and marine weather. BassForecast is built for bass and gives a daily rating with pressure and wind trends. Treat any bite score as a reference, not a promise. See [the best time to fish](/blog/best-time-to-fish)."
   - q: "Is there a good fishing app for Android?"
-    a: "Fishbrain, FishAngler, Fishbox, Fishing Points, BassForecast, Navionics, Anglers' Log and MyCatch are all on Google Play. PB Fishing is iPhone only."
+    a: "Fishbrain, FishAngler, Fishbox, Fishing Points, BassForecast, Navionics, Anglers' Log and MyCatch are all on Google Play, and so is PB Fishing."
 sources:
   - title: "Fishbrain - Fishing App (US App Store)"
     url: "https://apps.apple.com/us/app/fishbrain-fishing-app/id477967747"
@@ -54,7 +55,7 @@ sources:
     publisher: "Fishbrain"
 cta:
   title: "A free log that tracks your PBs"
-  text: "Unlimited catch logging is free in PB Fishing. Premium is $29.99 a year if you want hourly forecasts and the full national leaderboard. iPhone only."
+  text: "Unlimited catch logging is free in PB Fishing. Premium is $29.99 a year if you want hourly forecasts and the full national leaderboard. On iPhone and Android."
 category: apps
 kind: listicle
 related: [is-fishbrain-worth-it, fishbrain-alternatives, best-fishing-log-apps, pb-fishing-vs-fishbrain]
@@ -80,7 +81,7 @@ An app made this list if it does one job well and is honest about what you pay f
 |---|---|---|---|---|
 | Fishbrain | Catch data, community, depth maps | Logbook, community, basic map | $12.99 to $14.99/mo, $41.99/quarter, $79.99/yr | iPhone, iPad, Android |
 | Navionics Boating | Depth charts and navigation | Limited trial | $49.99/yr (US & Canada) | iPhone, iPad, Android |
-| PB Fishing | Catch log, species PBs, state leaderboards | Unlimited logging, 5 photo IDs, daily forecast | $3.99/mo or $29.99/yr | iPhone only |
+| PB Fishing | Catch log, species PBs, state leaderboards | Unlimited logging, 5 photo IDs, daily forecast | $3.99/mo or $29.99/yr | iPhone, Android |
 | FishAngler | Free community and catch map | Large free tier | VIP $6.99/mo or $49.99/yr | iPhone, iPad, Android |
 | BassForecast | Bass-specific daily forecast | Basic forecast | $5.99/mo or $29.95/yr | iPhone, iPad, Android, web |
 | Fishing Points | Tides, marine weather, saltwater | Basic forecast and map | $9.99 to $49.99 (yearly Premium $49.99) | iPhone, iPad, Android |
@@ -119,9 +120,9 @@ You snap a side-profile photo, the app suggests the species and estimates length
 
 There's also a map of 20,000+ named US waters with species lists, live conditions and a bite forecast, plus links to each state's official license pages.
 
-**Price:** unlimited catch logging is free, with 5 photo IDs, a top-10 leaderboard preview, a daily bite forecast and up to 2 planned trips. Premium is $3.99 a month or $29.99 a year (7-day trial on yearly), billed by Apple.
+**Price:** unlimited catch logging is free, with 5 photo IDs, a top-10 leaderboard preview, a daily bite forecast and up to 2 planned trips. Premium is $3.99 a month or $29.99 a year (7-day trial on yearly), billed through the App Store or Google Play.
 
-**Where it falls short:** iPhone only, iOS 17.6 or newer. No Android. The community is young, so on many waters you won't find the volume of catch reports Fishbrain has. No depth charts: pair it with Navionics if you fish structure.
+**Where it falls short:** the community is young, so on many waters you won't find the volume of catch reports Fishbrain has. No depth charts: pair it with Navionics if you fish structure.
 
 ## 4. FishAngler
 

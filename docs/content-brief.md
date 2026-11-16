@@ -2,13 +2,13 @@
 
 Read this whole file before writing. Also read `research/customer-voice.md` (Russian prose, English quotes): every page must answer a real pain, question or phrase from it. Use anglers' own vocabulary (PB, skunked, bite window, honey hole, dink, hawg, bank fishing, bump board).
 
-Goal: outrank Fishbrain, FishAngler, Fishbox, Fishing Points, BassForecast, state-agency pages and big media (Bassmaster, Wired2Fish, Take Me Fishing) for the target query by being **more specific, more honest and more useful**, then move the reader to the PB Fishing iOS app.
+Goal: outrank Fishbrain, FishAngler, Fishbox, Fishing Points, BassForecast, state-agency pages and big media (Bassmaster, Wired2Fish, Take Me Fishing) for the target query by being **more specific, more honest and more useful**, then move the reader to the PB Fishing app (iPhone and Android).
 
 Google's scaled-content-abuse and helpful-content rules apply. A page that would read the same with another state, lake or species name swapped in is a failure. Each page must contain facts, numbers, names, tables and judgement that only belong on that page.
 
 ## Product facts you may use (and nothing beyond them)
 
-PB Fishing (iPhone, iOS 17.6+; no Android) by UZSPOWER LLC.
+PB Fishing (iPhone and Android: App Store, iOS 17.6+, and Google Play) by UZSPOWER LLC. Say "iPhone and Android" when you mention availability; never call it iPhone-only.
 - Photo-backed catch log: snap a side-profile photo; log species, length, weight; the app helps identify the species and estimate length from the photo. Date, water and a conditions snapshot (weather, pressure) are saved with the catch.
 - Catches logged with no signal are stored on the phone and uploaded when you're back online.
 - Personal bests per species, tracked automatically.
@@ -16,9 +16,9 @@ PB Fishing (iPhone, iOS 17.6+; no Android) by UZSPOWER LLC.
 - 20,000+ named US waters with species, seasonal activity, community ratings, live conditions and a bite forecast; trip planner; tackle guidance; links to each state's official license/regulation pages.
 - Community: 24-hour stories, feed (For You / Following), likes, comments, saves.
 - Free forever: unlimited catch logging, 5 photo identifications, top-10 leaderboard preview, daily bite forecast, trip planner up to 2 trips.
-- Premium: $3.99/month or $29.99/year (7-day free trial on yearly; "$2.50 a month"). Adds unlimited photo IDs, hourly bite forecast + species odds, full national leaderboard, catch insights & trends, advanced stats, predictive hotspots, unlimited trips, 10-day weather & catch history. Billed by Apple; cancel in iPhone Settings → Subscriptions.
+- Premium: $3.99/month or $29.99/year (7-day free trial on yearly; "$2.50 a month"). Adds unlimited photo IDs, hourly bite forecast + species odds, full national leaderboard, catch insights & trends, advanced stats, predictive hotspots, unlimited trips, 10-day weather & catch history. Billed by Apple on iPhone (cancel in Settings → your name → Subscriptions) or by Google Play on Android (Play Store → profile → Payments & subscriptions → Subscriptions).
 
-Never claim: "verified" records (say **photo-backed**), accuracy numbers, user counts beyond "12,000+ anglers" (avoid even that in articles), ratings, "learns from your history", CSV export, Android, "never get skunked", that spots are private in the feed/community. Don't put "AI" in titles or headings.
+Never claim: "verified" records (say **photo-backed**), accuracy numbers, user counts beyond "12,000+ anglers" (avoid even that in articles), ratings, "learns from your history", CSV export, "never get skunked", that spots are private in the feed/community. Don't put "AI" in titles or headings.
 
 ## Voice
 
