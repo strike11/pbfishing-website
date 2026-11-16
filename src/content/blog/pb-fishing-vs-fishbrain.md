@@ -1,24 +1,25 @@
 ---
 title: "PB Fishing vs Fishbrain: Which Fishing App Fits How You Fish?"
 seoTitle: "PB Fishing vs Fishbrain (2026): Price and Features"
-description: "PB Fishing vs Fishbrain, side by side: price, free tier, catch data, depth maps, PB tracking, leaderboards and Android. Including where Fishbrain is plainly better."
+description: "PB Fishing vs Fishbrain, side by side: price, free tier, catch data, depth maps, PB tracking, leaderboards and platforms. Including where Fishbrain is plainly better."
 keyword: "pb fishing vs fishbrain"
 published: 2026-11-11
+updated: 2026-11-16
 art: "screen:map"
 heroAlt: "PB Fishing map screen with named lakes on an iPhone over gold contour lines"
 lede: "We make PB Fishing, so read this with that in mind. We've tried to be straight about **where Fishbrain wins**, where we do, and which one fits the way you actually fish. Prices are from the US App Store as of November 2026."
 takeaways:
-  - "Fishbrain wins on catch data, community size, Garmin depth maps and Android support."
+  - "Fishbrain wins on catch data, community size and Garmin depth maps. Both apps run on iPhone and Android."
   - "PB Fishing wins on price ($29.99 vs $79.99 a year), free unlimited logging, automatic PBs per species, and state leaderboards that show your state, not your lake."
   - "Fish lots of new water and need depth charts: Fishbrain. Want a log built around your personal bests: PB Fishing."
-  - "PB Fishing is iPhone only and its community is much younger. On many waters you'll find more catch reports on Fishbrain."
+  - "PB Fishing's community is much younger. On many waters you'll find more catch reports on Fishbrain."
 faq:
   - q: "Is Fishbrain a good fishing app?"
     a: "Yes. It has the largest catch database and community of any US fishing app, plus Garmin depth maps in Pro. Its weak spots are price, the social feed and crowd-sourced pins that aren't always accurate."
   - q: "How much is a Fishbrain Pro subscription?"
     a: "As of November 2026 the US App Store lists it at $79.99 a year, $41.99 a quarter, or $12.99 to $14.99 a month, with a 3-day trial on Fishbrain's Pro page. PB Fishing Premium is $29.99 a year or $3.99 a month."
   - q: "Does PB Fishing work on Android?"
-    a: "No. PB Fishing is iPhone only (iOS 17.6 or newer). Fishbrain is on both iPhone and Android."
+    a: "Yes. PB Fishing is on Google Play for Android phones and on the App Store for iPhone (iOS 17.6 or newer). Fishbrain is on both too."
   - q: "Can other anglers see where I caught my fish on the PB Fishing leaderboard?"
     a: "A leaderboard entry shows your name, state, length and weight. It doesn't show the lake or coordinates. Anything you post to the community feed is separate, so check what's in your photos and captions before posting."
   - q: "Can I use both apps?"
@@ -38,7 +39,7 @@ sources:
     publisher: "Google Play"
 cta:
   title: "Try the log, keep your money"
-  text: "Unlimited catch logging and automatic PBs are free. Premium is $29.99 a year, about $2.50 a month, with a 7-day trial on yearly. iPhone only."
+  text: "Unlimited catch logging and automatic PBs are free. Premium is $29.99 a year, about $2.50 a month, with a 7-day trial on yearly. On iPhone and Android."
 category: apps
 kind: comparison
 related: [is-fishbrain-worth-it, fishbrain-alternatives, fishing-leaderboard-apps, best-fishing-apps]
@@ -50,8 +51,8 @@ We build PB Fishing. That's exactly why this page leads with where Fishbrain is 
 
 ## The 30-second verdict
 
-- **Pick Fishbrain** if you fish lots of unfamiliar water, want depth charts in the same app, use Android, or like a big active community.
-- **Pick PB Fishing** if you want a free log with no catch limit, care about your personal bests per species, like the idea of a state leaderboard, and are on an iPhone.
+- **Pick Fishbrain** if you fish lots of unfamiliar water, want depth charts in the same app, or like a big active community.
+- **Pick PB Fishing** if you want a free log with no catch limit, care about your personal bests per species, and like the idea of a state leaderboard.
 - **Use both** if you scout with Fishbrain's free tier and keep your own record somewhere else.
 
 ## Side-by-side comparison
@@ -65,7 +66,7 @@ Prices and platforms checked on the US App Store and Google Play in November 202
 | Other plans | $41.99 a quarter | None |
 | Free trial | 3 days (per Fishbrain's Pro page) | 7 days on yearly |
 | Free catch logging | Yes | Yes, unlimited |
-| Platforms | iPhone, iPad, Apple Vision, Android | iPhone only (iOS 17.6+) |
+| Platforms | iPhone, iPad, Apple Vision, Android | iPhone (iOS 17.6+), Android |
 | Community size | More than 20 million anglers, per Fishbrain | Young, much smaller |
 | Community catch locations | Yes, exact positions in Pro | No public catch map |
 | Depth maps | Garmin Navionics HD (Pro) | None |
@@ -87,8 +88,6 @@ Let's be clear about these, because they're real.
 **Community size.** More anglers means more answers in groups, more reports from small waters, and more people near you. Our community is new. That will take time, and we won't pretend otherwise.
 
 **Depth maps.** Fishbrain Pro includes Garmin Navionics depth charts for the US and Canada. PB Fishing has no depth charts. If you fish offshore structure, ledges or ice, you'll need Navionics or Fishbrain Pro either way.
-
-**Android.** Fishbrain runs on Android. PB Fishing doesn't. If you're on Android, the rest of this page doesn't matter.
 
 **Track record.** Fishbrain has been around for over a decade. Anglers who remember apps shutting down and taking their logs with them have a fair reason to weigh that.
 
@@ -121,7 +120,6 @@ Whichever app you use, the safest habit is the old one: crop out landmarks and d
 |---|---|---|
 | New to an area, scouting lots of ponds | Fishbrain | Catch reports show what lives where |
 | Kayak or boat angler fishing structure | Fishbrain Pro or Navionics | Depth charts |
-| On Android | Fishbrain | PB Fishing is iPhone only |
 | Bank angler chasing a bigger bass every season | PB Fishing | Free log, automatic PBs, state board |
 | Competitive, but not into paying tournament entry fees | PB Fishing | Season-long state leaderboards, no entry fee |
 | Wants a private record, no community at all | Neither; try Anglers' Log or Infinite Livewell | See [best fishing log apps](/blog/best-fishing-log-apps) |
@@ -135,4 +133,4 @@ Yes, and lots of anglers do something like it. Use Fishbrain's free tier to see 
 
 ## Bottom line
 
-Fishbrain is the better app for finding fish on unfamiliar water, and it's the one to pick on Android. PB Fishing is the better deal if what you care about is your own catches, your PBs and where they rank in your state, and you're on an iPhone. If you're still deciding whether Fishbrain Pro is worth the money at all, read [Is Fishbrain worth it?](/blog/is-fishbrain-worth-it), and if you want to see the rest of the field, [Fishbrain alternatives](/blog/fishbrain-alternatives) covers nine more options.
+Fishbrain is the better app for finding fish on unfamiliar water. PB Fishing is the better deal if what you care about is your own catches, your PBs and where they rank in your state, on iPhone or Android. If you're still deciding whether Fishbrain Pro is worth the money at all, read [Is Fishbrain worth it?](/blog/is-fishbrain-worth-it), and if you want to see the rest of the field, [Fishbrain alternatives](/blog/fishbrain-alternatives) covers nine more options.

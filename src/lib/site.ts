@@ -4,8 +4,8 @@ export const ORG = "UZSPOWER LLC";
 export const APP_NAME = "PB Fishing: Catch & Compete";
 export const SUPPORT_EMAIL = "support@pbfishing.app";
 
-import { APP_ID, APP_STORE, APP_STORE_PROVIDER_TOKEN, appLink as _appLink } from "./applink.mjs";
-export { APP_ID, APP_STORE, APP_STORE_PROVIDER_TOKEN };
+import { APP_ID, APP_STORE, APP_STORE_PROVIDER_TOKEN, PLAY_ID, PLAY_STORE, appLink as _appLink, playLink as _playLink } from "./applink.mjs";
+export { APP_ID, APP_STORE, APP_STORE_PROVIDER_TOKEN, PLAY_ID, PLAY_STORE };
 
 export type Placement = "header" | "hero" | "inline" | "end" | "sticky" | "footer" | "quiz-result" | "state" | "banner" | "calculator" | "toc" | "mid";
 
@@ -16,6 +16,9 @@ export type Placement = "header" | "hero" | "inline" | "end" | "sticky" | "foote
  * `campaign` is the page group (blog, state, quiz, home...), `content` the page slug, `placement` where on the page.
  */
 export const appLink = (campaign: string, content: string, placement: Placement = "inline"): string => _appLink(campaign, content, placement);
+
+/** Google Play link with the same campaign/content/placement, carried in Play's `referrer` param. */
+export const playLink = (campaign: string, content: string, placement: Placement = "inline"): string => _playLink(campaign, content, placement);
 
 export const abs = (path: string) => (path.startsWith("http") ? path : `${SITE}${path === "/" ? "" : path}` || SITE);
 
@@ -35,18 +38,19 @@ export const ORG_LD = {
   url: `${SITE}/`,
   logo: { "@type": "ImageObject", url: `${SITE}/brand/pb-logo-512.png`, width: 512, height: 512 },
   email: SUPPORT_EMAIL,
-  sameAs: [APP_STORE],
+  sameAs: [APP_STORE, PLAY_STORE],
 };
 
 export const APP_LD = {
   "@type": "MobileApplication",
   "@id": `${SITE}/#app`,
   name: APP_NAME,
-  operatingSystem: "iOS 17.6 or later",
+  operatingSystem: "iOS, Android",
   applicationCategory: "LifestyleApplication",
-  url: APP_STORE,
-  downloadUrl: APP_STORE,
-  installUrl: APP_STORE,
+  url: `${SITE}/`,
+  downloadUrl: [APP_STORE, PLAY_STORE],
+  installUrl: [APP_STORE, PLAY_STORE],
+  sameAs: [APP_STORE, PLAY_STORE],
   image: `${SITE}/brand/pb-logo-512.png`,
   description:
     "Photo-backed fishing log, personal bests, state and national leaderboards, bite forecasts and trip planning for US anglers.",

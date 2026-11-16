@@ -1,5 +1,5 @@
 ---
-import StoreBadge from "./StoreBadge.astro";
+import StoreBadges from "./StoreBadges.astro";
 import { STATES } from "@/data/states";
 interface Props { campaign: string; content: string }
 const { campaign, content } = Astro.props;
@@ -10,8 +10,8 @@ const live = STATES.filter((s) => s.live).slice(0, 6);
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="/"><img src="/brand/pb-logo-white-160.png" alt="" width="40" height="40" loading="lazy" /><span>PB Fishing</span></a>
-        <p>Measure. Rank. Improve. The iOS fishing companion for anglers who want an honest record of every catch.</p>
-        <StoreBadge campaign={campaign} content={content} placement="footer" />
+        <p>Measure. Rank. Improve. The iPhone and Android fishing companion for anglers who want an honest record of every catch.</p>
+        <StoreBadges campaign={campaign} content={content} placement="footer" />
       </div>
       <nav aria-label="Learn">
         <h2>Learn</h2>

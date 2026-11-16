@@ -1,12 +1,12 @@
 ---
-import { appLink } from "@/lib/site";
+import { appLink, playLink } from "@/lib/site";
 interface Props { campaign: string; content: string }
 const { campaign, content } = Astro.props;
 ---
 <div class="sticky-cta" data-sticky role="complementary" aria-label="Get the PB Fishing app">
   <img src="/brand/pb-logo-96.png" alt="" width="40" height="40" loading="lazy" />
-  <div><strong>PB Fishing</strong><small>Free catch log · iPhone</small></div>
-  <a class="btn btn-gold" href={appLink(campaign, content, "sticky")} data-cta="sticky">Get it free</a>
+  <div><strong>PB Fishing</strong><small>iOS &amp; Android</small></div>
+  <a class="btn btn-gold" href={appLink(campaign, content, "sticky")} data-play={playLink(campaign, content, "sticky")} data-cta="sticky">Get it free</a>
   <button class="x" type="button" aria-label="Dismiss" data-x>×</button>
 </div>
 <script is:inline>

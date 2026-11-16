@@ -4,6 +4,7 @@ seoTitle: "Is Fishbrain Pro Worth It? 2026 Price, Free vs Pro"
 description: "Fishbrain Pro costs $79.99 a year or $12.99 to $14.99 a month on the US App Store. What free gets you, what Pro adds, what anglers love and hate, and who should pay."
 keyword: "is fishbrain worth it"
 published: 2026-11-11
+updated: 2026-11-16
 art: "icons:wallet,scale,fish"
 heroAlt: "Gold line icons of a wallet, a balance scale and a fish over lake contour lines"
 lede: "Fishbrain Pro is worth it for one kind of angler and a waste for another. Here's what it costs **as of November 2026**, what you actually get, and how to tell which side you're on."
@@ -39,7 +40,7 @@ sources:
     publisher: "Apple App Store"
 cta:
   title: "Just want a log and your PBs?"
-  text: "PB Fishing logs unlimited catches for free and tracks your best fish per species. Premium is $29.99 a year if you want more. iPhone only."
+  text: "PB Fishing logs unlimited catches for free and tracks your best fish per species. Premium is $29.99 a year if you want more. On iPhone and Android."
 category: apps
 kind: explainer
 related: [fishbrain-alternatives, pb-fishing-vs-fishbrain, best-fishing-apps]
@@ -125,7 +126,7 @@ The negative side is just as consistent.
 - **You don't want your spots anywhere near a public map.** Use a private log and keep sharing off.
 - **You're a beginner on a budget.** Spend the $80 on a license, line and a few [lures that work by season](/blog/best-bass-lures-by-season).
 
-If the log and your personal bests are what you care about, that's the job PB Fishing was built for: unlimited free logging, an automatic PB per species, and Premium at $29.99 a year. It's iPhone only and its community is much smaller than Fishbrain's, so it won't replace Fishbrain's catch data. We lay that trade-off out in [PB Fishing vs Fishbrain](/blog/pb-fishing-vs-fishbrain).
+If the log and your personal bests are what you care about, that's the job PB Fishing was built for: unlimited free logging, an automatic PB per species, and Premium at $29.99 a year. It runs on iPhone and Android, but its community is much smaller than Fishbrain's, so it won't replace Fishbrain's catch data. We lay that trade-off out in [PB Fishing vs Fishbrain](/blog/pb-fishing-vs-fishbrain).
 
 ## How to get the most out of the 3-day trial
 

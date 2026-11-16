@@ -4,7 +4,7 @@
 // - marks external links rel="noopener",
 // - inserts one app call to action before the third H2 (or at the end of shorter pages),
 //   tagged with the page's campaign so installs can be attributed.
-import { appLink } from "./applink.mjs";
+import { appLink, playLink } from "./applink.mjs";
 
 const h = (tagName, properties = {}, children = []) => ({
   type: "element", tagName, properties,
@@ -32,6 +32,29 @@ function collectionOf(path) {
   return { collection: m[1], slug: m[2].replace(/\//g, "-").replace(/-index$/, "") };
 }
 
+const APPLE_SVG = "M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.63 1.11 8.8.73 1.06 1.6 2.25 2.75 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.32-3.55zM14.17 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z";
+const PLAY_PATHS = [
+  ["#00a0ff", "M3.61 1.81 13.79 12 3.61 22.19a1.5 1.5 0 0 1-.61-1.24V3.05c0-.52.24-.97.61-1.24z"],
+  ["#ffd500", "m17.1 15.31-3.31-3.31 3.31-3.31 3.99 2.27c1.13.64 1.13 1.44 0 2.08l-3.99 2.27z"],
+  ["#ff3a44", "M17.1 15.31 13.79 12 3.61 22.19c.37.39.98.44 1.67.05l11.82-6.93z"],
+  ["#00f076", "M17.1 8.69 5.28 1.76c-.69-.39-1.3-.34-1.67.05L13.79 12l3.31-3.31z"],
+];
+
+/** Same markup as src/components/StoreBadges.astro. */
+function storeBadges(campaign, slug, placement) {
+  const svg = (children, fill) => h("svg", { viewBox: "0 0 24 24", ariaHidden: "true", ...(fill ? { fill } : {}) }, children);
+  return h("div", { className: ["store-badges"] }, [
+    h("a", { className: ["store-badge"], href: appLink(campaign, slug, placement), dataCta: placement, dataStore: "apple" }, [
+      svg([h("path", { d: APPLE_SVG })], "currentColor"),
+      h("span", {}, [h("small", {}, ["Download on the"]), "App Store"]),
+    ]),
+    h("a", { className: ["store-badge", "store-badge-play"], href: playLink(campaign, slug, placement), dataCta: placement, dataStore: "google" }, [
+      svg(PLAY_PATHS.map(([fill, d]) => h("path", { fill, d }))),
+      h("span", {}, [h("small", {}, ["GET IT ON"]), "Google Play"]),
+    ]),
+  ]);
+}
+
 function cta(where, fm) {
   const copy = fm?.cta ?? DEFAULTS[where.collection];
   const campaign = where.collection === "states" ? "state" : where.collection;
@@ -41,8 +64,8 @@ function cta(where, fm) {
       h("p", { className: ["h3"], role: "heading", ariaLevel: "2" }, [copy.title]),
       h("p", {}, [copy.text]),
       h("div", { className: ["cta-row"] }, [
-        h("a", { className: ["btn", "btn-gold"], href: appLink(campaign, where.slug, "mid"), dataCta: "mid" }, ["Get PB Fishing free"]),
-        h("span", { className: ["cta-note"] }, ["iPhone · free catch log · Premium optional"]),
+        storeBadges(campaign, where.slug, "mid"),
+        h("span", { className: ["cta-note"] }, ["iPhone and Android · free catch log · Premium optional"]),
       ]),
     ]),
   ]);

@@ -66,7 +66,7 @@ sources:
     publisher: "WUWF Public Media"
 cta:
   title: "The official links, one tap away"
-  text: "PB Fishing links each state's official license and regulation pages next to the water you're planning to fish, so you can check the rules before you drive. Free on iPhone."
+  text: "PB Fishing links each state's official license and regulation pages next to the water you're planning to fish, so you can check the rules before you drive. Free on iPhone and Android."
 ---
 
 "Do I need a freshwater or saltwater license?" is the most common Florida fishing question, and FWC's own FAQ admits that where both kinds of fish swim, "the issue becomes less clear." Here's the straight answer, with every price from FWC's 2026–2027 license tables. Fees are set by the Legislature; license agents add an issuance fee and FWC adds a handling fee to online and phone sales. All sales are final.

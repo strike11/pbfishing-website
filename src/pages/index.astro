@@ -2,10 +2,10 @@
 import { Picture } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import Icon from "@/components/Icon.astro";
-import StoreBadge from "@/components/StoreBadge.astro";
+import StoreBadges from "@/components/StoreBadges.astro";
 import PostCard from "@/components/PostCard.astro";
 import QuizIcon from "@/components/QuizIcon.astro";
-import { APP_LD, appLink } from "@/lib/site";
+import { APP_LD, appLink, playLink } from "@/lib/site";
 import { allPosts, heroFor, CATEGORY_LABEL } from "@/lib/content";
 import { STATES } from "@/data/states";
 import { QUIZZES } from "@/data/quizzes";
@@ -22,13 +22,14 @@ const posts = (await allPosts()).slice(0, 6);
 const live = STATES.filter((s) => s.live);
 const c = "home";
 const L = (p: Parameters<typeof appLink>[2]) => appLink(c, "home", p);
+const P = (p: Parameters<typeof playLink>[2]) => playLink(c, "home", p);
 const ld = [
   APP_LD,
   { "@type": "WebPage", "@id": "https://pbfishing.app/#webpage", url: "https://pbfishing.app/", name: "PB Fishing: catch log, leaderboards & trip planner", isPartOf: { "@id": "https://pbfishing.app/#website" }, about: { "@id": "https://pbfishing.app/#app" } },
 ];
 const obalusLogo = obalus.replace(/fill="black"/g, 'fill="currentColor"').replace("<svg", '<svg aria-hidden="true" class="obalus-logo"');
 ---
-<Base title="PB Fishing: Catch Log, Leaderboards & Trip Planner" description="Photo-backed fishing log, personal bests, state and national leaderboards, bite forecasts and trip planning for 20,000+ US waters. Free on iPhone." path="/" jsonLd={ld} campaign={c} content="home">
+<Base title="PB Fishing: Catch Log, Leaderboards & Trip Planner" description="Photo-backed fishing log, personal bests, state and national leaderboards, bite forecasts and trip planning for 20,000+ US waters. Free on iPhone and Android." path="/" jsonLd={ld} campaign={c} content="home">
   <style>
     .hero { position: relative; color: var(--bone); background: var(--navy-deep); overflow: hidden; isolation: isolate; }
     .hero-bg { position: absolute; inset: 0; z-index: -2; }
@@ -123,7 +124,7 @@ const obalusLogo = obalus.replace(/fill="black"/g, 'fill="currentColor"').replac
         <h1 id="hero-h"><span>Measure.</span><span>Rank.</span><span>Improve.</span></h1>
         <p class="lead">Smarter catch logs, national leaderboards, trip planning, and a community of anglers who get the water. All in your pocket.</p>
         <div class="hero-cta">
-          <a class="btn btn-gold" href={L("hero")} data-cta="hero"><Icon name="download" /> Get the app</a>
+          <StoreBadges campaign={c} content="home" placement="hero" />
           <a class="btn btn-ghost-dark" href="#how">See how it works <Icon name="arrow-right" /></a>
         </div>
         <p class="deal"><b>Save 37%</b> Yearly Premium is $2.50 a month</p>
@@ -236,7 +237,7 @@ const obalusLogo = obalus.replace(/fill="black"/g, 'fill="currentColor"').replac
           <ul>
             {["Everything in Free", "Unlimited AI photo identifications", "Hourly bite forecast + species odds", "Full national leaderboard", "Full catch insights & trends", "Advanced stats (PB progress, patterns)", "Predictive fishing hotspots", "Unlimited trip planning", "10-day weather & catch history"].map((f) => <li><Icon name="check" size={18} />{f}</li>)}
           </ul>
-          <a class="btn btn-gold" href={L("hero")} data-cta="pricing-year" style="width:100%">Start yearly free trial</a>
+          <a class="btn btn-gold" href={L("hero")} data-play={P("hero")} data-cta="pricing-year" style="width:100%">Start yearly free trial</a>
           <p class="fine">Renews at $29.99/year unless you cancel. Same Premium either way.</p>
         </div>
         <div class="plan-side">
@@ -244,13 +245,13 @@ const obalusLogo = obalus.replace(/fill="black"/g, 'fill="currentColor"').replac
             <p class="label">Premium · Month</p>
             <p class="price">$3.99 <small>/ month</small></p>
             <p class="muted" style="margin:0 0 1rem">Same Premium features. $1.49 more each month than the yearly plan.</p>
-            <a class="btn btn-line" href={L("inline")} data-cta="pricing-month" style="width:100%">Choose monthly</a>
+            <a class="btn btn-line" href={L("inline")} data-play={P("inline")} data-cta="pricing-month" style="width:100%">Choose monthly</a>
           </div>
           <div class="plan">
             <p class="label">Free</p>
             <p class="price">$0 <small>forever</small></p>
             <ul>{["Unlimited catch logging", "5 AI photo identifications", "Top 10 leaderboard preview", "Daily bite forecast", "Trip planner, up to 2 trips"].map((f) => <li><Icon name="check" size={18} />{f}</li>)}</ul>
-            <a class="btn btn-navy" href={L("inline")} data-cta="pricing-free" style="width:100%">Get started free</a>
+            <a class="btn btn-navy" href={L("inline")} data-play={P("inline")} data-cta="pricing-free" style="width:100%">Get started free</a>
           </div>
         </div>
       </div>
@@ -283,7 +284,7 @@ const obalusLogo = obalus.replace(/fill="black"/g, 'fill="currentColor"').replac
     <div class="final dark">
       <h2>Your next personal best starts here.</h2>
       <p>Bring Measure. Rank. Improve. to every launch. Free to start. Yearly Premium is $2.50 a month.</p>
-      <div class="row"><StoreBadge campaign={c} content="home" placement="end" /><span style="color:rgba(245,240,232,.7);font-size:.9rem">Free on iPhone · iOS 17.6+</span></div>
+      <div class="row"><StoreBadges campaign={c} content="home" placement="end" /><span style="color:rgba(245,240,232,.7);font-size:.9rem">Free on iPhone and Android</span></div>
     </div>
   </section>
 </Base>

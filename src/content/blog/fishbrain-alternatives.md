@@ -4,6 +4,7 @@ seoTitle: "Fishbrain Alternatives 2026: Free, Private, Maps"
 description: "Nine Fishbrain alternatives sorted by what you need: free, private logs, depth maps, forecasts and PB tracking. US App Store prices and platforms as of November 2026."
 keyword: "fishbrain alternative"
 published: 2026-11-11
+updated: 2026-11-16
 art: "icons:smartphone,notebook-pen,map"
 heroAlt: "Gold line icons of a phone, a notebook with a pen and a folded map over lake contour lines"
 lede: "Leaving Fishbrain usually comes down to one of four things: the price, the feed, your spots, or the maps. Here's the best replacement for each, **with prices checked on the US App Store in November 2026**."
@@ -17,7 +18,7 @@ faq:
   - q: "Is Fishbox or Fishbrain better?"
     a: "Fishbrain is better for community catch data and Garmin depth maps. Fishbox is cheaper (US App Store purchases run $7.99 to $35.99 as of November 2026) and leans on forecasts, bait guides and live pro chat. Fishbox reviewers have complained about cancelling trials, so read the billing screen carefully."
   - q: "What is a free alternative to Fishbrain?"
-    a: "FishAngler is the closest free replacement: maps, a 45-field logbook, fish ID and groups on the free account. For a free private log, try MyCatch, Infinite Livewell, Anglers' Log or PB Fishing (iPhone only)."
+    a: "FishAngler is the closest free replacement: maps, a 45-field logbook, fish ID and groups on the free account. For a free private log, try MyCatch, Infinite Livewell, Anglers' Log or PB Fishing."
   - q: "What are some of the best fishing apps?"
     a: "It depends on the job. We rank them by use in [Best fishing apps of 2026](/blog/best-fishing-apps): catch data, depth maps, forecasts, saltwater rules and logs."
   - q: "Is there a free version of onX fish?"
@@ -52,7 +53,7 @@ sources:
     publisher: "Apple App Store"
 cta:
   title: "Leaving for a cleaner log?"
-  text: "PB Fishing logs unlimited catches free, tracks your best fish per species, and puts the log first. Premium is $29.99 a year. iPhone only."
+  text: "PB Fishing logs unlimited catches free, tracks your best fish per species, and puts the log first. Premium is $29.99 a year. On iPhone and Android."
 category: apps
 kind: listicle
 related: [is-fishbrain-worth-it, pb-fishing-vs-fishbrain, best-fishing-log-apps, best-fishing-apps]
@@ -73,7 +74,7 @@ All prices from each app's US App Store listing, November 2026.
 | Infinite Livewell | A private log, fast | Free | No purchases listed | Yes |
 | Anglers' Log | A plain, ad-free journal | Full log | Pro $1.49/mo, $11.99/yr | Yes |
 | MyCatch | Free log plus events and research | Free | No purchases listed | Yes |
-| PB Fishing | PBs per species, state leaderboards | Unlimited logging | $3.99/mo, $29.99/yr | No (iPhone only) |
+| PB Fishing | PBs per species, state leaderboards | Unlimited logging | $3.99/mo, $29.99/yr | Yes |
 | Navionics Boating | Depth charts | Trial | $49.99/yr (US & Canada) | Yes |
 | onX Fish | Midwest survey data and maps | Lake Finder, GPS, offline | $34.99/yr (Midwest) | Yes |
 | BassForecast / Fishing Points | Forecasts | Basic | $29.95/yr / $49.99/yr | Yes |
@@ -134,9 +135,9 @@ MyCatch, from Angler's Atlas, logs catches with a fast catch-photo-release flow 
 
 This is our app, so weigh this entry accordingly. PB Fishing puts the log and your PBs first. You photograph the fish side-on, the app suggests the species and estimates length, you confirm, and it saves date, water, weather and pressure. Your best fish per species updates automatically. If you want a little competition, species leaderboards run by state and nationally, reset every six months, and show your name, state, length and weight. They don't show which lake.
 
-**Cost:** unlimited logging is free. Premium is $3.99 a month or $29.99 a year, with a 7-day trial on the yearly plan, billed by Apple.
+**Cost:** unlimited logging is free. Premium is $3.99 a month or $29.99 a year, with a 7-day trial on the yearly plan, billed through the App Store or Google Play.
 
-**Trade-off:** iPhone only (iOS 17.6+), a young community, and no depth charts. There's a feed with likes and comments too, so if you want zero social features, Infinite Livewell or Anglers' Log are cleaner. The head-to-head is in [PB Fishing vs Fishbrain](/blog/pb-fishing-vs-fishbrain).
+**Trade-off:** a young community and no depth charts. There's a feed with likes and comments too, so if you want zero social features, Infinite Livewell or Anglers' Log are cleaner. The head-to-head is in [PB Fishing vs Fishbrain](/blog/pb-fishing-vs-fishbrain).
 
 ## 7. Navionics Boating
 
@@ -183,6 +184,6 @@ Before you cancel anything, save what you've already logged.
 
 - **Leaving because of price:** FishAngler.
 - **Leaving because of spot burning:** Infinite Livewell or Anglers' Log.
-- **Leaving because of the feed but want your PBs front and center:** PB Fishing (iPhone) or Anglers' Log (iPhone and Android).
+- **Leaving because of the feed but want your PBs front and center:** PB Fishing or Anglers' Log (both on iPhone and Android).
 - **Leaving but need depth charts:** Navionics, or onX Fish in the Midwest.
 - **Not sure Pro is the problem:** read [Is Fishbrain worth it?](/blog/is-fishbrain-worth-it) first. The free version might be enough.

@@ -62,7 +62,7 @@ sources:
     publisher: "Outdoor Life"
 cta:
   title: "Every PB backed by a photo"
-  text: "PB Fishing saves the photo, length, weight, water and a conditions snapshot with every catch, tracks your personal best per species, and ranks it on a Florida leaderboard. Free, iPhone only."
+  text: "PB Fishing saves the photo, length, weight, water and a conditions snapshot with every catch, tracks your personal best per species, and ranks it on a Florida leaderboard. Free on iPhone and Android."
 ---
 
 Ask a Florida bass angler what's different here and you'll hear about grass, shiners and giants. FWC's data adds detail: when personal bests actually happen, which counties produce them, and what they're caught on. This page puts that data to work, month by month.

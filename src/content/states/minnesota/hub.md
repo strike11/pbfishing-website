@@ -44,7 +44,7 @@ sources:
     publisher: "Minnesota Department of Natural Resources"
 cta:
   title: "Log the opener, then the first ice"
-  text: "PB Fishing saves a photo, length, weight and the conditions with every catch, and stores it on the phone when there is no signal. Free to log, iPhone only."
+  text: "PB Fishing saves a photo, length, weight and the conditions with every catch, and stores it on the phone when there is no signal. Free to log, on iPhone and Android."
 ---
 
 Minnesota fishing runs on two calendars: the open-water season that starts with the walleye opener in May, and the hardwater season when towns of fish houses appear on the big lakes. Between them sit a few thousand fishable lakes, two river systems shared with Wisconsin, and the North Shore of Lake Superior. The DNR says its 10 largest inland lakes alone cover more than 825,000 acres and account for about 40% of the statewide walleye harvest, and that Minnesotans spend $2.4 billion a year on fishing. This hub gives you the lay of the land and points you to the detail pages.

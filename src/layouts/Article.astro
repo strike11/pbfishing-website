@@ -3,7 +3,7 @@ import { Picture } from "astro:assets";
 import Base from "./Base.astro";
 import Icon from "@/components/Icon.astro";
 import AppCta from "@/components/AppCta.astro";
-import { SITE, abs, fmtDate, isoDate, APP_LD, appLink } from "@/lib/site";
+import { SITE, abs, fmtDate, isoDate, APP_LD, appLink, playLink } from "@/lib/site";
 import { heroFor, ogFor, inline, plain, readingMinutes, wordCount } from "@/lib/content";
 
 interface Crumb { name: string; href: string }
@@ -131,9 +131,9 @@ const seoTitle = d.seoTitle ?? d.title;
           </>
         )}
         <div class="app-mini">
-          <strong>PB Fishing for iPhone</strong>
+          <strong>PB Fishing for iPhone &amp; Android</strong>
           <p>Photo-backed catch log, personal bests and state leaderboards. Free to start.</p>
-          <a class="btn btn-navy btn-sm" href={appLink(campaign, id, "toc")} data-cta="toc"><Icon name="download" size={16} /> Get the app</a>
+          <a class="btn btn-navy btn-sm" href={appLink(campaign, id, "toc")} data-play={playLink(campaign, id, "toc")} data-cta="toc"><Icon name="download" size={16} /> Get the app</a>
         </div>
       </aside>
     </div>

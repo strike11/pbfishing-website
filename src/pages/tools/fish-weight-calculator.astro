@@ -2,7 +2,7 @@
 import Base from "@/layouts/Base.astro";
 import AppCta from "@/components/AppCta.astro";
 import Icon from "@/components/Icon.astro";
-import { appLink } from "@/lib/site";
+import { appLink, playLink } from "@/lib/site";
 import { plain, inline } from "@/lib/content";
 
 interface Eq { slug: string; name: string; a: number; b: number; minTLmm?: number; source?: string; url?: string }
@@ -69,7 +69,7 @@ const ld = [
           <div class="row"><span>Heavy fish (Wr 115)</span><b data-heavy>–</b></div>
           <div class="row"><span>Girth formula</span><b data-girth>add girth</b></div>
           <p>Standard weight from the species' length–weight equation. Estimates, not certified weights.</p>
-          <a class="btn btn-gold" href={appLink("tool", "weight-calculator", "calculator")} data-cta="calculator" style="margin-top:.5rem"><Icon name="trophy" size={18} /> Log it as a PB in PB Fishing</a>
+          <a class="btn btn-gold" href={appLink("tool", "weight-calculator", "calculator")} data-play={playLink("tool", "weight-calculator", "calculator")} data-cta="calculator" style="margin-top:.5rem"><Icon name="trophy" size={18} /> Log it as a PB in PB Fishing</a>
         </div>
       </div>
     ) : <p class="callout warn"><strong>Loading data:</strong> species equations are being prepared.</p>}

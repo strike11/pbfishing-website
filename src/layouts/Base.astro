@@ -3,7 +3,7 @@ import "@/styles/global.css";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import StickyCta from "@/components/StickyCta.astro";
-import { APP_ID, SITE, SITE_NAME, ORG_LD, abs } from "@/lib/site";
+import { APP_ID, PLAY_ID, SITE, SITE_NAME, ORG_LD, abs } from "@/lib/site";
 
 interface Props {
   title: string;
@@ -15,7 +15,7 @@ interface Props {
   ogType?: "website" | "article";
   jsonLd?: Record<string, unknown>[];
   noindex?: boolean;
-  /** Campaign group + content id used by the App Store links on this page. */
+  /** Campaign group + content id used by the App Store / Google Play links on this page. */
   campaign?: string;
   content?: string;
   /** Hide the sticky mobile install bar (e.g. on the quiz screens). */
@@ -56,6 +56,7 @@ const graph = [
   {noindex && <meta name="robots" content="noindex, follow" />}
   <meta name="theme-color" content="#1b3a4b" />
   {smartBanner && <meta name="apple-itunes-app" content={`app-id=${APP_ID}, app-argument=${canonical}`} />}
+  {smartBanner && <meta name="google-play-app" content={`app-id=${PLAY_ID}`} />}
   <link rel="preload" href="/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/brand/pb-logo.svg" type="image/svg+xml" />
@@ -87,5 +88,6 @@ const graph = [
   {chrome ? <main id="main"><slot /></main> : <slot />}
   {chrome && <Footer campaign={campaign} content={contentId} />}
   {chrome && sticky && <StickyCta campaign={campaign} content={contentId} />}
+  {chrome && <script is:inline>/* Single install buttons default to the App Store; on Android point them at Google Play and list the Play badge first. */(function(){if(!/Android/i.test(navigator.userAgent))return;document.documentElement.classList.add("is-android");document.querySelectorAll("a[data-play]").forEach(function(a){a.href=a.getAttribute("data-play")})})();</script>}
 </body>
 </html>

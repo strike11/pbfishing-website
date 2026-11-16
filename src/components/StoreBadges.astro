@@ -1,0 +1,11 @@
+---
+// App Store + Google Play badges side by side.
+import StoreBadge from "./StoreBadge.astro";
+import type { Placement } from "@/lib/site";
+interface Props { campaign: string; content: string; placement?: Placement; class?: string }
+const { campaign, content, placement = "inline", class: cls } = Astro.props;
+---
+<div class:list={["store-badges", cls]}>
+  <StoreBadge campaign={campaign} content={content} placement={placement} store="apple" />
+  <StoreBadge campaign={campaign} content={content} placement={placement} store="google" />
+</div>

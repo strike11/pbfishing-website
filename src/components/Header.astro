@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro";
-import { appLink } from "@/lib/site";
+import { appLink, playLink } from "@/lib/site";
 interface Props { campaign: string; content: string; theme?: "light" | "dark" }
 const { campaign, content } = Astro.props;
 const here = Astro.url.pathname;
@@ -13,6 +13,7 @@ const nav = [
 ];
 const cur = (h: string) => (here === h || here.startsWith(h + "/") || here.startsWith(h + ".") ? "page" : undefined);
 const link = appLink(campaign, content, "header");
+const play = playLink(campaign, content, "header");
 ---
 <header class="site-head" data-head>
   <div class="wrap">
@@ -23,9 +24,9 @@ const link = appLink(campaign, content, "header");
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" data-menu><Icon name="menu" size={22} /></button>
     <nav class="site-nav" aria-label="Main">
       {nav.map((n) => <a href={n.href} aria-current={cur(n.href)}>{n.label}</a>)}
-      <a class="btn btn-gold" href={link} data-cta="header">Get the app</a>
+      <a class="btn btn-gold" href={link} data-play={play} data-cta="header">Get the app</a>
     </nav>
-    <a class="btn btn-navy btn-sm btn-head" href={link} data-cta="header">Get the app</a>
+    <a class="btn btn-navy btn-sm btn-head" href={link} data-play={play} data-cta="header">Get the app</a>
   </div>
 </header>
 <script is:inline>

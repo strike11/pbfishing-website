@@ -37,7 +37,7 @@ sources:
     publisher: "Minnesota Department of Natural Resources"
 cta:
   title: "Licensed and legal, then logged"
-  text: "PB Fishing links to each state's official license and regulation pages, and logs every catch with a photo, length and weight. Free to log, iPhone only."
+  text: "PB Fishing links to each state's official license and regulation pages, and logs every catch with a photo, length and weight. Free to log, on iPhone and Android."
 ---
 
 Minnesota's license rules are simpler than most states' once you know three things: residents need one from 16 to 89, nonresidents from 16, and there's no saltwater/freshwater split to worry about. The details below are as of November 2026, checked against the DNR's **2026 Minnesota Fishing Regulations** (effective March 1, 2026 through February 28, 2027) and the DNR's fishing license page. The DNR moved to a new Electronic Licensing System in 2026, so screens and receipts may look different from last year's; the prices below are the booklet's.
