@@ -1,0 +1,80 @@
+---
+import Base from "@/layouts/Base.astro";
+import AppCta from "@/components/AppCta.astro";
+import { STATES, statePagePath } from "@/data/states";
+import { inline, plain } from "@/lib/content";
+
+/** Five full guides: the headline facts, copied from each state's license page (checked on the agency sites, November 2026). */
+const SUMMARY: Record<string, { age: string; resident: string; nonresident: string; note: string }> = {
+  texas: { age: "17 and older", resident: "$30 freshwater, $35 saltwater, $40 all-water", nonresident: "$58 / $63 / $68; one-day all-water $16", note: "No license needed from shore or pier inside a state park, and on Free Fishing Day (first Saturday in June)." },
+  florida: { age: "16 and older", resident: "$17 freshwater, $17 saltwater, $32.50 both", nonresident: "$47 a year, $17 for 3 days, $30 for 7 days (each water type)", note: "The license follows the species: a freshwater license doesn't cover a saltwater fish, even in a river." },
+  minnesota: { age: "16 and older (residents 16–89)", resident: "$25 annual", nonresident: "$51 annual, $14 for 24 hours, $36 for 72 hours, $43 for 7 days", note: "A $10 trout/salmon stamp is needed on trout waters and Lake Superior (ages 18–64)." },
+  michigan: { age: "17 and older", resident: "$26 annual (all species)", nonresident: "$76 annual; $10 daily", note: "One license covers every species; no separate Great Lakes or trout stamp." },
+  tennessee: { age: "13 and older", resident: "$33 Annual Hunt/Fish Combo (+$21 for trout)", nonresident: "$49 a year without trout, $98 with trout; 3-day from $20", note: "TWRA Family Fishing Lakes and Reelfoot need extra permits." },
+};
+const faq = [
+  { q: "Do you need a fishing license in every state?", a: "Yes. Every US state requires a license for most anglers on public water. The ages, prices and exemptions differ: Tennessee starts at 13, Texas and Michigan at 17, most states at 16." },
+  { q: "Do you need a fishing license for catch and release?", a: "Yes. Releasing the fish doesn't exempt you; the act of fishing needs the license. Full answer with state examples: [fishing license for catch and release](/blog/do-you-need-a-fishing-license-for-catch-and-release)." },
+  { q: "How much is a fishing license?", a: "A resident annual freshwater license costs roughly $17 to $40 depending on the state (for example $17 in Florida, $25 in Minnesota, $26 in Michigan, $30 in Texas). Nonresident annual licenses run about $47 to $98, and most states sell 1- to 7-day licenses for visitors." },
+  { q: "Can kids fish without a license?", a: "In most states, yes, up to an age cutoff: under 13 in Tennessee, under 16 in Florida and Minnesota, under 17 in Texas and Michigan. Check the state's page for the exact rule." },
+  { q: "Where do I buy a fishing license?", a: "From the state wildlife agency's website or app, by phone, or at licensed retailers such as tackle shops and many large sporting goods stores. Buy from the official agency site rather than third-party sites that add fees." },
+  { q: "Can I fish in another state with my license?", a: "No. A fishing license is valid only in the state that issued it, apart from a few shared border waters with reciprocal agreements. Visitors buy a nonresident or short-term license." },
+];
+const ld = [
+  { "@type": "CollectionPage", "@id": "https://pbfishing.app/fishing-license", name: "Fishing license by state", url: "https://pbfishing.app/fishing-license", inLanguage: "en-US", isPartOf: { "@id": "https://pbfishing.app/#website" },
+    mainEntity: { "@type": "ItemList", numberOfItems: STATES.length, itemListElement: STATES.map((s, i) => ({ "@type": "ListItem", position: i + 1, name: `${s.name} fishing license`, url: s.live ? `https://pbfishing.app${statePagePath(s.slug, "fishing-license")}` : s.agencyUrl })) } },
+  { "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: plain(f.a) } })) },
+  { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://pbfishing.app/" }, { "@type": "ListItem", position: 2, name: "Fishing license by state", item: "https://pbfishing.app/fishing-license" }] },
+];
+---
+<Base title="Fishing License by State (2026): Who Needs One, Cost, Where to Buy" description="Fishing license rules for all 50 states: who needs one, age exemptions, typical prices, catch and release, and the official agency link to buy a license in each state." path="/fishing-license" ogImage="/og/pages/fishing-license.jpg" jsonLd={ld} campaign="state" content="fishing-license-hub">
+  <section class="page-hero wrap">
+    <ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/fishing">Fishing by state</a></li></ol>
+    <span class="kicker">Updated November 2026</span>
+    <h1>Fishing license by state</h1>
+    <p class="lead">Every state requires a fishing license on public water, but the age cutoffs, prices and exemptions differ. Here's how it works, the details for our five full state guides, and the official agency for every state.</p>
+  </section>
+  <section class="wrap"><div class="prose" style="max-width:var(--prose)">
+    <h2>The rules that are the same almost everywhere</h2>
+    <ul>
+      <li><strong>Adults need a license on public water,</strong> including for catch and release. Holding a rod in the water counts as fishing, whether or not you keep anything.</li>
+      <li><strong>Kids are usually free</strong> up to an age cutoff, most often 16. Seniors get discounted or free licenses in many states.</li>
+      <li><strong>Licenses are state-specific.</strong> Your home license doesn't work across the state line; visitors buy a nonresident or short-term license.</li>
+      <li><strong>Freshwater and saltwater</strong> are separate licenses or endorsements in coastal states like Texas and Florida.</li>
+      <li><strong>Free fishing days</strong> (usually one or two weekends a year, often in June) waive the license for everyone. Limits still apply.</li>
+      <li><strong>Trout and special waters</strong> often need a stamp or permit on top of the license.</li>
+      <li><strong>Carry it.</strong> Most states accept a digital license on your phone; screenshots work offline when there's no signal at the lake.</li>
+    </ul>
+    <p>More detail on the most common question: <a href="/blog/do-you-need-a-fishing-license-for-catch-and-release">do you need a license for catch and release?</a></p>
+  </div></section>
+  <section class="wrap" style="margin-top:2.5rem">
+    <h2>Full license guides</h2>
+    <div class="table-scroll prose" style="max-width:none">
+      <table>
+        <thead><tr><th>State</th><th>Who needs one</th><th>Resident annual</th><th>Nonresident</th><th>Worth knowing</th></tr></thead>
+        <tbody>
+          {STATES.filter((s) => SUMMARY[s.slug]).map((s) => {
+            const x = SUMMARY[s.slug];
+            return <tr><td><a href={statePagePath(s.slug, "fishing-license")}><strong>{s.name}</strong></a></td><td>{x.age}</td><td>{x.resident}</td><td>{x.nonresident}</td><td>{x.note}</td></tr>;
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:.9rem">Prices as checked on each state agency's website in November 2026. Fees change, so confirm at checkout.</p>
+
+    <h2 style="margin-top:3rem">Official fishing license agency, all 50 states</h2>
+    <p class="muted">Buy directly from the state agency (or its official app and licensed retailers) to avoid third-party fees.</p>
+    <div class="state-grid">
+      {STATES.map((s) => s.live
+        ? <a class="state-link" href={statePagePath(s.slug, "fishing-license")}>{s.name}<small>Full guide</small></a>
+        : <a class="state-link soon" href={s.agencyUrl} rel="noopener" title={s.agency}>{s.name}<small>{s.abbr} agency ↗</small></a>)}
+    </div>
+  </section>
+  <section class="wrap" style="margin-top:3rem"><div class="prose" style="max-width:var(--prose)">
+    <section class="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Questions anglers ask</h2>
+      {faq.map((f) => <details><summary>{f.q}</summary><p set:html={inline(f.a)} /></details>)}
+    </section>
+    <AppCta campaign="state" content="fishing-license-hub" title="License links for every state, in your pocket" text="PB Fishing links each state's official license page from the map of 20,000+ US waters, and logs every catch with a photo, length and conditions. Free on iPhone and Android." />
+  </div></section>
+</Base>

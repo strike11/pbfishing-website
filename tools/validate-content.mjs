@@ -10,14 +10,14 @@ const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirect
 const files = process.argv.slice(2).length ? process.argv.slice(2).map((f) => (f.startsWith("/") ? f : join(process.cwd(), f))) : walk(CONTENT);
 
 const PLAN = readFileSync(join(ROOT, "docs/content-brief.md"), "utf8");
-const BLOG = ["best-fishing-apps", "is-fishbrain-worth-it", "fishbrain-alternatives", "pb-fishing-vs-fishbrain", "best-fishing-log-apps", "fishing-leaderboard-apps", "how-to-measure-a-fish", "what-is-a-good-size-bass", "largemouth-bass-weight-chart", "how-to-catch-a-personal-best-bass", "how-to-release-a-fish", "fishing-log-what-to-record", "how-to-find-fishing-spots", "best-time-to-fish", "do-solunar-tables-work", "barometric-pressure-and-fishing", "fishing-after-rain-wind-cold-front", "water-temperature-and-fish-activity", "fishing-for-beginners", "do-you-need-a-fishing-license-for-catch-and-release", "why-am-i-not-catching-fish", "90-10-rule-fishing", "best-bass-lures-by-season"];
+const BLOG = ["minnesota-fishing-opener-2027", "best-fishing-apps-android", "best-fishing-apps-iphone", "best-free-fishing-apps", "best-bass-fishing-apps", "pb-fishing-vs-fishangler", "pb-fishing-vs-fishbox", "pb-fishing-vs-fishing-points", "pb-fishing-vs-bassforecast", "best-fishing-apps", "is-fishbrain-worth-it", "fishbrain-alternatives", "pb-fishing-vs-fishbrain", "best-fishing-log-apps", "fishing-leaderboard-apps", "how-to-measure-a-fish", "what-is-a-good-size-bass", "largemouth-bass-weight-chart", "how-to-catch-a-personal-best-bass", "how-to-release-a-fish", "fishing-log-what-to-record", "how-to-find-fishing-spots", "best-time-to-fish", "do-solunar-tables-work", "barometric-pressure-and-fishing", "fishing-after-rain-wind-cold-front", "water-temperature-and-fish-activity", "fishing-for-beginners", "do-you-need-a-fishing-license-for-catch-and-release", "why-am-i-not-catching-fish", "90-10-rule-fishing", "best-bass-lures-by-season"];
 const SPECIES = ["largemouth-bass", "smallmouth-bass", "crappie", "channel-catfish", "walleye", "bluegill", "rainbow-trout"];
 const ART_SPECIES = readdirSync(join(ROOT, "src/assets/species")).filter((f) => f.endsWith(".jpg")).map((f) => f.slice(0, -4));
 const STATES = ["texas", "florida", "minnesota", "michigan", "tennessee"];
 const STATE_SUB = ["", "best-lakes", "bass-fishing", "fish-species-seasons", "fishing-license", "state-record-fish", "beginner-fishing-spots"];
 const QUIZ = ["what-kind-of-angler-are-you", "bass-lure-picker", "freshwater-or-saltwater", "speak-angler", "guess-the-weight", "would-you-catch-fish-today", "fishing-iq"];
 const okPath = new Set([
-  "/", "/blog", "/fishing", "/species", "/quiz", "/tools/fish-weight-calculator", "/support", "/about", "/privacy-policy", "/eula",
+  "/", "/blog", "/fishing", "/species", "/quiz", "/tools/fish-weight-calculator", "/android", "/iphone", "/fishing-license", "/support", "/about", "/privacy-policy", "/eula",
   ...BLOG.map((s) => `/blog/${s}`), ...SPECIES.map((s) => `/species/${s}`), ...QUIZ.map((s) => `/quiz/${s}`),
   ...STATES.flatMap((s) => STATE_SUB.map((p) => (p ? `/fishing/${s}/${p}` : `/fishing/${s}`))),
   ...["how-to", "apps", "tips", "gear", "conditions", "beginners", "records"].map((c) => `/blog/category/${c}`),

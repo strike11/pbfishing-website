@@ -167,3 +167,5 @@ The Michigan license stops at the international line on Lake St. Clair, the Detr
 ## After you're legal
 
 Once the license is sorted, the next questions are where to go and what's biting. Start with the [best fishing lakes in Michigan](/fishing/michigan/best-lakes), or the [beginner fishing spots](/fishing/michigan/beginner-fishing-spots) if you're taking kids. The [Michigan fishing hub](/fishing/michigan) ties it all together. PB Fishing keeps a link to Michigan's official license and regulations pages next to your catch log, so the rules are one tap away when you're standing at the ramp.
+
+Other states: see [fishing license by state](/fishing-license) for every state agency and how the rules compare.

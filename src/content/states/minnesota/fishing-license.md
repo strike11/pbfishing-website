@@ -156,3 +156,5 @@ The booklet doesn't list fine amounts, but it does spell out what happens to rep
 Before buying, it's worth reading the [Minnesota fishing overview](/fishing/minnesota). If you're new to fishing, our [beginner fishing spots in Minnesota](/fishing/minnesota/beginner-fishing-spots) page lists places to use it this weekend.
 
 <p class="callout"><strong>Check first:</strong> prices and rules here come from the DNR's 2026 booklet and license page as of November 2026. The DNR's new licensing system went live in 2026, so verify at <a href="https://www.dnr.state.mn.us/licenses/fishing/index.html">dnr.state.mn.us</a> before you buy.</p>
+
+Other states: see [fishing license by state](/fishing-license) for every state agency and how the rules compare.

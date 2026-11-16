@@ -1,7 +1,7 @@
 ---
 title: "Best Fishing Log Apps for Anglers Who Want a Record, Not a Feed"
 seoTitle: "Best Fishing Log Apps 2026: Private, Fast, No Clutter"
-description: "The best fishing log apps of 2026 for anglers who want a record, not a feed: Anglers' Log, MyCatch, ANGLR, Infinite Livewell, PB Fishing and a paper log, compared."
+description: "The best fishing log apps of 2026 for anglers who want a record, not a feed: PB Fishing, Anglers' Log, Infinite Livewell, MyCatch, ANGLR and a paper log, compared."
 keyword: "best fishing log app"
 published: 2026-11-11
 updated: 2026-11-16
@@ -9,14 +9,14 @@ art: "screen:catch-log"
 heroAlt: "PB Fishing catch log screen on an iPhone over gold lake contour lines"
 lede: "A good fishing log is fast with a fish in your hand, fills in the weather for you, and is still readable after three seasons. Here are the apps that do that, **with prices from the US App Store as of November 2026**, plus the paper option that still beats most of them."
 takeaways:
+  - "PB Fishing is our #1: unlimited catch logging is free, weather and pressure fill in on their own, catches save offline, and your best fish per species is tracked automatically. On iPhone and Android."
   - "Anglers' Log is the best plain journal: free, no feed, and Pro is $11.99 a year with CSV export."
   - "Infinite Livewell and MyCatch are free and built around keeping your spots private."
   - "ANGLR is the most detailed log for trip tracking, but reviewers report crashes."
-  - "PB Fishing logs unlimited catches free and tracks your best fish per species automatically. On iPhone and Android."
   - "A waterproof notebook still works. The best log is the one you'll actually fill in."
 faq:
   - q: "Is there a free fishing log app?"
-    a: "Yes. Anglers' Log, MyCatch, Infinite Livewell, ANGLR and PB Fishing all let you log catches for free. MyCatch and Infinite Livewell listed no in-app purchases on the US App Store as of November 2026."
+    a: "Yes. PB Fishing logs unlimited catches free forever, and Anglers' Log, MyCatch, Infinite Livewell and ANGLR also let you log for free. MyCatch and Infinite Livewell listed no in-app purchases on the US App Store as of November 2026."
   - q: "Is there a fishing tournament app?"
     a: "Yes. TourneyX and FishDonkey run online catch-photo-release tournaments with entry fees, judges and live leaderboards. MyCatch runs fishing events too. We cover them in [fishing leaderboard apps](/blog/fishing-leaderboard-apps)."
   - q: "What should I record in a fishing log?"
@@ -52,7 +52,7 @@ related: [best-fishing-apps, fishbrain-alternatives, fishing-leaderboard-apps, p
 
 Ask on r/bassfishing how people keep track of their catches and you'll get a dozen answers: the Notes app, a spiral notebook, Google Sheets, a pinned map, "my memory." A lot of anglers try the big social apps first and give up because they wanted a record, not a feed of strangers' fish.
 
-This list is for them. Every app here can work as a private log. We ranked them on what matters when a fish is flopping on the deck, not on how many features they list.
+This list is for them. Every app here can work as a private log. We ranked them on what matters when a fish is flopping on the deck, not on how many features they list. PB Fishing is ours and sits at #1 because its free tier covers speed, automatic conditions and offline logging, three of the tests below; we say plainly where the others beat it.
 
 ## What makes a fishing log app worth using
 
@@ -69,15 +69,27 @@ Before the list, here's what we looked for. These come straight from what angler
 
 | App | Best for | Free | Paid (US App Store, Nov 2026) | Platforms |
 |---|---|---|---|---|
+| PB Fishing | PBs per species, auto conditions, state leaderboards | Unlimited logging | $3.99/mo or $29.99/yr | iPhone, Android |
 | Anglers' Log | Plain, private journal | Full log | Pro $1.49/mo or $11.99/yr | iPhone, iPad, Android |
 | Infinite Livewell | Fastest private logging | Free | No purchases listed | iPhone, Apple Watch, Mac, Android |
 | MyCatch | Quick catch-photo-release, events | Free | No purchases listed | iPhone, iPad, Android |
-| PB Fishing | PBs per species, state leaderboards | Unlimited logging | $3.99/mo or $29.99/yr | iPhone, Android |
 | ANGLR | Detailed trip tracking and waypoints | Free core | $2.99 to $39.99 | iPhone, iPad, Apple Watch, Android |
 | Fishbrain (free tier) | Log plus community data | Logbook | Pro $79.99/yr | iPhone, iPad, Android |
 | Paper log | No battery, no subscription | Free | About the price of a notebook | Any pocket |
 
-## 1. Anglers' Log
+## 1. PB Fishing
+
+**Best for:** anglers who want every catch logged, the conditions filled in for them, and their personal bests tracked without thinking about it.
+
+This one's ours, and we rank it first, so here's the plain case against the tests above. **Speed:** you take a side-profile photo, the app suggests the species and estimates the length from the photo, and you confirm or correct it; weight goes in if you weighed it. **Automatic conditions:** date, water and a snapshot of the weather and barometric pressure are saved with every catch, on the free tier. **No signal:** the catch is saved on your phone and uploads when you're back online. **Easy to look back on:** your best fish per species updates on its own, so "what's my biggest smallmouth?" is one tap. And logging has no cap: unlimited catches are free forever, on iPhone and Android.
+
+If you want a reason to keep logging, each species has a state and a national leaderboard that resets every six months. Entries show your name, state, length and weight, not the lake.
+
+**Price:** unlimited catch logging is free, along with 5 photo IDs. Premium ($3.99 a month or $29.99 a year, billed through the App Store or Google Play) adds unlimited photo IDs, catch insights and trends, advanced stats, and 10-day weather and catch history.
+
+**Watch out for:** there's a community feed with likes and comments. You don't have to use it, but if you want an app with zero social features, Infinite Livewell or Anglers' Log are a cleaner fit. The community is young and the Android app is new (November 2026).
+
+## 2. Anglers' Log
 
 **Best for:** anglers who want a journal and nothing else.
 
@@ -89,7 +101,7 @@ Pro adds automatic weather, atmosphere and tide data, live GPS trails, custom fi
 
 **Watch out for:** without Pro you type in weather yourself. No forecasts, no community.
 
-## 2. Infinite Livewell
+## 3. Infinite Livewell
 
 **Best for:** logging fast and keeping every spot to yourself.
 
@@ -99,7 +111,7 @@ Infinite Livewell is built for speed and privacy. You can log a catch with a swi
 
 **Watch out for:** it's brand new, with only a couple of App Store ratings so far. No automatic weather in the description, no forecasts.
 
-## 3. MyCatch
+## 4. MyCatch
 
 **Best for:** quick catch-photo-release logging, with optional events.
 
@@ -108,18 +120,6 @@ MyCatch, from Angler's Atlas, is designed to get a fish recorded and back in the
 **Price:** free, with no in-app purchases listed on the US App Store as of November 2026.
 
 **Watch out for:** no forecasts or detailed analytics. If you want a deep look at patterns, Anglers' Log or ANGLR go further.
-
-## 4. PB Fishing
-
-**Best for:** anglers who want every catch logged and their personal bests tracked without thinking about it.
-
-This one's ours, so here's the plain version. You take a side-profile photo; the app suggests the species and estimates the length from the photo, and you confirm or correct it. Weight goes in if you weighed it. Date, water and a conditions snapshot (weather and barometric pressure) are saved with the catch. If you're out of signal, the catch is saved on your phone and uploads when you're back online. Your best fish per species updates on its own, so "what's my biggest smallmouth?" is one tap.
-
-If you want a reason to keep logging, each species has a state and a national leaderboard that resets every six months. Entries show your name, state, length and weight, not the lake.
-
-**Price:** unlimited catch logging is free, along with 5 photo IDs. Premium ($3.99 a month or $29.99 a year, billed through the App Store or Google Play) adds unlimited photo IDs, catch insights and trends, advanced stats, and 10-day weather and catch history.
-
-**Watch out for:** there's a community feed with likes and comments. You don't have to use it, but if you want an app with zero social features, Infinite Livewell or Anglers' Log are a cleaner fit.
 
 ## 5. ANGLR
 
@@ -155,10 +155,10 @@ Don't laugh. A waterproof notebook in a zip bag has some real advantages: it nev
 
 ## How to pick
 
+- **You want a free log that fills in conditions and tracks your PBs:** PB Fishing.
 - **You want a record and nothing else:** Anglers' Log.
 - **Privacy is the top priority:** Infinite Livewell.
 - **You catch and release and want to be fast:** MyCatch or Infinite Livewell.
-- **You're chasing bigger fish and want your PBs tracked:** PB Fishing.
 - **You track every waypoint and lure change:** ANGLR, if you can live with the occasional crash.
 - **You hate apps:** paper.
 

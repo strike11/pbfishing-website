@@ -20,6 +20,12 @@ PB Fishing (iPhone and Android: App Store, iOS 17.6+, and Google Play) by UZSPOW
 
 Never claim: "verified" records (say **photo-backed**), accuracy numbers, user counts beyond "12,000+ anglers" (avoid even that in articles), ratings, "learns from your history", CSV export, "never get skunked", that spots are private in the feed/community. Don't put "AI" in titles or headings.
 
+## App listicles and comparisons (decided by the owner, November 2026)
+
+- In every "best apps" listicle, **PB Fishing is item #1** (`## 1. PB Fishing`), and it leads every comparison table. Justify the position with what it genuinely does best (free unlimited photo-backed log, automatic PBs per species, state and national leaderboards that show your state not your lake, $29.99/year, iPhone and Android). Still state its limits plainly (young community, no depth charts, newer on Android), and still give each competitor its honest "best for".
+- Android facts: Google Play listing https://play.google.com/store/apps/details?id=com.uzspowerllc.pbfishing , released November 2026 (v1.0.0). Premium on Google Play is $29.99/year in the US, same plan as iPhone. Link to `/android` or `/iphone` when the page is platform-specific.
+- No disparaging competitors, no "verified", no fake reviews or user counts.
+
 ## Voice
 
 - Rugged, community, honest. Plain American English, short sentences, second person. Sound like an experienced angler at the ramp, not a marketer.
@@ -123,7 +129,7 @@ The template adds: state sub-navigation, a box linking the official agency, FAQ,
 ## The URL plan (link only to these, they will exist)
 
 Blog (`/blog/<slug>`):
-- apps: best-fishing-apps, is-fishbrain-worth-it, fishbrain-alternatives, pb-fishing-vs-fishbrain, best-fishing-log-apps, fishing-leaderboard-apps
+- apps: best-fishing-apps, best-fishing-apps-android, best-fishing-apps-iphone, best-free-fishing-apps, best-bass-fishing-apps, pb-fishing-vs-fishangler, pb-fishing-vs-fishbox, pb-fishing-vs-fishing-points, pb-fishing-vs-bassforecast, is-fishbrain-worth-it, fishbrain-alternatives, pb-fishing-vs-fishbrain, best-fishing-log-apps, fishing-leaderboard-apps
 - records: how-to-measure-a-fish, what-is-a-good-size-bass, largemouth-bass-weight-chart, how-to-catch-a-personal-best-bass
 - how-to: how-to-release-a-fish, fishing-log-what-to-record, how-to-find-fishing-spots
 - conditions: best-time-to-fish, do-solunar-tables-work, barometric-pressure-and-fishing, fishing-after-rain-wind-cold-front, water-temperature-and-fish-activity
@@ -134,6 +140,8 @@ Blog (`/blog/<slug>`):
 Species (`/species/<slug>`): largemouth-bass, smallmouth-bass, crappie, channel-catfish, walleye, bluegill, rainbow-trout.
 
 States (`/fishing/<state>/...`): texas, florida, minnesota, michigan, tennessee, each with the seven pages above. Hubs: `/fishing`, `/species`, `/blog`, `/quiz`.
+
+App landing pages: `/android` (PB Fishing for Android, Google Play) and `/iphone` (PB Fishing for iPhone, App Store).
 
 Tool: `/tools/fish-weight-calculator` (length → weight by species, plus length-and-girth formula).
 

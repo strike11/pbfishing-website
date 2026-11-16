@@ -28,12 +28,15 @@ const live = STATES.filter((s) => s.live).slice(0, 6);
         <h2>Fishing by state</h2>
         <ul>
           {live.map((s) => <li><a href={`/fishing/${s.slug}`}>{s.name}</a></li>)}
+          <li><a href="/fishing-license">Fishing license by state</a></li>
           <li><a href="/fishing">All states →</a></li>
         </ul>
       </nav>
       <nav aria-label="App">
         <h2>The app</h2>
         <ul>
+          <li><a href="/iphone">PB Fishing for iPhone</a></li>
+          <li><a href="/android">PB Fishing for Android</a></li>
           <li><a href="/#features">Features</a></li>
           <li><a href="/#pricing">Pricing</a></li>
           <li><a href="/obalus-partner">Obalus partner</a></li>

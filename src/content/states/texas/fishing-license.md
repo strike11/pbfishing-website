@@ -169,3 +169,5 @@ If you only want to try fishing once, you have three no-cost routes: Free Fishin
 - **Taking turtles or frogs:** that requires a hunting license, not a fishing license.
 
 This page is a summary, not legal advice. When in doubt, the [Outdoor Annual](https://tpwd.texas.gov/regulations/outdoor-annual/licenses/fishing-licenses-stamps-tags-packages/fishing-licenses-and-packages/) wins.
+
+Other states: see [fishing license by state](/fishing-license) for every state agency and how the rules compare.

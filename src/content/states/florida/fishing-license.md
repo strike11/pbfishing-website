@@ -195,3 +195,5 @@ Ticket math: a visitor caught on the bank without a license pays more than the $
 The license is only half of it. Freshwater bass are **5 per day, only one 16 inches or longer**; crappie 25; panfish 50. Some waters are catch-and-release for bass. The details by species and season are on the [Florida species and seasons page](/fishing/florida/fish-species-seasons) and the [Florida bass page](/fishing/florida/bass-fishing). Visiting for the first time? The [beginner spots page](/fishing/florida/beginner-fishing-spots) lists piers whose fee covers your license, and the [Florida fishing overview](/fishing/florida) ties it all together.
 
 FWC's guide says the Florida Administrative Code is the final authority and rules can change between publications. Check MyFWC.com/License before you buy.
+
+Other states: see [fishing license by state](/fishing-license) for every state agency and how the rules compare.

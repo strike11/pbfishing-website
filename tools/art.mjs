@@ -226,6 +226,9 @@ for (const f of quizMods) {
   }
 }
 jobs.push({ col: "pages", id: "default", spec: "screen:hero", title: "Measure. Rank. Improve.", kicker: "Catch log · leaderboards · trips", ogOnly: true, ogPath: "public/og/default.jpg" });
+jobs.push({ col: "pages", id: "android", spec: "icons:smartphone,fish,trophy", title: "PB Fishing for Android: free fishing log, PBs and leaderboards", kicker: "Now on Google Play" });
+jobs.push({ col: "pages", id: "iphone", spec: "screen:catch-log", title: "PB Fishing for iPhone: free fishing log, PBs and leaderboards", kicker: "On the App Store" });
+jobs.push({ col: "pages", id: "fishing-license", spec: "icons:file-badge,map", title: "Fishing license by state: who needs one, cost, where to buy", kicker: "All 50 states", ogOnly: true });
 jobs.push({ col: "pages", id: "fish-weight-calculator", spec: "icons:ruler,scale", title: "Fish weight calculator: length to weight by species", kicker: "Free tool", ogOnly: true });
 
 let done = 0, skipped = 0;

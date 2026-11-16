@@ -165,3 +165,5 @@ Reciprocal agreements let you fish some shared water on either state's license, 
 Statewide: 5 black bass, 15 crappie at 10 inches, 5 walleye at 16 inches, 10 sauger at 15 inches, 7 trout, one catfish over 34 inches a day. Nearly every reservoir has exceptions, so check the lake list on [best fishing lakes in Tennessee](/fishing/tennessee/best-lakes) and [Tennessee bass fishing](/fishing/tennessee/bass-fishing). TWRA does not publish a fine schedule on its license pages, so we do not quote one here; treat fishing without a license as a citation you do not want.
 
 Anglers asking about licenses online mostly want what one r/texas poster called "a straight answer about fishing licenses". For Tennessee, it is this: 13 and up needs one, $33 gets an adult resident fishing, and trout costs $21 more. For everything else, the [Tennessee fishing overview](/fishing/tennessee) and [records page](/fishing/tennessee/state-record-fish) are next.
+
+Other states: see [fishing license by state](/fishing-license) for every state agency and how the rules compare.

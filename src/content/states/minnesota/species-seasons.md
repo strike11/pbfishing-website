@@ -44,7 +44,7 @@ cta:
   text: "PB Fishing saves water, date and a weather and pressure snapshot with every catch, so after a season you can see when your fish actually bit."
 ---
 
-The short answer: the 2026 Minnesota fishing opener for walleye and northern pike was **Saturday, May 9**, and the DNR has already published the next two: **May 15, 2027** and **May 13, 2028**. But "opener" only matters for some species. Panfish, perch and channel catfish never close, bass now have a catch-and-release season in every month, and several big border waters run on their own calendars. All dates below come from the 2026 Minnesota Fishing Regulations (effective March 1, 2026 through February 28, 2027).
+The short answer: the 2026 Minnesota fishing opener for walleye and northern pike was **Saturday, May 9**, and the DNR has already published the next two: **May 15, 2027** and **May 13, 2028**. But "opener" only matters for some species. Panfish, perch and channel catfish never close, bass now have a catch-and-release season in every month, and several big border waters run on their own calendars. All dates below come from the 2026 Minnesota Fishing Regulations (effective March 1, 2026 through February 28, 2027). Planning for next spring? See [the 2027 Minnesota fishing opener](/blog/minnesota-fishing-opener-2027).
 
 ## Opener dates, 2026 to 2028
 
