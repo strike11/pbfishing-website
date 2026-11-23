@@ -1,9 +1,10 @@
 ---
 title: "Fishing After Rain, in Wind and Around Cold Fronts: What to Do"
-seoTitle: "Is It Good to Fish After Rain, in Wind or After a Front?"
-description: "Rain, muddy water, wind, cold fronts, bluebird skies and heat waves each move fish in a predictable way. Here's where they go and what to throw in each case."
+seoTitle: "Fishing After Rain, Wind or a Cold Front: Good or Bad?"
+description: "Is fishing good after rain, in wind or after a cold front? Where fish move in each case, which bank to fish, and what to throw, in one quick-reference table."
 keyword: "is it good to fish after rain"
 published: 2026-11-11
+updated: 2026-11-23
 art: "icons:cloud-rain,wind"
 heroAlt: "Gold line drawing of a rain cloud and wind lines over lake contour lines"
 lede: "Rain and wind are usually on your side. Cold fronts, bluebird skies and heat waves usually aren't. But each one moves fish in a predictable way. Here's **where they go and what to throw**, condition by condition."

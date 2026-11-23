@@ -1,9 +1,10 @@
 ---
 title: "The 90/10 Rule in Fishing (and the 80/20 Rule in Bass Fishing), Explained"
-seoTitle: "The 90/10 Rule in Fishing and the 80/20 Rule, Explained"
-description: "The 90/10 rule says 90% of fish live in 10% of the water. Where it comes from, what the 80/20 rule means for bass, and how to find your own 10% with a catch log."
+seoTitle: "90/10 Rule in Fishing: Find the 10% That Holds Fish"
+description: "The 90/10 rule says 90% of fish hold in 10% of the water. The structure that makes up that 10%, a simple way to find it on any lake, and the 80/20 rule for bass."
 keyword: "90/10 rule fishing"
 published: 2026-11-11
+updated: 2026-11-23
 art: "icons:target"
 heroAlt: "Gold line drawing of a target over lake contour lines"
 lede: "The **90/10 rule** says about 90% of the fish in a lake are in about 10% of the water at any given time. The **80/20 rule** is the bass-fishing cousin, and it gets used for three different ideas. Neither is a measured law. Both are useful if you turn them into a habit of eliminating water fast."

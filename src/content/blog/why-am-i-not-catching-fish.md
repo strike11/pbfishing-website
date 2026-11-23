@@ -1,8 +1,10 @@
 ---
 title: "Why Am I Not Catching Fish? 12 Honest Fixes"
-description: "Skunked trip after trip? Twelve specific fixes, from empty water and wrong depth to heavy line, dull hooks and pressured banks, and how to tell which is yours."
+seoTitle: "Why Can't I Catch Fish? 12 Real Reasons and Fixes"
+description: "Skunked again? The 12 most common reasons anglers catch nothing, from wrong depth and time of day to heavy line and dull hooks, with a quick fix for each."
 keyword: "why am i not catching fish"
 published: 2026-11-11
+updated: 2026-11-23
 art: "icons:circle-help,fish"
 heroAlt: "Gold line drawing of a question mark in a circle beside a fish over lake contour lines"
 lede: "If you keep coming home skunked, it's almost never bad luck. It's usually one of a dozen fixable problems, and most of them come down to **where** your bait is, not **what** it is."

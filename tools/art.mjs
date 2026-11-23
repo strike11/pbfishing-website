@@ -172,7 +172,7 @@ async function render(spec, seed, mode, { title = "", kicker = "" } = {}) {
 async function out(path, buf) { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, buf); }
 
 const walk = (d) => (existsSync(d) ? readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : f.endsWith(".md") ? [join(d, f)] : [])) : []);
-const KICKER = { blog: { apps: "Fishing apps", "how-to": "How-to", tips: "Tips", gear: "Gear", conditions: "Conditions", beginners: "Beginners", records: "Records & PBs" } };
+const KICKER = { blog: { apps: "Fishing apps", "how-to": "How-to", tips: "Tips", gear: "Gear", conditions: "Conditions", beginners: "Beginners", records: "Records & PBs", ice: "Ice fishing" } };
 const STATE_NAV = { hub: "Fishing guide", "best-lakes": "Best lakes", "bass-fishing": "Bass fishing", "species-seasons": "Species & seasons", "fishing-license": "License & rules", "state-record-fish": "State records", "beginner-spots": "Beginner spots" };
 
 const jobs = [];

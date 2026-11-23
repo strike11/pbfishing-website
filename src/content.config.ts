@@ -38,7 +38,7 @@ const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: z.object({
     ...common,
-    category: z.enum(["how-to", "apps", "tips", "gear", "conditions", "beginners", "records"]),
+    category: z.enum(["how-to", "apps", "tips", "gear", "conditions", "beginners", "records", "ice"]),
     kind: z.enum(["listicle", "guide", "comparison", "explainer"]),
     related: z.array(z.string()).default([]),
     states: z.array(z.string()).default([]),

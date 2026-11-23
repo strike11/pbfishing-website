@@ -85,7 +85,7 @@ cta:                                  # optional custom copy for the mid-article
 
 Extra fields:
 ```yaml
-category: apps            # how-to | apps | tips | gear | conditions | beginners | records
+category: apps            # how-to | apps | tips | gear | conditions | beginners | records | ice
 kind: listicle            # listicle | guide | comparison | explainer
 related: [other-slug, other-slug]   # 2–4 blog slugs from the plan below
 states: [texas, florida]  # optional pilot states this post is relevant to
@@ -132,6 +132,8 @@ Blog (`/blog/<slug>`):
 - apps: best-fishing-apps, best-fishing-apps-android, best-fishing-apps-iphone, best-free-fishing-apps, best-bass-fishing-apps, pb-fishing-vs-fishangler, pb-fishing-vs-fishbox, pb-fishing-vs-fishing-points, pb-fishing-vs-bassforecast, is-fishbrain-worth-it, fishbrain-alternatives, pb-fishing-vs-fishbrain, best-fishing-log-apps, fishing-leaderboard-apps
 - records: how-to-measure-a-fish, what-is-a-good-size-bass, largemouth-bass-weight-chart, how-to-catch-a-personal-best-bass
 - how-to: how-to-release-a-fish, fishing-log-what-to-record, how-to-find-fishing-spots
+- ice: ice-fishing-for-beginners, ice-thickness-safety, ice-fishing-gear-checklist, best-ice-fishing-lakes-minnesota, best-ice-fishing-lakes-michigan, best-ice-fishing-apps
+- seasonal: minnesota-fishing-opener-2027
 - conditions: best-time-to-fish, do-solunar-tables-work, barometric-pressure-and-fishing, fishing-after-rain-wind-cold-front, water-temperature-and-fish-activity
 - beginners: fishing-for-beginners, do-you-need-a-fishing-license-for-catch-and-release
 - tips: why-am-i-not-catching-fish, 90-10-rule-fishing

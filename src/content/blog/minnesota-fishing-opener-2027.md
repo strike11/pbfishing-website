@@ -1,19 +1,26 @@
 ---
-title: "Minnesota Fishing Opener 2027 Is Saturday, May 15: What Opens and What Doesn't"
-seoTitle: "Minnesota Fishing Opener 2027: Saturday, May 15"
-description: "The 2027 Minnesota fishing opener for walleye and northern pike is Saturday, May 15. What opens that day, what's already open, muskie and trout dates, and limits."
+title: "Minnesota Fishing Opener 2027: Cold Spring, May 15, and the Walleye Limit Fight"
+seoTitle: "MN Fishing Opener 2027: Cold Spring & the 4-Walleye Plan"
+description: "MN fishing opener 2027: May 15 statewide, Governor's Opener in Cold Spring May 14-15, the DNR's plan to cut the walleye limit to 4, plus muskie and trout dates."
 keyword: "mn fishing opener 2027"
 published: 2026-11-16
+updated: 2026-11-23
 art: "state:minnesota"
 heroAlt: "Gold outline of Minnesota over lake contour lines"
-lede: "The 2027 Minnesota walleye and northern pike opener is **Saturday, May 15, 2027**, per the DNR's published opener table. Here's what opens that morning, what never closed, and the dates for muskie, trout and the 2028 opener."
+lede: "The 2027 Minnesota walleye and northern pike opener is **Saturday, May 15, 2027**. The Governor's Fishing Opener goes to **Cold Spring** for the first time, and the DNR wants a **4-walleye limit** from March 1, 2027. Here's where each stands, plus what opens that morning and what never closed."
 takeaways:
   - "Walleye and northern pike open on inland waters at 12:01 a.m. on Saturday, May 15, 2027."
+  - "The 79th Governor's Fishing Opener is May 14-15, 2027 in Cold Spring, on Long Lake and the Sauk River Chain (the Horseshoe Chain)."
+  - "The DNR has proposed cutting the statewide walleye limit from 6 to 4 (still only 1 over 20 inches), effective March 1, 2027 if adopted. It needs an administrative law judge hearing first; check the 2027 regulations."
   - "Muskie opens June 5, 2027. Stream trout harvest opens April 10, 2027. The 2028 walleye opener is May 13, 2028."
   - "Crappie, sunfish, yellow perch and channel catfish are open all year, so you can fish before the opener; just don't target walleye or pike."
   - "Bass are catch-and-release in spring and open to harvest later in May; the exact 2027 date is in the 2027 regulations, published before March 1, 2027."
   - "You need a 2027 license: Minnesota licenses run March 1 to the last day of February."
 faq:
+  - q: "Where is the 2027 Governor's Fishing Opener?"
+    a: "Cold Spring, May 14-15, 2027, on Long Lake and the connected Sauk River Chain of Lakes (the Horseshoe Chain). It's the 79th Governor's Opener and the first time Cold Spring hosts."
+  - q: "Is the Minnesota walleye limit going down to 4?"
+    a: "It's proposed, not final. The DNR wants to cut the statewide walleye and sauger limit from 6 to 4, with only 1 walleye over 20 inches, effective March 1, 2027. Because more than 50 people requested a hearing, the rule needs an administrative law judge hearing first; as of August 2026 that hearing had not been scheduled. Check the DNR before the 2027 opener."
   - q: "When is the 2027 Minnesota fishing opener?"
     a: "Saturday, May 15, 2027 for walleye and northern pike on inland waters. The DNR lists the following opener as May 13, 2028."
   - q: "What time does the Minnesota fishing opener start?"
@@ -25,6 +32,18 @@ faq:
   - q: "When does muskie season open in Minnesota in 2027?"
     a: "June 5, 2027 on inland waters, with a 54-inch minimum. Canada border waters open later and use a 50-inch minimum."
 sources:
+  - title: "Governor's Fishing Opener"
+    url: "https://www.exploreminnesota.com/governors-fishing-opener"
+    publisher: "Explore Minnesota"
+  - title: "Cold Springs to host 2027 Governor's Fishing Opener"
+    url: "https://www.kttc.com/2026/06/25/cold-springs-host-2027-governors-fishing-opener/"
+    publisher: "KTTC"
+  - title: "Minnesota DNR proposes to reduce statewide walleye limit from 6 to 4"
+    url: "https://www.dnr.state.mn.us/news/2026/01/12/minnesota-dnr-proposes-reduce-statewide-walleye-limit-6-4"
+    publisher: "Minnesota Department of Natural Resources"
+  - title: "Outdoor Insights: a lower walleye limit in limbo"
+    url: "https://www.outdoornews.com/2026/08/05/outdoor-insights-minnesota-gubernatorial-candidate-interviews-at-game-fair-and-a-lower-walleye-limit-in-limbo/"
+    publisher: "Outdoor News"
   - title: "2026 Minnesota Fishing Regulations (PDF)"
     url: "https://files.dnr.state.mn.us/rlp/regulations/fishing/fishing_regs.pdf"
     publisher: "Minnesota Department of Natural Resources"
@@ -58,9 +77,23 @@ The Minnesota DNR's published opener table puts the **2027 walleye and northern 
 
 These dates come from the 2026 Minnesota Fishing Regulations booklet, which prints the next two years ahead. The 2027 booklet, published before the license year starts on March 1, is the final word, so check it before you drive north.
 
+## The 2027 Governor's Fishing Opener: Cold Spring
+
+The 79th Governor's Fishing Opener will be held **May 14-15, 2027 in Cold Spring**, on Long Lake and the connected Sauk River Chain of Lakes, which locals call the Horseshoe Chain. It's the first time Cold Spring hosts. The event follows the statewide opener: state statute puts the opener two weeks before the Saturday of Memorial Day weekend, which is why 2027 lands on May 15.
+
+The Horseshoe Chain is a connected string of lakes off the Sauk River west of St. Cloud, with walleye, northern pike, bass and panfish. If you're planning to fish there on opener weekend, expect boat traffic and media around the host lake, and book lodging early.
+
+## The proposed 4-walleye limit
+
+The other 2027 story is the limit itself. The Minnesota DNR has proposed cutting the **statewide walleye and sauger limit from 6 to 4 combined**, keeping the rule that only **1 walleye over 20 inches** may be in possession. If adopted, it would take effect **March 1, 2027**, the start of the 2027 license year, so the 2027 opener would be the first one under the new limit. Border waters, large-lake special regulations and treaty-managed waters keep their own rules.
+
+It isn't final. The public comment period closed March 5, 2026, and because more than 50 valid hearing requests came in, the rule has to go before an administrative law judge. As of August 2026, Outdoor News reported the hearing still hadn't been scheduled. Until the DNR announces a decision, treat 4 as proposed and 6 as the current limit, and check the 2027 regulations booklet before opener.
+
+Big walleye lakes already run their own, lower limits (Leech 4, Lake of the Woods and Mille Lacs have their own slots and bags), so for many opener trips the statewide change matters less than the lake's special regulation.
+
 ## What opens on May 15, 2027
 
-- **Walleye and sauger** on inland waters. The statewide limit is 6 combined with only 1 walleye over 20 inches, but many of the famous lakes have their own slot or bag limits: Leech, Vermilion, Winnibigoshish, Lake of the Woods and Mille Lacs are all different. Look up your lake before opener. Our [Minnesota best lakes guide](/fishing/minnesota/best-lakes) lists the major special regulations.
+- **Walleye and sauger** on inland waters. The statewide limit is 6 combined with only 1 walleye over 20 inches (4 if the proposed rule above is adopted), but many of the famous lakes have their own slot or bag limits: Leech, Vermilion, Winnibigoshish, Lake of the Woods and Mille Lacs are all different. Look up your lake before opener. Our [Minnesota best lakes guide](/fishing/minnesota/best-lakes) lists the major special regulations.
 - **Northern pike**, with zone limits: a 2-fish limit in the northeast zone with a 30–40 inch protected slot, 10 in the north-central zone with 22–26 inches released, and 2 with a 24-inch minimum in the southern zone.
 
 ## What's already open before the opener

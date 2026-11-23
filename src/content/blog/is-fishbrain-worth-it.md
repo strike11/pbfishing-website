@@ -1,10 +1,10 @@
 ---
 title: "Is Fishbrain Worth It in 2026? An Honest Breakdown of Fishbrain Pro"
-seoTitle: "Is Fishbrain Pro Worth It? 2026 Price, Free vs Pro"
-description: "Fishbrain Pro costs $79.99 a year or $12.99 to $14.99 a month on the US App Store. What free gets you, what Pro adds, what anglers love and hate, and who should pay."
+seoTitle: "Is Fishbrain Worth It? Pro at $79.99/yr vs Free (2026)"
+description: "Is Fishbrain Pro worth $79.99 a year? What the free version really gets you, what Pro adds, what anglers complain about, and cheaper alternatives, checked Nov 2026."
 keyword: "is fishbrain worth it"
 published: 2026-11-11
-updated: 2026-11-16
+updated: 2026-11-23
 art: "icons:wallet,scale,fish"
 heroAlt: "Gold line icons of a wallet, a balance scale and a fish over lake contour lines"
 lede: "Fishbrain Pro is worth it for one kind of angler and a waste for another. Here's what it costs **as of November 2026**, what you actually get, and how to tell which side you're on."

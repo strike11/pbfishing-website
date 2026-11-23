@@ -13,6 +13,7 @@ Marketing site, blog, state fishing guides and quizzes for the PB Fishing iOS ap
 | `node tools/art.mjs [--force] [filter]` | Render hero art (`src/assets/art/`) and social cards (`public/og/`) from each page's `art:` field |
 | `python3 -I tools/fetch_species_art.py` | Download public-domain fish illustrations (licence checked via the Commons API) |
 | `node tools/credits.mjs` | Regenerate `content/image-credits.md` |
+| `npm run indexnow` | After a production deploy: send every sitemap URL to IndexNow (Bing, Yandex). Key file: `public/<key>.txt` |
 
 ## Where things live
 

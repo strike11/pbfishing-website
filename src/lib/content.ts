@@ -24,6 +24,7 @@ export const CATEGORY_LABEL: Record<Post["data"]["category"], string> = {
   conditions: "Weather & conditions",
   beginners: "Beginners",
   records: "Records & PBs",
+  ice: "Ice fishing",
 };
 export const CATEGORY_BLURB: Record<Post["data"]["category"], string> = {
   "how-to": "Step-by-step guides for the things anglers actually get stuck on: measuring a fish, finding a spot, rigging, releasing.",
@@ -33,6 +34,7 @@ export const CATEGORY_BLURB: Record<Post["data"]["category"], string> = {
   conditions: "Weather, pressure, wind, moon and water temperature, and how much each really matters.",
   beginners: "Everything a first-season angler needs: gear, licences, spots and the first fish.",
   records: "Personal bests, state records and how to measure and log a fish that counts.",
+  ice: "Hard-water season: ice safety, gear, where to go and how to catch fish through the ice.",
 };
 
 const live = <T extends { data: { draft: boolean } }>(e: T) => !e.data.draft;

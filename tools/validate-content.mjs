@@ -10,7 +10,7 @@ const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirect
 const files = process.argv.slice(2).length ? process.argv.slice(2).map((f) => (f.startsWith("/") ? f : join(process.cwd(), f))) : walk(CONTENT);
 
 const PLAN = readFileSync(join(ROOT, "docs/content-brief.md"), "utf8");
-const BLOG = ["minnesota-fishing-opener-2027", "best-fishing-apps-android", "best-fishing-apps-iphone", "best-free-fishing-apps", "best-bass-fishing-apps", "pb-fishing-vs-fishangler", "pb-fishing-vs-fishbox", "pb-fishing-vs-fishing-points", "pb-fishing-vs-bassforecast", "best-fishing-apps", "is-fishbrain-worth-it", "fishbrain-alternatives", "pb-fishing-vs-fishbrain", "best-fishing-log-apps", "fishing-leaderboard-apps", "how-to-measure-a-fish", "what-is-a-good-size-bass", "largemouth-bass-weight-chart", "how-to-catch-a-personal-best-bass", "how-to-release-a-fish", "fishing-log-what-to-record", "how-to-find-fishing-spots", "best-time-to-fish", "do-solunar-tables-work", "barometric-pressure-and-fishing", "fishing-after-rain-wind-cold-front", "water-temperature-and-fish-activity", "fishing-for-beginners", "do-you-need-a-fishing-license-for-catch-and-release", "why-am-i-not-catching-fish", "90-10-rule-fishing", "best-bass-lures-by-season"];
+const BLOG = ["ice-fishing-for-beginners", "ice-thickness-safety", "ice-fishing-gear-checklist", "best-ice-fishing-lakes-minnesota", "best-ice-fishing-lakes-michigan", "best-ice-fishing-apps", "minnesota-fishing-opener-2027", "best-fishing-apps-android", "best-fishing-apps-iphone", "best-free-fishing-apps", "best-bass-fishing-apps", "pb-fishing-vs-fishangler", "pb-fishing-vs-fishbox", "pb-fishing-vs-fishing-points", "pb-fishing-vs-bassforecast", "best-fishing-apps", "is-fishbrain-worth-it", "fishbrain-alternatives", "pb-fishing-vs-fishbrain", "best-fishing-log-apps", "fishing-leaderboard-apps", "how-to-measure-a-fish", "what-is-a-good-size-bass", "largemouth-bass-weight-chart", "how-to-catch-a-personal-best-bass", "how-to-release-a-fish", "fishing-log-what-to-record", "how-to-find-fishing-spots", "best-time-to-fish", "do-solunar-tables-work", "barometric-pressure-and-fishing", "fishing-after-rain-wind-cold-front", "water-temperature-and-fish-activity", "fishing-for-beginners", "do-you-need-a-fishing-license-for-catch-and-release", "why-am-i-not-catching-fish", "90-10-rule-fishing", "best-bass-lures-by-season"];
 const SPECIES = ["largemouth-bass", "smallmouth-bass", "crappie", "channel-catfish", "walleye", "bluegill", "rainbow-trout"];
 const ART_SPECIES = readdirSync(join(ROOT, "src/assets/species")).filter((f) => f.endsWith(".jpg")).map((f) => f.slice(0, -4));
 const STATES = ["texas", "florida", "minnesota", "michigan", "tennessee"];
@@ -20,7 +20,7 @@ const okPath = new Set([
   "/", "/blog", "/fishing", "/species", "/quiz", "/tools/fish-weight-calculator", "/android", "/iphone", "/fishing-license", "/support", "/about", "/privacy-policy", "/eula",
   ...BLOG.map((s) => `/blog/${s}`), ...SPECIES.map((s) => `/species/${s}`), ...QUIZ.map((s) => `/quiz/${s}`),
   ...STATES.flatMap((s) => STATE_SUB.map((p) => (p ? `/fishing/${s}/${p}` : `/fishing/${s}`))),
-  ...["how-to", "apps", "tips", "gear", "conditions", "beginners", "records"].map((c) => `/blog/category/${c}`),
+  ...["how-to", "apps", "tips", "gear", "conditions", "beginners", "records", "ice"].map((c) => `/blog/category/${c}`),
 ]);
 const BANNED = /\b(ultimate|game[- ]changer|unlock|elevate|dive in|delve|unleash|revolutioniz|seamless|in today's world|verified records?|photo-verified|never get skunked)\b/i;
 
@@ -51,7 +51,7 @@ for (const f of files) {
   for (const q of fm.faq ?? []) if (!q.q || !q.a) err(f, "faq entries need q and a");
   for (const s of fm.sources ?? []) { if (!s.title || !/^https?:\/\//.test(s.url ?? "")) err(f, `bad source ${JSON.stringify(s)}`); }
   if (col === "blog") {
-    if (!["how-to", "apps", "tips", "gear", "conditions", "beginners", "records"].includes(fm.category)) err(f, `bad category ${fm.category}`);
+    if (!["how-to", "apps", "tips", "gear", "conditions", "beginners", "records", "ice"].includes(fm.category)) err(f, `bad category ${fm.category}`);
     if (!["listicle", "guide", "comparison", "explainer"].includes(fm.kind)) err(f, `bad kind ${fm.kind}`);
     if (!BLOG.includes(basename(f, ".md"))) warn(f, "slug is not in the URL plan");
     for (const r of fm.related ?? []) if (!BLOG.includes(r)) err(f, `related "${r}" not in plan`);
